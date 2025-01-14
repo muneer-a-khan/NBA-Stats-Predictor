@@ -1,0 +1,24 @@
+{
+  "name": "nfl-nba-stats-predictor",
+  "version": "1.0.0",
+  "description": "A web app to predict player stats using Python for backend and React for frontend.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/muneer-a-khan/NFL-NBA-Stats-Predictor.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/muneer-a-khan/NFL-NBA-Stats-Predictor/issues"
+  },
+  "homepage": "https://github.com/muneer-a-khan/NFL-NBA-Stats-Predictor#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.2"
+  }
+}
