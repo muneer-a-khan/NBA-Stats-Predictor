@@ -6,6 +6,9 @@ const PlayerCard = ({ player }) => {
             <h3>{player.name}</h3>
             <p>Team: {player.team}</p>
             <p>Position: {player.position}</p>
+            <p>Points per Game: {player.points}</p>
+            <p>Assists per Game: {player.assists}</p>
+            <p>Games Played: {player.games}</p>
         </div>
     );
 };
