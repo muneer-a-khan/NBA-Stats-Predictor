@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import api from './services/api'; // Ensure this matches your setup
+import api from './services/api';
 import './styles/App.css';
 import PlayerCard from './components/PlayerCard';
 import PredictionForm from './components/PredictionForm';
@@ -8,17 +8,16 @@ const App = () => {
     const [players, setPlayers] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-
-    // State for prediction results
+    const [searchQuery, setSearchQuery] = useState(''); // New state for search
     const [prediction, setPrediction] = useState(null);
 
     useEffect(() => {
         const fetchPlayers = async () => {
             try {
-                const response = await api.get('/players'); // Fetch players from backend
-                setPlayers(response.data); // Update state with fetched data
+                const response = await api.get('/players');
+                setPlayers(response.data);
             } catch (error) {
-                setError('Failed to catch player data.');
+                setError('Failed to fetch player data.');
             } finally {
                 setLoading(false);
             }
@@ -27,6 +26,10 @@ const App = () => {
         fetchPlayers();
     }, []);
 
+    const filteredPlayers = players.filter((player) =>
+        player.name.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+
     if (loading) return <p>Loading players...</p>;
     if (error) return <p>{error}</p>;
 
@@ -34,12 +37,10 @@ const App = () => {
         <div>
             <h1>NFL & NBA Stats Predictor</h1>
             
-            {/* Add PredictionForm Component */}
             <PredictionForm onPrediction={setPrediction} />
             
-            {/* Show Prediction Results */}
             {prediction && (
-                <div>
+                <div className="prediction-results">
                     <h2>Prediction Results</h2>
                     <p>Player: {prediction.playerName}</p>
                     <p>Predicted Points: {prediction.predictedPoints.toFixed(2)}</p>
@@ -48,9 +49,15 @@ const App = () => {
                 </div>
             )}
 
-            {/* Player List */}
+            <input
+                type="text"
+                placeholder="Search players"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+            />
+
             <div className="player-list">
-                {players.map((player, index) => (
+                {filteredPlayers.map((player, index) => (
                     <PlayerCard key={index} player={player} />
                 ))}
             </div>
