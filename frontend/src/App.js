@@ -3,12 +3,13 @@ import api from './services/api';
 import './styles/App.css';
 import PlayerCard from './components/PlayerCard';
 import PredictionForm from './components/PredictionForm';
+import NBAStats from './components/NBAStats';
 
 const App = () => {
     const [players, setPlayers] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    const [searchQuery, setSearchQuery] = useState(''); // New state for search
+    const [searchQuery, setSearchQuery] = useState('');
     const [prediction, setPrediction] = useState(null);
 
     useEffect(() => {
@@ -27,7 +28,7 @@ const App = () => {
     }, []);
 
     const filteredPlayers = players.filter((player) =>
-        player.name.toLowerCase().includes(searchQuery.toLowerCase())
+        player.full_name.toLowerCase().includes(searchQuery.toLowerCase())
     );
 
     if (loading) return <p>Loading players...</p>;
@@ -36,9 +37,11 @@ const App = () => {
     return (
         <div>
             <h1>NFL & NBA Stats Predictor</h1>
-            
+
+            <NBAStats />
+
             <PredictionForm onPrediction={setPrediction} />
-            
+
             {prediction && (
                 <div className="prediction-results">
                     <h2>Prediction Results</h2>
