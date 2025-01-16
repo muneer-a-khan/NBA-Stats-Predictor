@@ -1,9 +1,15 @@
 const express = require('express');
 const router = express.Router();
 
-// Define player-related endpoints
+// Example data
+const players = [
+    { name: "Player 1", team: "Team A", position: "Forward" },
+    { name: "Player 2", team: "Team B", position: "Guard" },
+];
+
+// Route to fetch players
 router.get('/', (req, res) => {
-    res.json({ message: 'Player routes are working!' });
+    res.json(players); // Return an array of players
 });
 
 module.exports = router;
