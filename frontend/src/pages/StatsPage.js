@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import api from '../services/api';
 import PlayerCard from '../components/PlayerCard';
 import './StatsPage.css';
@@ -8,16 +8,16 @@ const StatsPage = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [searchQuery, setSearchQuery] = useState('');
-    const [searchedPlayer, setSearchedPlayer] = useState(null);
+    const [searchResults, setSearchResults] = useState(null);
 
-    // Fetch 10 random players on load
+    // Fetch 10 random players on component load
     useEffect(() => {
         const fetchRandomPlayers = async () => {
             try {
-                const response = await api.get('/players/random-players');
-                setPlayers(response.data); // Load 10 random players
+                const response = await api.get('/players/random-players'); // Updated endpoint for random players
+                setPlayers(response.data);
             } catch (err) {
-                setError('Failed to fetch players.');
+                setError('Failed to fetch random players.');
             } finally {
                 setLoading(false);
             }
@@ -26,29 +26,24 @@ const StatsPage = () => {
         fetchRandomPlayers();
     }, []);
 
+    // Handle player search
     const handleSearch = async () => {
-        if (!searchQuery.trim()) {
-            alert('Please enter a player name.');
-            return;
-        }
+        if (!searchQuery.trim()) return;
 
         setLoading(true);
-        setError(null);
-
         try {
             const response = await api.get(`/players?name=${encodeURIComponent(searchQuery)}`);
-            setSearchedPlayer(response.data.player); // Load specific player
-            setPlayers([]); // Clear random players
+            setSearchResults(response.data);
+            setError(null); // Clear any previous errors
         } catch (err) {
-            console.error('API Error:', err);
-            setError('Player not found.');
-            setSearchedPlayer(null);
+            setError('Player not found or failed to fetch stats.');
+            setSearchResults(null);
         } finally {
             setLoading(false);
         }
     };
 
-    if (loading) return <p>Loading players...</p>;
+    if (loading) return <p>Loading...</p>;
     if (error) return <p>{error}</p>;
 
     return (
@@ -56,18 +51,21 @@ const StatsPage = () => {
             <h1>NBA Player Stats</h1>
             <input
                 type="text"
-                placeholder="Search players by name"
+                placeholder="Search players"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
             />
             <button onClick={handleSearch}>Search</button>
 
-            {searchedPlayer ? (
-                <PlayerCard player={searchedPlayer} isSearched={true} />
+            {searchResults ? (
+                <div className="search-results">
+                    <h2>Search Results</h2>
+                    <PlayerCard player={searchResults.player} stats={searchResults.stats} />
+                </div>
             ) : (
                 <div className="player-list">
                     {players.map((player, index) => (
-                        <PlayerCard key={index} player={player} isSearched={false} />
+                        <PlayerCard key={index} player={player} />
                     ))}
                 </div>
             )}
