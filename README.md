@@ -1,6 +1,6 @@
 # NBA Stats Predictor
 
-A full-stack web application designed to predict NFL and NBA player stats based on historical data. This project combines backend development with **Node.js** and frontend technologies like **React**, along with integrating data analysis and visualization techniques. It emphasizes the connection between the backend and frontend while maintaining a visually rich and interactive user interface.
+A full-stack web application designed to predict NBA player stats based on historical data. This project combines backend development with **Node.js** and frontend technologies like **React**, along with integrating data analysis and visualization techniques. It emphasizes the connection between the backend and frontend while maintaining a visually rich and interactive user interface.
 
 ---
 
