@@ -1,95 +1,192 @@
 const express = require('express');
 const router = express.Router();
 const sqlite3 = require('sqlite3').verbose();
-const nba = require('nba-api-client');
+const NBA = require('nba');
+const axios = require('axios');
 
-// Database initialization remains the same
+// Helper function to delay execution
+const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
+
+// Check if column exists in table
+const columnExists = async (db, tableName, columnName) => {
+    return new Promise((resolve, reject) => {
+        db.get(`PRAGMA table_info(${tableName})`, (err, rows) => {
+            if (err) {
+                reject(err);
+                return;
+            }
+            const columns = rows || [];
+            resolve(columns.some(col => col.name === columnName));
+        });
+    });
+};
+
+// Add last_updated column if it doesn't exist
+const migrateDatabase = async (db) => {
+    try {
+        const hasLastUpdated = await columnExists(db, 'players', 'last_updated');
+        
+        if (!hasLastUpdated) {
+            console.log('Adding last_updated column to players table...');
+            await new Promise((resolve, reject) => {
+                db.run(`ALTER TABLE players ADD COLUMN last_updated DATETIME`, (err) => {
+                    if (err) {
+                        reject(err);
+                        return;
+                    }
+                    console.log('Successfully added last_updated column');
+                    resolve();
+                });
+            });
+
+            await new Promise((resolve, reject) => {
+                db.run(`UPDATE players SET last_updated = datetime('now', '-2 days') WHERE last_updated IS NULL`, (err) => {
+                    if (err) {
+                        reject(err);
+                        return;
+                    }
+                    console.log('Successfully initialized last_updated values');
+                    resolve();
+                });
+            });
+        }
+    } catch (error) {
+        console.error('Error during database migration:', error);
+        throw error;
+    }
+};
+
+// Get existing players from database
+const getExistingPlayers = async (db) => {
+    return new Promise((resolve, reject) => {
+        db.all('SELECT id, last_updated FROM players', (err, rows) => {
+            if (err) reject(err);
+            else resolve(rows || []);
+        });
+    });
+};
+
+// Retry function with exponential backoff
+const fetchWithRetry = async (playerInfo, retries = 3, baseDelay = 1000) => {
+    for (let i = 0; i < retries; i++) {
+        try {
+            const response = await NBA.stats.playerInfo({ PlayerID: playerInfo.playerId });
+            return response;
+        } catch (error) {
+            if (i === retries - 1) throw error;
+            const waitTime = baseDelay * Math.pow(2, i);
+            await delay(waitTime);
+        }
+    }
+};
+
+// Format player stats with default values
+const formatPlayerStats = (stats = {}) => ({
+    PTS: 0,
+    AST: 0,
+    REB: 0,
+    STL: 0,
+    BLK: 0,
+    FG_PCT: 0,
+    FG3_PCT: 0,
+    FT_PCT: 0,
+    MIN: 0,
+    GP: 0,
+    ...stats
+});
+
+// Initialize database
 const initDatabase = async () => {
     return new Promise((resolve, reject) => {
-        const db = new sqlite3.Database('nba_stats.db', (err) => {
+        const db = new sqlite3.Database('nba_stats.db', async (err) => {
             if (err) {
                 reject(err);
                 return;
             }
             
-            db.run(`CREATE TABLE IF NOT EXISTS players (
-                id TEXT PRIMARY KEY,
-                full_name TEXT,
-                team_id TEXT,
-                team TEXT,
-                position TEXT,
-                stats TEXT
-            )`, (err) => {
-                if (err) {
-                    reject(err);
-                    return;
-                }
+            try {
+                await new Promise((resolve, reject) => {
+                    db.run(`CREATE TABLE IF NOT EXISTS players (
+                        id INTEGER PRIMARY KEY,
+                        full_name TEXT,
+                        team TEXT,
+                        position TEXT,
+                        jersey_number TEXT,
+                        stats TEXT
+                    )`, (err) => {
+                        if (err) reject(err);
+                        else resolve();
+                    });
+                });
+
+                await migrateDatabase(db);
                 resolve(db);
-            });
-        });
-    });
-};
-
-// Check if database is empty
-const isDatabaseEmpty = async (db) => {
-    return new Promise((resolve, reject) => {
-        db.get('SELECT COUNT(*) as count FROM players', (err, row) => {
-            if (err) {
-                reject(err);
-                return;
+            } catch (error) {
+                reject(error);
             }
-            resolve(row ? row.count === 0 : true);
         });
     });
-};
-
-// Format player stats
-const formatPlayerStats = (stats) => {
-    if (!stats || !stats.regularSeason) return {};
-    
-    const careerStats = stats.regularSeason.career;
-    return {
-        PTS: careerStats?.ppg || 0,
-        AST: careerStats?.apg || 0,
-        REB: careerStats?.rpg || 0,
-        STL: careerStats?.spg || 0,
-        BLK: careerStats?.bpg || 0,
-        FG_PCT: careerStats?.fgp || 0,
-        FG3_PCT: careerStats?.tpp || 0,
-        FT_PCT: careerStats?.ftp || 0,
-        MIN: careerStats?.mpg || 0,
-        GP: careerStats?.gamesPlayed || 0
-    };
 };
 
 // Populate database
 const populateDatabase = async (db) => {
     try {
-        const isEmpty = await isDatabaseEmpty(db);
+        console.log('Checking for new or outdated player data...');
         
-        if (isEmpty) {
-            console.log('Populating database with player data...');
+        const nbaPlayers = NBA.players;
+        const existingPlayers = await getExistingPlayers(db);
+        const existingPlayerMap = new Map(
+            existingPlayers.map(p => [p.id, new Date(p.last_updated)])
+        );
+        
+        const oneDay = 24 * 60 * 60 * 1000;
+        const playersToUpdate = nbaPlayers.filter(player => {
+            const lastUpdated = existingPlayerMap.get(parseInt(player.playerId));
+            return !lastUpdated || (new Date() - lastUpdated > oneDay);
+        });
+        
+        if (playersToUpdate.length === 0) {
+            console.log('All player data is up to date!');
+            return;
+        }
+        
+        console.log(`Updating data for ${playersToUpdate.length} players...`);
+        
+        const batchSize = 5;
+        for (let i = 0; i < playersToUpdate.length; i += batchSize) {
+            const batch = playersToUpdate.slice(i, i + batchSize);
             
-            // Get all active players
-            const players = await nba.allPlayers();
-            
-            for (const player of players) {
+            await Promise.all(batch.map(async (player, index) => {
                 try {
-                    // Get player stats using the correct API method
-                    const stats = await nba.playerProfile({ PersonID: player.personId });
-                    const formattedStats = formatPlayerStats(stats);
+                    await delay(index * 2000);
                     
-                    // Insert player data
+                    const playerInfo = await fetchWithRetry(player);
+                    const stats = playerInfo.playerHeadlineStats[0] || {};
+                    
+                    const formattedStats = formatPlayerStats({
+                        PTS: parseFloat(stats.pts) || 0,
+                        AST: parseFloat(stats.ast) || 0,
+                        REB: parseFloat(stats.reb) || 0,
+                        STL: parseFloat(stats.stl) || 0,
+                        BLK: parseFloat(stats.blk) || 0,
+                        FG_PCT: parseFloat(stats.fgPct) || 0,
+                        FG3_PCT: parseFloat(stats.fg3Pct) || 0,
+                        FT_PCT: parseFloat(stats.ftPct) || 0,
+                        MIN: parseFloat(stats.min) || 0,
+                        GP: parseInt(stats.gp) || 0
+                    });
+
                     await new Promise((resolve, reject) => {
                         db.run(
-                            `INSERT OR REPLACE INTO players (id, full_name, team_id, team, position, stats) 
-                             VALUES (?, ?, ?, ?, ?, ?)`,
+                            `INSERT OR REPLACE INTO players 
+                            (id, full_name, team, position, jersey_number, stats, last_updated) 
+                            VALUES (?, ?, ?, ?, ?, ?, datetime('now'))`,
                             [
-                                player.personId,
+                                player.playerId,
                                 player.fullName,
-                                player.teamId,
-                                player.teamSitesOnly?.teamName || '',
+                                player.teamData ? player.teamData.abbreviation : '',
                                 player.pos || '',
+                                player.jersey || '',
                                 JSON.stringify(formattedStats)
                             ],
                             (err) => {
@@ -99,17 +196,19 @@ const populateDatabase = async (db) => {
                         );
                     });
                     
-                    // Add a small delay to avoid rate limiting
-                    await new Promise(resolve => setTimeout(resolve, 100));
-                    
+                    console.log(`Successfully updated player: ${player.fullName}`);
                 } catch (error) {
-                    console.error(`Error processing player ${player.fullName}:`, error);
+                    console.error(`Error processing player ${player.fullName}:`, error.message);
                 }
-            }
-            console.log('Database population complete');
+            }));
+            
+            await delay(5000);
         }
+        
+        console.log('Player data update complete');
     } catch (error) {
-        console.error('Error populating database:', error);
+        console.error('Error updating player data:', error);
+        throw error;
     }
 };
 
@@ -128,7 +227,11 @@ router.get('/random-players', async (req, res) => {
             }
             
             const formattedPlayers = players.map(player => ({
-                ...player,
+                id: player.id,
+                full_name: player.full_name,
+                team: player.team,
+                position: player.position,
+                jersey_number: player.jersey_number,
                 stats: JSON.parse(player.stats)
             }));
             
@@ -160,33 +263,40 @@ router.get('/players', async (req, res) => {
                 }
                 
                 try {
-                    // Get player seasonal stats
-                    const seasonalStats = await nba.playerProfile({ PersonID: player.id });
-                    const seasons = seasonalStats.regularSeason.season || [];
+                    const seasonalStats = await NBA.stats.playerProfile({ PlayerID: player.id });
+                    const seasons = seasonalStats.seasonTotalsRegularSeason || [];
                     
                     res.json({
                         player: {
-                            ...player,
+                            id: player.id,
+                            full_name: player.full_name,
+                            team: player.team,
+                            position: player.position,
+                            jersey_number: player.jersey_number,
                             stats: seasons.map(season => ({
                                 SEASON_ID: season.seasonId,
-                                TEAM_ABBREVIATION: season.teamAbbreviation || '',
-                                GP: season.gamesPlayed || 0,
-                                MIN: season.mpg || 0,
-                                FG_PCT: season.fgp || 0,
-                                FG3_PCT: season.tpp || 0,
-                                FT_PCT: season.ftp || 0,
-                                PTS: season.ppg || 0,
-                                AST: season.apg || 0,
-                                REB: season.rpg || 0,
-                                STL: season.spg || 0,
-                                BLK: season.bpg || 0
+                                TEAM_ABBREVIATION: season.teamAbbreviation || player.team,
+                                GP: season.gp,
+                                MIN: season.min,
+                                FG_PCT: season.fgPct,
+                                FG3_PCT: season.fg3Pct,
+                                FT_PCT: season.ftPct,
+                                PTS: season.pts,
+                                AST: season.ast,
+                                REB: season.reb,
+                                STL: season.stl,
+                                BLK: season.blk
                             }))
                         }
                     });
                 } catch (error) {
                     res.json({
                         player: {
-                            ...player,
+                            id: player.id,
+                            full_name: player.full_name,
+                            team: player.team,
+                            position: player.position,
+                            jersey_number: player.jersey_number,
                             stats: JSON.parse(player.stats)
                         }
                     });
