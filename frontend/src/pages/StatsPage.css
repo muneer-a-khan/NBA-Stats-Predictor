@@ -1,0 +1,75 @@
+.stats-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.stats-page h1 {
+    color: #2d3748;
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+.search-section {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+    justify-content: center;
+}
+
+input[type="text"] {
+    padding: 8px 16px;
+    border: 2px solid #e2e8f0;
+    border-radius: 6px;
+    font-size: 16px;
+    width: 300px;
+    transition: border-color 0.2s;
+}
+
+input[type="text"]:focus {
+    border-color: #4299e1;
+    outline: none;
+}
+
+button {
+    padding: 8px 16px;
+    background-color: #4299e1;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+button:hover {
+    background-color: #3182ce;
+}
+
+.search-results {
+    margin-bottom: 30px;
+}
+
+.search-results h2 {
+    color: #2d3748;
+    margin-bottom: 16px;
+}
+
+.player-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+/* Loading and error states */
+.loading, .error {
+    text-align: center;
+    padding: 20px;
+    background-color: #f7fafc;
+    border-radius: 6px;
+    margin: 20px 0;
+}
+
+.error {
+    color: #e53e3e;
+    background-color: #fff5f5;
+}

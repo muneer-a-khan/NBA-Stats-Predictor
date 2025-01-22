@@ -1,33 +1,14 @@
 const express = require('express');
-const { exec } = require('child_process');
 const router = express.Router();
+const statsController = require('../controllers/statsController');
 
-router.get('/nba-player-stats', (req, res) => {
-    const playerName = req.query.name;
+// Advanced stats routes
+router.get('/advanced/:playerId', statsController.getAdvancedStats);
 
-    if (!playerName) {
-        return res.status(400).json({ error: 'Player name is required' });
-    }
+// Year comparison routes
+router.get('/compare/:playerId/:year1/:year2', statsController.getYearlyComparison);
 
-    exec(`"C:/Python313/python.exe" fetch_nba_stats.py "${playerName}"`, { cwd: __dirname }, (error, stdout, stderr) => {
-        if (error) {
-            console.error(`Execution Error: ${error.message}`);
-            return res.status(500).json({ error: `Execution Error: ${error.message}` });
-        }
-
-        if (stderr) {
-            console.error(`Python Script Error (stderr): ${stderr}`);
-            return res.status(500).json({ error: `Python Script Error: ${stderr}` });
-        }
-
-        try {
-            const data = JSON.parse(stdout);
-            res.json(data);
-        } catch (parseError) {
-            console.error(`JSON Parse Error: ${parseError.message}`);
-            res.status(500).json({ error: 'Failed to parse player stats output.' });
-        }
-    });
-});
+// Prediction routes
+router.get('/predict/:playerId', statsController.predictNextSeason);
 
 module.exports = router;

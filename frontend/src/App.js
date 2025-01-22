@@ -1,69 +1,20 @@
-import React, { useEffect, useState } from 'react';
-import api from './services/api';
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import HomePage from './pages/HomePage';
+import StatsPage from './pages/StatsPage';
+import PredictionsPage from './pages/PredictionsPage';
 import './styles/App.css';
-import PlayerCard from './components/PlayerCard';
-import PredictionForm from './components/PredictionForm';
-import NBAStats from './components/NBAStats';
 
 const App = () => {
-    const [players, setPlayers] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
-    const [searchQuery, setSearchQuery] = useState('');
-    const [prediction, setPrediction] = useState(null);
-
-    useEffect(() => {
-        const fetchPlayers = async () => {
-            try {
-                const response = await api.get('/players');
-                setPlayers(response.data);
-            } catch (error) {
-                setError('Failed to fetch player data.');
-            } finally {
-                setLoading(false);
-            }
-        };
-
-        fetchPlayers();
-    }, []);
-
-    const filteredPlayers = players.filter((player) =>
-        player.full_name.toLowerCase().includes(searchQuery.toLowerCase())
-    );
-
-    if (loading) return <p>Loading players...</p>;
-    if (error) return <p>{error}</p>;
-
     return (
         <div>
-            <h1>NFL & NBA Stats Predictor</h1>
-
-            <NBAStats />
-
-            <PredictionForm onPrediction={setPrediction} />
-
-            {prediction && (
-                <div className="prediction-results">
-                    <h2>Prediction Results</h2>
-                    <p>Player: {prediction.playerName}</p>
-                    <p>Predicted Points: {prediction.predictedPoints.toFixed(2)}</p>
-                    <p>Predicted Assists: {prediction.predictedAssists.toFixed(2)}</p>
-                    <p>Predicted Games: {prediction.predictedGames.toFixed(2)}</p>
-                </div>
-            )}
-
-            <input
-                type="text"
-                placeholder="Search players"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-            />
-
-            <div className="player-list">
-                {filteredPlayers.map((player, index) => (
-                    <PlayerCard key={index} player={player} />
-                ))}
-            </div>
+            <Navbar />
+            <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/stats" element={<StatsPage />} />
+                <Route path="/predictions" element={<PredictionsPage />} />
+            </Routes>
         </div>
     );
 };
