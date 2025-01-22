@@ -1,4 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 import api from '../services/api';
 import PlayerCard from '../components/PlayerCard';
 import './StatsPage.css';
@@ -9,15 +11,22 @@ const StatsPage = () => {
     const [error, setError] = useState(null);
     const [searchQuery, setSearchQuery] = useState('');
     const [searchResults, setSearchResults] = useState(null);
-    const [selectedSeason, setSelectedSeason] = useState('');
-    const [availableSeasons, setAvailableSeasons] = useState([]);
-    const [seasonStats, setSeasonStats] = useState(null);
-    const [loadingSeasonStats, setLoadingSeasonStats] = useState(false);
+    const [selectedYear, setSelectedYear] = useState('');
+    const [yearStats, setYearStats] = useState(null);
+    const [availableYears, setAvailableYears] = useState([]);
+    const location = useLocation();
 
-    // Fetch 10 random players on component load
     useEffect(() => {
-        fetchRandomPlayers();
-    }, []);
+        // Get player name from URL if present
+        const params = new URLSearchParams(location.search);
+        const playerName = params.get('player');
+        if (playerName) {
+            setSearchQuery(playerName);
+            handleSearch(playerName);
+        } else {
+            fetchRandomPlayers();
+        }
+    }, [location]);
 
     const fetchRandomPlayers = async () => {
         setLoading(true);
@@ -33,81 +42,63 @@ const StatsPage = () => {
         }
     };
 
-    // Handle player search
-    const handleSearch = async () => {
-        if (!searchQuery.trim()) return;
+    const handleSearch = async (query = searchQuery) => {
+        if (!query.trim()) return;
 
         setLoading(true);
         try {
-            const response = await api.get(`/players/search/${encodeURIComponent(searchQuery)}`);
-            setSearchResults(response.data.player);
-            setAvailableSeasons(response.data.seasons || []);
-            setSelectedSeason(''); // Reset selected season
-            setSeasonStats(null); // Reset season stats
+            const response = await api.get(`/players/search/${encodeURIComponent(query)}`);
+            const playerData = response.data.player;
+            
+            // Extract unique years from player stats
+            const years = [...new Set(playerData.stats.map(stat => stat.SEASON_ID))].sort();
+            
+            setSearchResults(playerData);
+            setAvailableYears(years);
+            setSelectedYear(years[years.length - 1]); // Select most recent year
             setError(null);
+            
+            // Fetch stats for selected year
+            if (years.length > 0) {
+                await handleYearSelect(years[years.length - 1], playerData.id);
+            }
         } catch (err) {
             setError('Player not found or failed to fetch stats.');
             setSearchResults(null);
-            setAvailableSeasons([]);
+            setAvailableYears([]);
         } finally {
             setLoading(false);
         }
     };
 
-    // Handle season selection
-    const handleSeasonSelect = async (season) => {
-        if (!searchResults || !season) return;
+    const handleYearSelect = async (year, playerId = searchResults?.id) => {
+        if (!playerId || !year) return;
 
-        setLoadingSeasonStats(true);
         try {
-            const response = await api.get(`/players/${searchResults.id}/stats/${season}`);
-            setSeasonStats(response.data);
-            setSelectedSeason(season);
-            setError(null);
+            const response = await api.get(`/players/${playerId}/stats/${year}`);
+            setYearStats(response.data);
+            setSelectedYear(year);
         } catch (err) {
-            setError('Failed to fetch season stats.');
-            setSeasonStats(null);
-        } finally {
-            setLoadingSeasonStats(false);
+            setError('Failed to fetch year stats.');
+            setYearStats(null);
         }
     };
 
-    // Handle refresh random players
-    const handleRefreshPlayers = () => {
-        fetchRandomPlayers();
-    };
-
-    // Handle search on Enter key press
-    const handleKeyPress = (e) => {
-        if (e.key === 'Enter') {
-            handleSearch();
-        }
-    };
-
-    const renderStats = (stats) => {
-        if (!stats) return null;
+    const renderStatsChart = (stats, statKey, title) => {
+        if (!stats || !Array.isArray(stats)) return null;
 
         return (
-            <div className="stats-grid">
-                <div className="stat-item">
-                    <span className="stat-label">Points</span>
-                    <span className="stat-value">{stats.PTS?.toFixed(1) || '0.0'}</span>
-                </div>
-                <div className="stat-item">
-                    <span className="stat-label">Assists</span>
-                    <span className="stat-value">{stats.AST?.toFixed(1) || '0.0'}</span>
-                </div>
-                <div className="stat-item">
-                    <span className="stat-label">Rebounds</span>
-                    <span className="stat-value">{stats.REB?.toFixed(1) || '0.0'}</span>
-                </div>
-                <div className="stat-item">
-                    <span className="stat-label">Steals</span>
-                    <span className="stat-value">{stats.STL?.toFixed(1) || '0.0'}</span>
-                </div>
-                <div className="stat-item">
-                    <span className="stat-label">Blocks</span>
-                    <span className="stat-value">{stats.BLK?.toFixed(1) || '0.0'}</span>
+            <div className="stats-chart">
+                <h3>{title}</h3>
+                <div className="h-64 w-full">
+                    <LineChart data={stats} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
+                        <CartesianGrid strokeDasharray="3 3" />
+                        <XAxis dataKey="SEASON_ID" />
+                        <YAxis />
+                        <Tooltip />
+                        <Legend />
+                        <Line type="monotone" dataKey={statKey} stroke="#8884d8" />
+                    </LineChart>
                 </div>
             </div>
         );
@@ -117,7 +108,7 @@ const StatsPage = () => {
         <div className="stats-page">
             <div className="header">
                 <h1>NBA Player Stats</h1>
-                <button onClick={handleRefreshPlayers} className="refresh-button">
+                <button onClick={fetchRandomPlayers} className="refresh-button">
                     Refresh Random Players
                 </button>
             </div>
@@ -128,10 +119,10 @@ const StatsPage = () => {
                     placeholder="Search players..."
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    onKeyPress={handleKeyPress}
+                    onKeyPress={(e) => e.key === 'Enter' && handleSearch()}
                     className="search-input"
                 />
-                <button onClick={handleSearch} className="search-button">
+                <button onClick={() => handleSearch()} className="search-button">
                     Search
                 </button>
             </div>
@@ -141,44 +132,49 @@ const StatsPage = () => {
             {searchResults && (
                 <div className="search-results">
                     <h2>Player Details</h2>
+                    <div className="year-selector">
+                        <select
+                            value={selectedYear}
+                            onChange={(e) => handleYearSelect(e.target.value)}
+                            className="year-select"
+                        >
+                            {availableYears.map((year) => (
+                                <option key={year} value={year}>
+                                    {year}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+
                     <div className="player-details">
                         <PlayerCard player={searchResults} />
                         
-                        <div className="season-selector">
-                            <select
-                                value={selectedSeason}
-                                onChange={(e) => handleSeasonSelect(e.target.value)}
-                                className="season-select"
-                            >
-                                <option value="">Select Season</option>
-                                {availableSeasons.map((season) => (
-                                    <option key={season} value={season}>
-                                        {season}
-                                    </option>
-                                ))}
-                            </select>
-                        </div>
-
-                        {loadingSeasonStats ? (
-                            <div className="loading">Loading season stats...</div>
-                        ) : (
-                            seasonStats && (
-                                <div className="season-stats">
-                                    <h3>Stats for {selectedSeason} Season</h3>
-                                    {renderStats(seasonStats)}
-                                </div>
-                            )
+                        {yearStats && (
+                            <div className="stats-container">
+                                {renderStatsChart(searchResults.stats, 'PTS', 'Points Per Game')}
+                                {renderStatsChart(searchResults.stats, 'AST', 'Assists Per Game')}
+                                {renderStatsChart(searchResults.stats, 'REB', 'Rebounds Per Game')}
+                            </div>
                         )}
                     </div>
                 </div>
             )}
 
-            {!searchResults && (
+            {!searchResults && !loading && (
                 <div className="random-players">
-                    <h2>Random Players</h2>
+                    <h2>Featured Players</h2>
                     <div className="player-grid">
-                        {players.map((player, index) => (
-                            <PlayerCard key={index} player={player} />
+                        {players.map((player) => (
+                            <div 
+                                key={player.id} 
+                                className="player-card-container"
+                                onClick={() => {
+                                    setSearchQuery(player.full_name);
+                                    handleSearch(player.full_name);
+                                }}
+                            >
+                                <PlayerCard player={player} />
+                            </div>
                         ))}
                     </div>
                 </div>
