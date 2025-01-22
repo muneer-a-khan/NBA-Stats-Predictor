@@ -22,4 +22,11 @@ app.get('/', (req, res) => {
 const PORT = 5000;
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
+
+    // Call /players/load-all on startup
+    const fetch = require('node-fetch');
+    fetch('http://localhost:5000/api/players/load-all')
+        .then((res) => res.json())
+        .then((data) => console.log('All players loaded:', data.message))
+        .catch((err) => console.error('Failed to load players on startup:', err));
 });
