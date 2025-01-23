@@ -2,11 +2,15 @@ const express = require('express');
 const router = express.Router();
 const sqlite3 = require('sqlite3').verbose();
 const NBA = require('nba');
+const { statsUpdaterMiddleware } = require('../utils/realTimeUpdates');
 
 // Helper function to delay execution
 const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
 
-// Check if column exists in table
+// Apply stats updater middleware
+router.use(statsUpdaterMiddleware);
+
+// Database utilities
 const columnExists = async (db, tableName, columnName) => {
     return new Promise((resolve, reject) => {
         db.all(`PRAGMA table_info(${tableName})`, (err, rows) => {
@@ -14,14 +18,12 @@ const columnExists = async (db, tableName, columnName) => {
                 reject(err);
                 return;
             }
-            // Check if any row has the column name we're looking for
             const exists = rows.some(row => row.name === columnName);
             resolve(exists);
         });
     });
 };
 
-// Add last_updated column if it doesn't exist
 const migrateDatabase = async (db) => {
     try {
         const hasLastUpdated = await columnExists(db, 'players', 'last_updated');
@@ -56,32 +58,6 @@ const migrateDatabase = async (db) => {
     }
 };
 
-// Get existing players from database
-const getExistingPlayers = async (db) => {
-    return new Promise((resolve, reject) => {
-        db.all('SELECT id, last_updated FROM players', (err, rows) => {
-            if (err) reject(err);
-            else resolve(rows || []);
-        });
-    });
-};
-
-// Format player stats with default values
-const formatPlayerStats = (stats = {}) => ({
-    PTS: 0,
-    AST: 0,
-    REB: 0,
-    STL: 0,
-    BLK: 0,
-    FG_PCT: 0,
-    FG3_PCT: 0,
-    FT_PCT: 0,
-    MIN: 0,
-    GP: 0,
-    ...stats
-});
-
-// Initialize database
 const initDatabase = async () => {
     return new Promise((resolve, reject) => {
         const db = new sqlite3.Database('nba_stats.db', async (err) => {
@@ -136,6 +112,11 @@ router.get('/random-players', async (req, res) => {
                 jersey_number: player.jersey_number,
                 stats: JSON.parse(player.stats)
             }));
+
+            // Queue background updates for displayed players
+            formattedPlayers.forEach(player => {
+                req.statsUpdater.queueUpdate(player.id);
+            });
             
             res.json(formattedPlayers);
         });
@@ -144,7 +125,7 @@ router.get('/random-players', async (req, res) => {
     }
 });
 
-// Search player
+// Search player with real-time updates
 router.get('/players', async (req, res) => {
     try {
         const db = await initDatabase();
@@ -165,8 +146,8 @@ router.get('/players', async (req, res) => {
                 }
                 
                 try {
-                    const seasonalStats = await NBA.stats.playerProfile({ PlayerID: player.id });
-                    const seasons = seasonalStats.seasonTotalsRegularSeason || [];
+                    // Get real-time stats
+                    const stats = await req.statsUpdater.getPlayerStats(player.id);
                     
                     res.json({
                         player: {
@@ -175,7 +156,7 @@ router.get('/players', async (req, res) => {
                             team: player.team,
                             position: player.position,
                             jersey_number: player.jersey_number,
-                            stats: seasons.map(season => ({
+                            stats: stats.career.map(season => ({
                                 SEASON_ID: season.seasonId,
                                 TEAM_ABBREVIATION: season.teamAbbreviation || player.team,
                                 GP: season.gp,
@@ -192,6 +173,7 @@ router.get('/players', async (req, res) => {
                         }
                     });
                 } catch (error) {
+                    // Fallback to database stats if real-time update fails
                     res.json({
                         player: {
                             id: player.id,
@@ -205,6 +187,24 @@ router.get('/players', async (req, res) => {
                 }
             }
         );
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+// Get player stats for specific year with real-time updates
+router.get('/players/:playerId/stats/:year', async (req, res) => {
+    try {
+        const stats = await req.statsUpdater.getPlayerStats(req.params.playerId);
+        const yearStats = stats.career.find(season => 
+            season.seasonId === req.params.year
+        );
+        
+        if (!yearStats) {
+            return res.status(404).json({ error: 'Stats not found for specified year' });
+        }
+        
+        res.json(yearStats);
     } catch (error) {
         res.status(500).json({ error: error.message });
     }

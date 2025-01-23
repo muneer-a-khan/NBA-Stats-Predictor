@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 import api from '../services/api';
 import PlayerCard from '../components/PlayerCard';
+import LoadingSpinner from '../components/LoadingSpinner';
 import './StatsPage.css';
 
 const StatsPage = () => {
@@ -14,6 +15,7 @@ const StatsPage = () => {
     const [selectedYear, setSelectedYear] = useState('');
     const [yearStats, setYearStats] = useState(null);
     const [availableYears, setAvailableYears] = useState([]);
+    const [loadingYearStats, setLoadingYearStats] = useState(false);
     const location = useLocation();
 
     useEffect(() => {
@@ -30,12 +32,12 @@ const StatsPage = () => {
 
     const fetchRandomPlayers = async () => {
         setLoading(true);
+        setError(null);
         try {
             const response = await api.get('/players/random-players');
             setPlayers(response.data);
-            setError(null);
         } catch (err) {
-            setError('Failed to fetch random players.');
+            setError('Failed to fetch random players. Please try again.');
             setPlayers([]);
         } finally {
             setLoading(false);
@@ -46,6 +48,7 @@ const StatsPage = () => {
         if (!query.trim()) return;
 
         setLoading(true);
+        setError(null);
         try {
             const response = await api.get(`/players/search/${encodeURIComponent(query)}`);
             const playerData = response.data.player;
@@ -56,14 +59,13 @@ const StatsPage = () => {
             setSearchResults(playerData);
             setAvailableYears(years);
             setSelectedYear(years[years.length - 1]); // Select most recent year
-            setError(null);
             
             // Fetch stats for selected year
             if (years.length > 0) {
                 await handleYearSelect(years[years.length - 1], playerData.id);
             }
         } catch (err) {
-            setError('Player not found or failed to fetch stats.');
+            setError('Player not found or failed to fetch stats. Please check the name and try again.');
             setSearchResults(null);
             setAvailableYears([]);
         } finally {
@@ -74,13 +76,17 @@ const StatsPage = () => {
     const handleYearSelect = async (year, playerId = searchResults?.id) => {
         if (!playerId || !year) return;
 
+        setLoadingYearStats(true);
+        setError(null);
         try {
             const response = await api.get(`/players/${playerId}/stats/${year}`);
             setYearStats(response.data);
             setSelectedYear(year);
         } catch (err) {
-            setError('Failed to fetch year stats.');
+            setError('Failed to fetch stats for the selected year.');
             setYearStats(null);
+        } finally {
+            setLoadingYearStats(false);
         }
     };
 
@@ -108,8 +114,12 @@ const StatsPage = () => {
         <div className="stats-page">
             <div className="header">
                 <h1>NBA Player Stats</h1>
-                <button onClick={fetchRandomPlayers} className="refresh-button">
-                    Refresh Random Players
+                <button 
+                    onClick={fetchRandomPlayers} 
+                    className="refresh-button"
+                    disabled={loading}
+                >
+                    {loading ? 'Refreshing...' : 'Refresh Random Players'}
                 </button>
             </div>
 
@@ -121,15 +131,30 @@ const StatsPage = () => {
                     onChange={(e) => setSearchQuery(e.target.value)}
                     onKeyPress={(e) => e.key === 'Enter' && handleSearch()}
                     className="search-input"
+                    disabled={loading}
                 />
-                <button onClick={() => handleSearch()} className="search-button">
-                    Search
+                <button 
+                    onClick={() => handleSearch()} 
+                    className="search-button"
+                    disabled={loading}
+                >
+                    {loading ? 'Searching...' : 'Search'}
                 </button>
             </div>
 
-            {error && <div className="error-message">{error}</div>}
+            {error && (
+                <div className="error-message bg-red-50 border border-red-200 rounded-md p-4 mt-4">
+                    {error}
+                </div>
+            )}
 
-            {searchResults && (
+            {loading && (
+                <div className="flex justify-center items-center mt-8">
+                    <LoadingSpinner text="Fetching player data..." />
+                </div>
+            )}
+
+            {searchResults && !loading && (
                 <div className="search-results">
                     <h2>Player Details</h2>
                     <div className="year-selector">
@@ -137,6 +162,7 @@ const StatsPage = () => {
                             value={selectedYear}
                             onChange={(e) => handleYearSelect(e.target.value)}
                             className="year-select"
+                            disabled={loadingYearStats}
                         >
                             {availableYears.map((year) => (
                                 <option key={year} value={year}>
@@ -149,7 +175,11 @@ const StatsPage = () => {
                     <div className="player-details">
                         <PlayerCard player={searchResults} />
                         
-                        {yearStats && (
+                        {loadingYearStats ? (
+                            <div className="flex justify-center items-center mt-4">
+                                <LoadingSpinner text="Loading season stats..." />
+                            </div>
+                        ) : yearStats && (
                             <div className="stats-container">
                                 {renderStatsChart(searchResults.stats, 'PTS', 'Points Per Game')}
                                 {renderStatsChart(searchResults.stats, 'AST', 'Assists Per Game')}
