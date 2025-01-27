@@ -9,6 +9,7 @@ import random
 from requests.exceptions import RequestException, Timeout, ConnectionError
 import logging
 from datetime import datetime, timedelta
+from fake_useragent import UserAgent
 import os
 
 # Set up logging
@@ -19,51 +20,81 @@ logging.basicConfig(
 )
 
 DB_FILE = "nba_stats.db"
-REQUEST_COUNTER_FILE = "request_counter.json"
-DAILY_LIMIT = 300  # Set limit to 300 players per day
+PROGRESS_FILE = "fetch_progress.json"
+DAILY_LIMIT = 300
 
-class RequestCounter:
+class NBAAPIHandler:
     def __init__(self):
-        self.counter_file = REQUEST_COUNTER_FILE
-        self.load_counter()
+        self.user_agent = UserAgent()
+        self.requests_made = 0
+        self.max_requests = 50
+        self.reset_interval = 300
+        self.last_request_time = datetime.now()
 
-    def load_counter(self):
-        if os.path.exists(self.counter_file):
-            with open(self.counter_file, 'r') as f:
+    def get_headers(self):
+        return {
+            'User-Agent': self.user_agent.random,
+            'Accept': '*/*',
+            'Accept-Encoding': 'gzip, deflate, br',
+            'Accept-Language': 'en-US,en;q=0.9',
+            'Connection': 'keep-alive',
+            'Host': 'stats.nba.com',
+            'Origin': 'https://www.nba.com',
+            'Referer': 'https://www.nba.com/',
+        }
+
+    def should_reset_counter(self):
+        time_since_last = (datetime.now() - self.last_request_time).total_seconds()
+        return time_since_last >= self.reset_interval
+
+    def handle_rate_limit(self):
+        if self.requests_made >= self.max_requests:
+            wait_time = random.uniform(self.reset_interval, self.reset_interval * 1.5)
+            logging.info(f"Rate limit approached. Waiting {wait_time:.2f} seconds...")
+            time.sleep(wait_time)
+            self.requests_made = 0
+            self.last_request_time = datetime.now()
+
+class ProgressTracker:
+    def __init__(self):
+        self.progress_file = PROGRESS_FILE
+        self.load_progress()
+
+    def load_progress(self):
+        if os.path.exists(self.progress_file):
+            with open(self.progress_file, 'r') as f:
                 data = json.load(f)
-                self.date = data.get('date')
-                self.count = data.get('count', 0)
-                # Don't reset if it's the same day
-                if self.date != datetime.now().strftime('%Y-%m-%d'):
-                    self.reset()
+                self.last_processed_id = data.get('last_processed_id', 0)
+                self.daily_count = data.get('daily_count', 0)
+                self.last_update_date = data.get('last_update_date', None)
         else:
-            # If no counter file exists, assume we've hit the limit today
-            # since you've already fetched 300 players
-            self.date = datetime.now().strftime('%Y-%m-%d')
-            self.count = DAILY_LIMIT
-            self.save()
+            self.last_processed_id = 0
+            self.daily_count = 0
+            self.last_update_date = None
 
-    def reset(self):
-        self.date = datetime.now().strftime('%Y-%m-%d')
-        self.count = 0
-        self.save()
+        # Reset daily count if it's a new day
+        current_date = datetime.now().strftime('%Y-%m-%d')
+        if self.last_update_date != current_date:
+            self.daily_count = 0
+            self.last_update_date = current_date
 
-    def increment(self):
-        self.count += 1
-        self.save()
-
-    def save(self):
-        with open(self.counter_file, 'w') as f:
+    def save_progress(self):
+        with open(self.progress_file, 'w') as f:
             json.dump({
-                'date': self.date,
-                'count': self.count
+                'last_processed_id': self.last_processed_id,
+                'daily_count': self.daily_count,
+                'last_update_date': self.last_update_date
             }, f)
 
-    def should_pause(self):
-        return self.count >= DAILY_LIMIT
+    def update_progress(self, player_id):
+        self.last_processed_id = player_id
+        self.daily_count += 1
+        self.save_progress()
+
+    def should_wait_for_next_day(self):
+        return self.daily_count >= DAILY_LIMIT
 
 def create_connection():
-    """Create a database connection."""
     try:
         conn = sqlite3.connect(DB_FILE)
         conn.execute('PRAGMA foreign_keys = ON')
@@ -73,10 +104,8 @@ def create_connection():
         raise
 
 def init_database(conn):
-    """Initialize database tables."""
     try:
         cursor = conn.cursor()
-        
         cursor.execute('''
             CREATE TABLE IF NOT EXISTS players (
                 id INTEGER PRIMARY KEY,
@@ -108,75 +137,74 @@ def init_database(conn):
                 FOREIGN KEY(player_id) REFERENCES players(id)
             )
         ''')
-        
         conn.commit()
     except sqlite3.Error as e:
         logging.error(f"Database initialization error: {e}")
         raise
 
-def fetch_with_retry(player_id, request_counter, max_retries=5, base_delay=10):
-    """Fetch player stats with exponential backoff retry."""
-    headers = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
-    }
+def fetch_with_retry(player_id, api_handler, max_retries=7):
+    """Fetch player stats with enhanced retry logic."""
+    api_handler.handle_rate_limit()
     
     for attempt in range(max_retries):
         try:
-            if request_counter.should_pause():
-                return "DAILY_LIMIT_REACHED"
-
-            jitter = random.uniform(0, 4)
-            current_delay = (base_delay * (2 ** attempt)) + jitter
+            headers = api_handler.get_headers()
             
             career_stats = playercareerstats.PlayerCareerStats(
                 player_id=player_id,
-                timeout=90,
+                timeout=120,
                 headers=headers
             )
-            request_counter.increment()
-            time.sleep(current_delay)
+            
+            api_handler.requests_made += 1
+            base_delay = random.uniform(15, 25)
+            extra_delay = attempt * 5
+            total_delay = base_delay + extra_delay
+            logging.info(f"Successful request. Waiting {total_delay:.2f} seconds before next request...")
+            time.sleep(total_delay)
+            
             return career_stats.get_data_frames()[0]
             
         except Exception as e:
-            wait_time = current_delay * 2
-            logging.warning(f"Attempt {attempt + 1} failed for player {player_id}. Waiting {wait_time:.2f} seconds. Error: {str(e)}")
+            base_wait = 30
+            wait_time = (base_wait * (3 ** attempt)) + random.uniform(10, 20)
             
-            if attempt == max_retries - 1:
-                raise
-            
-            if "too many requests" in str(e).lower() or "connection" in str(e).lower():
+            if "timeout" in str(e).lower():
                 wait_time *= 2
             
+            logging.warning(f"Attempt {attempt + 1} failed for player {player_id}. "
+                          f"Waiting {wait_time:.2f} seconds. Error: {str(e)}")
+            
             time.sleep(wait_time)
+            
+            if attempt == max_retries - 1:
+                logging.info("Final attempt with fresh connection...")
+                api_handler = NBAAPIHandler()
 
-def get_player_info(player_id, request_counter, max_retries=5):
-    """Fetch additional player information."""
-    headers = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
-    }
+def get_player_info(player_id, api_handler, max_retries=7):
+    api_handler.handle_rate_limit()
     
     for attempt in range(max_retries):
         try:
-            if request_counter.should_pause():
-                return None
-
+            headers = api_handler.get_headers()
             player_info = commonplayerinfo.CommonPlayerInfo(
                 player_id=player_id,
-                timeout=60,
+                timeout=120,
                 headers=headers
             )
-            request_counter.increment()
-            time.sleep(random.uniform(3, 5))
+            
+            api_handler.requests_made += 1
+            time.sleep(random.uniform(10, 15))
+            
             return player_info.get_data_frames()[0].iloc[0]
         except Exception as e:
-            wait_time = 5 * (2 ** attempt) + random.uniform(0, 2)
+            wait_time = (30 * (3 ** attempt)) + random.uniform(5, 10)
             time.sleep(wait_time)
             if attempt == max_retries - 1:
                 logging.error(f"Failed to fetch info for player {player_id}: {str(e)}")
                 return None
 
 def save_player_data(conn, player_data):
-    """Save player data to database."""
     cursor = conn.cursor()
     try:
         cursor.execute('''
@@ -213,58 +241,53 @@ def save_player_data(conn, player_data):
                     season.get('FG3_PCT', 0),
                     season.get('FT_PCT', 0)
                 ))
-        
         conn.commit()
     except sqlite3.Error as e:
         logging.error(f"Error saving player {player_data['full_name']}: {e}")
         conn.rollback()
         raise
 
-def process_players(remaining_time=None):
-    """Process players with automatic resumption."""
+def process_players():
     conn = create_connection()
     init_database(conn)
-    request_counter = RequestCounter()
+    api_handler = NBAAPIHandler()
+    progress = ProgressTracker()
     
     try:
         all_players = players.get_players()
-        
-        # Get last processed player
-        cursor = conn.cursor()
-        cursor.execute("SELECT MAX(id) FROM players")
-        last_id = cursor.fetchone()[0] or 0
-        
-        # Filter players not yet processed
-        remaining_players = [p for p in all_players if p['id'] > last_id]
+        remaining_players = [p for p in all_players if p['id'] > progress.last_processed_id]
         
         if not remaining_players:
             logging.info("All players processed!")
-            return True  # Completed
-            
-        logging.info(f"Starting/Resuming processing of {len(remaining_players)} remaining players")
+            return True
+
+        total_players = len(all_players)
+        logging.info(f"Starting to fetch data for {total_players} players")
         
-        chunk_size = 3
-        for i in range(0, len(remaining_players), chunk_size):
-            chunk = remaining_players[i:i+chunk_size]
+        batch_size = 2
+        for i in range(0, len(remaining_players), batch_size):
+            if progress.should_wait_for_next_day():
+                next_run = datetime.now() + timedelta(days=1)
+                next_run = next_run.replace(hour=0, minute=0, second=0, microsecond=0)
+                wait_time = (next_run - datetime.now()).total_seconds()
+                logging.info(f"Daily limit reached. Waiting until {next_run} to resume...")
+                time.sleep(wait_time)
+                progress = ProgressTracker()  # Reset progress for new day
+                continue
+
+            batch = remaining_players[i:i+batch_size]
             
-            for player in chunk:
+            for player in batch:
                 try:
-                    logging.info(f"Processing player {i+1}/{len(remaining_players)}: {player['full_name']}")
+                    processed_count = i + progress.daily_count
+                    logging.info(f"Processing player {processed_count + 1}/{total_players}: {player['full_name']}")
                     
-                    # Check daily limit
-                    if request_counter.should_pause():
-                        logging.info("Daily limit reached. Scheduling resume for tomorrow.")
-                        return False  # Not completed, need to resume
-                        
-                    stats_df = fetch_with_retry(player['id'], request_counter)
-                    if stats_df == "DAILY_LIMIT_REACHED":
-                        return False
-                    
+                    stats_df = fetch_with_retry(player['id'], api_handler)
                     if stats_df.empty:
                         continue
 
                     stats_records = stats_df.to_dict('records')
-                    player_info = get_player_info(player['id'], request_counter)
+                    player_info = get_player_info(player['id'], api_handler)
 
                     player_data = {
                         'id': player['id'],
@@ -277,19 +300,18 @@ def process_players(remaining_time=None):
                     }
 
                     save_player_data(conn, player_data)
+                    progress.update_progress(player['id'])
                     logging.info(f"Successfully saved data for {player['full_name']}")
                     
-                    time.sleep(random.uniform(8, 12))
-
                 except Exception as e:
                     logging.error(f"Error processing player {player['full_name']}: {str(e)}")
                     continue
-            
-            chunk_delay = random.uniform(15, 25)
-            logging.info(f"Completed chunk. Waiting {chunk_delay:.2f} seconds before next chunk...")
-            time.sleep(chunk_delay)
 
-        return True  # Completed all players
+            batch_delay = random.uniform(45, 60)
+            logging.info(f"Completed batch. Waiting {batch_delay:.2f} seconds before next batch...")
+            time.sleep(batch_delay)
+
+        return True
 
     except Exception as e:
         logging.error(f"Fatal error in process_players: {str(e)}")
@@ -298,40 +320,17 @@ def process_players(remaining_time=None):
         conn.close()
 
 def run_with_auto_resume():
-    """Main function that handles automatic resumption."""
     while True:
         try:
-            # First check if we've already hit the limit today
-            request_counter = RequestCounter()
-            if request_counter.should_pause():
-                next_run = datetime.now() + timedelta(days=1)
-                next_run = next_run.replace(hour=0, minute=0, second=0, microsecond=0)
-                wait_time = (next_run - datetime.now()).total_seconds()
-                
-                logging.info(f"Already processed {DAILY_LIMIT} players today. Waiting until {next_run} to resume...")
-                print(f"Already processed {DAILY_LIMIT} players today. Will resume at midnight. You can safely leave this running.")
-                time.sleep(wait_time)
-                request_counter.reset()
-                continue
-
             completed = process_players()
             if completed:
                 logging.info("All players processed successfully!")
                 break
-            else:
-                next_run = datetime.now() + timedelta(days=1)
-                next_run = next_run.replace(hour=0, minute=0, second=0, microsecond=0)
-                wait_time = (next_run - datetime.now()).total_seconds()
-                
-                logging.info(f"Daily limit reached. Waiting until {next_run} to resume...")
-                print(f"Daily limit reached. Will resume at midnight. You can safely leave this running.")
-                time.sleep(wait_time)
-                request_counter.reset()
-                
         except Exception as e:
             logging.error(f"Error in main loop: {str(e)}")
-            # Wait 1 hour before retrying on error
-            time.sleep(3600)
+            wait_time = 3600
+            logging.info(f"Waiting {wait_time} seconds before retrying...")
+            time.sleep(wait_time)
 
 if __name__ == "__main__":
     try:

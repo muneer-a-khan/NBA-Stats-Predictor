@@ -1236,3 +1236,48 @@
 2025-01-23 15:28:57,277 - INFO - Processing player 301/5011: William Bell
 2025-01-23 15:29:57,321 - WARNING - Attempt 1 failed for player 76143. Waiting 5.62 seconds. Error: HTTPSConnectionPool(host='stats.nba.com', port=443): Read timed out. (read timeout=60)
 2025-01-23 15:34:45,171 - INFO - Already processed 300 players today. Waiting until 2025-01-24 00:00:00 to resume...
+2025-01-27 11:16:55,644 - INFO - Script manually interrupted. Will resume from last processed player when restarted.
+2025-01-27 11:17:01,454 - INFO - Starting/Resuming processing of 10 remaining players
+2025-01-27 11:17:01,454 - INFO - Processing player 1/10: RayJ Dennis
+2025-01-27 11:17:22,868 - WARNING - Attempt 1 failed for player 1642484. Waiting 23.86 seconds. Error: ('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))
+2025-01-27 11:19:40,650 - WARNING - Attempt 2 failed for player 1642484. Waiting 40.81 seconds. Error: HTTPSConnectionPool(host='stats.nba.com', port=443): Read timed out. (read timeout=90)
+2025-01-27 11:22:32,303 - WARNING - Attempt 3 failed for player 1642484. Waiting 80.92 seconds. Error: HTTPSConnectionPool(host='stats.nba.com', port=443): Read timed out. (read timeout=90)
+2025-01-27 11:25:33,132 - WARNING - Attempt 4 failed for player 1642484. Waiting 165.14 seconds. Error: ('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))
+2025-01-27 11:26:09,554 - INFO - Script manually interrupted. Will resume from last processed player when restarted.
+2025-01-27 11:27:09,572 - INFO - Starting to fetch data for 5011 players
+2025-01-27 11:27:09,572 - INFO - Processing player 1/10: RayJ Dennis
+2025-01-27 11:27:22,195 - INFO - Successfully saved data for RayJ Dennis
+2025-01-27 11:27:22,196 - INFO - Processing player 1/10: Alex Ducas
+2025-01-27 11:27:35,132 - INFO - Successfully saved data for Alex Ducas
+2025-01-27 11:27:35,132 - INFO - Processing player 1/10: Daniss Jenkins
+2025-01-27 11:27:48,898 - INFO - Successfully saved data for Daniss Jenkins
+2025-01-27 11:27:48,898 - INFO - Completed batch. Waiting 23.44 seconds before next batch...
+2025-01-27 11:28:12,336 - INFO - Processing player 4/10: Spencer Jones
+2025-01-27 11:28:26,045 - INFO - Successfully saved data for Spencer Jones
+2025-01-27 11:28:26,045 - INFO - Processing player 4/10: Yuki Kawamura
+2025-01-27 11:28:35,366 - INFO - Successfully saved data for Yuki Kawamura
+2025-01-27 11:28:35,366 - INFO - Processing player 4/10: Malevy Leons
+2025-01-27 11:28:45,659 - INFO - Successfully saved data for Malevy Leons
+2025-01-27 11:28:45,659 - INFO - Completed batch. Waiting 21.74 seconds before next batch...
+2025-01-27 11:29:07,397 - INFO - Processing player 7/10: Riley Minix
+2025-01-27 11:29:20,201 - INFO - Successfully saved data for Riley Minix
+2025-01-27 11:29:20,201 - INFO - Processing player 7/10: Quincy Olivari
+2025-01-27 11:29:30,751 - INFO - Successfully saved data for Quincy Olivari
+2025-01-27 11:29:30,751 - INFO - Processing player 7/10: Tolu Smith
+2025-01-27 11:29:40,619 - INFO - Completed batch. Waiting 20.52 seconds before next batch...
+2025-01-27 11:30:01,141 - INFO - Processing player 10/10: Armel Traore
+2025-01-27 11:30:12,748 - INFO - Successfully saved data for Armel Traore
+2025-01-27 11:30:12,748 - INFO - Completed batch. Waiting 15.31 seconds before next batch...
+2025-01-27 11:30:28,059 - INFO - All players processed successfully!
+2025-01-27 11:32:04,604 - INFO - Starting to fetch data for 5011 players
+2025-01-27 11:32:04,605 - INFO - All players processed!
+2025-01-27 11:32:04,608 - INFO - All players processed successfully!
+2025-01-27 11:56:39,421 - INFO - Starting to fetch data for 5011 players
+2025-01-27 11:56:39,421 - INFO - Processing player 1/5011: Alaa Abdelnaby
+2025-01-27 11:56:41,170 - INFO - Successful request. Waiting 19.50 seconds before next request...
+2025-01-27 11:57:13,650 - INFO - Successfully saved data for Alaa Abdelnaby
+2025-01-27 11:57:13,650 - INFO - Processing player 2/5011: Zaid Abdul-Aziz
+2025-01-27 11:57:14,496 - INFO - Successful request. Waiting 19.93 seconds before next request...
+2025-01-27 11:57:44,943 - INFO - Successfully saved data for Zaid Abdul-Aziz
+2025-01-27 11:57:44,944 - INFO - Completed batch. Waiting 45.09 seconds before next batch...
+2025-01-27 11:58:28,321 - INFO - Script manually interrupted. Will resume from last processed player when restarted.
