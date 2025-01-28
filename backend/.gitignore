@@ -5,4 +5,4 @@ node_modules/
 nba_data_fetch.log
 fetch_progress.json
 request_counter.json
-nba.sqlite
+backend/data/nba.sqlite
