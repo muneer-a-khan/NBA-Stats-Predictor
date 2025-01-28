@@ -1,23 +1,19 @@
 import React, { useState } from 'react';
 import './PlayerCard.css';
 
-const PlayerCard = ({ player, isSearched }) => {
-    const stats = Array.isArray(player.stats) ? player.stats : [];
-    const [selectedSeason, setSelectedSeason] = useState(stats[0]?.SEASON_ID || '');
-    
-    const seasonStats = stats.find((stat) => stat.SEASON_ID === selectedSeason) || null;
-    const careerStats = !Array.isArray(player.stats) ? player.stats : null;
+const PlayerCard = ({ player }) => {
+    const [selectedSeason, setSelectedSeason] = useState(null);
+    const [showCareerStats, setShowCareerStats] = useState(true);
 
+    const seasons = player.seasons || [];
+    const careerAverages = player.career_averages || {};
+    
     const formatStat = (value) => {
         if (value === null || value === undefined) return 'N/A';
         return typeof value === 'number' ? value.toFixed(1) : value;
     };
 
-    const handleSeasonChange = (e) => {
-        setSelectedSeason(e.target.value);
-    };
-
-    const StatRow = ({ label, value, isPercentage }) => (
+    const StatRow = ({ label, value, isPercentage = false }) => (
         <div className="stat-row">
             <span className="stat-label">{label}</span>
             <span className="stat-value">
@@ -25,6 +21,16 @@ const PlayerCard = ({ player, isSearched }) => {
             </span>
         </div>
     );
+
+    const handleSeasonChange = (e) => {
+        const value = e.target.value;
+        setSelectedSeason(value === 'career' ? null : value);
+        setShowCareerStats(value === 'career');
+    };
+
+    const currentStats = showCareerStats ? 
+        careerAverages : 
+        seasons.find(s => s.season_id === selectedSeason);
 
     return (
         <div className="player-card">
@@ -41,69 +47,47 @@ const PlayerCard = ({ player, isSearched }) => {
             </div>
 
             <div className="stats-container">
-                {isSearched && stats.length > 0 ? (
-                    <div className="seasonal-stats">
-                        <div className="stats-header">
-                            <h4>Season Statistics</h4>
-                            <select
-                                className="season-select"
-                                value={selectedSeason}
-                                onChange={handleSeasonChange}
-                                aria-label="Select Season"
-                            >
-                                {stats.map((stat, index) => (
-                                    <option key={index} value={stat.SEASON_ID}>
-                                        {stat.SEASON_ID}
-                                    </option>
-                                ))}
-                            </select>
-                        </div>
+                <div className="season-selector">
+                    <select 
+                        value={showCareerStats ? 'career' : selectedSeason || ''}
+                        onChange={handleSeasonChange}
+                        className="season-select"
+                    >
+                        <option value="career">Career Averages</option>
+                        {seasons.map((season) => (
+                            <option key={season.season_id} value={season.season_id}>
+                                {season.season_id} - {season.team}
+                            </option>
+                        ))}
+                    </select>
+                </div>
 
-                        {seasonStats ? (
-                            <div className="stats-grid">
-                                <div className="stats-section">
-                                    <h5>Game Stats</h5>
-                                    <StatRow label="Games Played" value={seasonStats.GP} />
-                                    <StatRow label="Minutes" value={seasonStats.MIN} />
-                                </div>
-
-                                <div className="stats-section">
-                                    <h5>Shooting</h5>
-                                    <StatRow label="FG%" value={seasonStats.FG_PCT} isPercentage />
-                                    <StatRow label="3P%" value={seasonStats.FG3_PCT} isPercentage />
-                                    <StatRow label="FT%" value={seasonStats.FT_PCT} isPercentage />
-                                </div>
-
-                                <div className="stats-section">
-                                    <h5>Performance</h5>
-                                    <StatRow label="Points" value={seasonStats.PTS} />
-                                    <StatRow label="Assists" value={seasonStats.AST} />
-                                    <StatRow label="Rebounds" value={seasonStats.REB} />
-                                    <StatRow label="Steals" value={seasonStats.STL} />
-                                    <StatRow label="Blocks" value={seasonStats.BLK} />
-                                </div>
-                            </div>
-                        ) : (
-                            <div className="no-stats">No statistics available for the selected season.</div>
-                        )}
+                <div className="stats-grid">
+                    <div className="stats-section">
+                        <h5>Scoring</h5>
+                        <StatRow label="PPG" value={showCareerStats ? careerAverages.ppg : currentStats?.pts_per_game} />
+                        <StatRow label="FG%" value={showCareerStats ? careerAverages.fgPercent : currentStats?.fg_percent} isPercentage />
+                        <StatRow label="3P%" value={showCareerStats ? careerAverages.fg3Percent : currentStats?.fg3_percent} isPercentage />
+                        <StatRow label="FT%" value={showCareerStats ? careerAverages.ftPercent : currentStats?.ft_percent} isPercentage />
                     </div>
-                ) : careerStats && (
-                    <div className="career-stats">
-                        <h4>Career Averages</h4>
-                        <div className="stats-grid">
-                            {Object.entries(careerStats)
-                                .filter(([key]) => !['id', 'full_name', 'team', 'position'].includes(key))
-                                .map(([key, value]) => (
-                                    <StatRow
-                                        key={key}
-                                        label={key.toUpperCase()}
-                                        value={value}
-                                        isPercentage={key.includes('PCT')}
-                                    />
-                                ))}
-                        </div>
+
+                    <div className="stats-section">
+                        <h5>Other Stats</h5>
+                        <StatRow label="APG" value={showCareerStats ? careerAverages.apg : currentStats?.ast_per_game} />
+                        <StatRow label="RPG" value={showCareerStats ? careerAverages.rpg : currentStats?.reb_per_game} />
+                        <StatRow label="SPG" value={showCareerStats ? careerAverages.spg : currentStats?.stl_per_game} />
+                        <StatRow label="BPG" value={showCareerStats ? careerAverages.bpg : currentStats?.blk_per_game} />
                     </div>
-                )}
+
+                    {!showCareerStats && currentStats && (
+                        <div className="stats-section">
+                            <h5>Season Details</h5>
+                            <StatRow label="Games" value={currentStats.games} />
+                            <StatRow label="Started" value={currentStats.games_started} />
+                            <StatRow label="MPG" value={currentStats.minutes_per_game} />
+                        </div>
+                    )}
+                </div>
             </div>
         </div>
     );

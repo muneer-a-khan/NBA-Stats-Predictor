@@ -4,11 +4,21 @@
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
     transition: transform 0.2s, box-shadow 0.2s;
+    width: 300px;
+    margin: 10px;
 }
 
 .player-card:hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+}
+
+.player-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
 }
 
 .player-header {
@@ -43,21 +53,13 @@
     padding: 8px 0;
 }
 
-.stats-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.season-selector {
     margin-bottom: 16px;
 }
 
-.stats-header h4 {
-    margin: 0;
-    color: #333;
-    font-size: 1.1rem;
-}
-
 .season-select {
-    padding: 6px 12px;
+    width: 100%;
+    padding: 8px;
     border: 1px solid #ddd;
     border-radius: 6px;
     font-size: 0.9rem;
@@ -73,19 +75,19 @@
 
 .stats-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 16px;
 }
 
 .stats-section {
     background-color: #f8f9fa;
     border-radius: 8px;
-    padding: 16px;
+    padding: 12px;
 }
 
 .stats-section h5 {
     color: #666;
-    margin: 0 0 12px 0;
+    margin: 0 0 8px 0;
     font-size: 0.9rem;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -95,7 +97,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 8px 0;
+    padding: 4px 0;
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
@@ -114,35 +116,37 @@
     font-size: 0.9rem;
 }
 
-.no-stats {
-    text-align: center;
-    color: #666;
+/* Adjustments for random players grid */
+.random-players {
     padding: 20px;
-    background-color: #f8f9fa;
-    border-radius: 8px;
 }
 
-.career-stats h4 {
-    color: #333;
-    margin: 0 0 16px 0;
-    font-size: 1.1rem;
+.random-players .player-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    justify-content: center;
 }
 
-@media (max-width: 768px) {
-    .stats-grid {
+@media (min-width: 1200px) {
+    .random-players .player-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 1199px) and (min-width: 768px) {
+    .random-players .player-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 767px) {
+    .random-players .player-grid {
         grid-template-columns: 1fr;
     }
-    
-    .player-card {
-        padding: 16px;
-    }
-    
-    .stats-header {
-        flex-direction: column;
-        gap: 12px;
-    }
-    
-    .season-select {
-        width: 100%;
-    }
+}
+
+.player-card-container {
+    display: flex;
+    justify-content: center;
 }

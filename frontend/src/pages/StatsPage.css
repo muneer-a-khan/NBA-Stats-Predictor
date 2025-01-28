@@ -4,10 +4,11 @@
     padding: 20px;
 }
 
-.stats-page h1 {
-    color: #2d3748;
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: 24px;
-    text-align: center;
 }
 
 .search-section {
@@ -17,7 +18,7 @@
     justify-content: center;
 }
 
-input[type="text"] {
+.search-input {
     padding: 8px 16px;
     border: 2px solid #e2e8f0;
     border-radius: 6px;
@@ -26,12 +27,12 @@ input[type="text"] {
     transition: border-color 0.2s;
 }
 
-input[type="text"]:focus {
+.search-input:focus {
     border-color: #4299e1;
     outline: none;
 }
 
-button {
+.search-button, .refresh-button {
     padding: 8px 16px;
     background-color: #4299e1;
     color: white;
@@ -41,35 +42,69 @@ button {
     transition: background-color 0.2s;
 }
 
-button:hover {
+.search-button:hover, .refresh-button:hover {
     background-color: #3182ce;
 }
 
-.search-results {
-    margin-bottom: 30px;
+.search-button:disabled, .refresh-button:disabled {
+    background-color: #a0aec0;
+    cursor: not-allowed;
 }
 
-.search-results h2 {
-    color: #2d3748;
-    margin-bottom: 16px;
-}
-
-.player-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 20px;
-}
-
-/* Loading and error states */
-.loading, .error {
+.error-message {
     text-align: center;
-    padding: 20px;
-    background-color: #f7fafc;
+    padding: 16px;
+    background-color: #fff5f5;
+    color: #e53e3e;
     border-radius: 6px;
     margin: 20px 0;
 }
 
-.error {
-    color: #e53e3e;
-    background-color: #fff5f5;
+.loading-container {
+    display: flex;
+    justify-content: center;
+    padding: 40px;
+}
+
+.random-players {
+    margin-top: 30px;
+}
+
+.random-players h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #2d3748;
+}
+
+.player-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    justify-content: center;
+}
+
+@media (min-width: 1200px) {
+    .player-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 1199px) and (min-width: 768px) {
+    .player-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 767px) {
+    .player-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .search-section {
+        flex-direction: column;
+    }
+    
+    .search-input {
+        width: 100%;
+    }
 }
