@@ -8,63 +8,66 @@ const DB_FILE = path.join(__dirname, '..', 'data', 'nba_stats.db');
 const getDb = () => {
     return new Promise((resolve, reject) => {
         const db = new sqlite3.Database(DB_FILE, (err) => {
-            if (err) reject(err);
-            else resolve(db);
+            if (err) {
+                console.error('Database connection error:', err);
+                reject(err);
+            } else {
+                resolve(db);
+            }
         });
     });
 };
 
-// Calculate career averages
-const calculateCareerAverages = (seasons) => {
-    if (!seasons || seasons.length === 0) return null;
-    
-    const validSeasons = seasons.filter(s => s.games > 0);
-    if (validSeasons.length === 0) return null;
-
-    return {
-        ppg: validSeasons.reduce((sum, s) => sum + s.pts_per_game, 0) / validSeasons.length,
-        apg: validSeasons.reduce((sum, s) => sum + s.ast_per_game, 0) / validSeasons.length,
-        rpg: validSeasons.reduce((sum, s) => sum + s.reb_per_game, 0) / validSeasons.length,
-        spg: validSeasons.reduce((sum, s) => sum + s.stl_per_game, 0) / validSeasons.length,
-        bpg: validSeasons.reduce((sum, s) => sum + s.blk_per_game, 0) / validSeasons.length,
-        fgPercent: validSeasons.reduce((sum, s) => sum + s.fg_percent, 0) / validSeasons.length,
-        fg3Percent: validSeasons.reduce((sum, s) => sum + s.fg3_percent, 0) / validSeasons.length,
-        ftPercent: validSeasons.reduce((sum, s) => sum + s.ft_percent, 0) / validSeasons.length,
-        gamesPlayed: validSeasons.reduce((sum, s) => sum + s.games, 0),
-    };
-};
+// Test endpoint
+router.get('/test', async (req, res) => {
+    try {
+        const db = await getDb();
+        db.get('SELECT COUNT(*) as count FROM players', (err, row) => {
+            if (err) {
+                res.status(500).json({ error: err.message });
+                return;
+            }
+            res.json({ 
+                message: 'Database connection successful', 
+                playerCount: row.count 
+            });
+            db.close();
+        });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
 
 // Get random players
 router.get('/random-players', async (req, res) => {
     try {
         const db = await getDb();
-        const query = `
-        SELECT 
-            p.*,
-            GROUP_CONCAT(json_object(
-                'season_id', s.season_id,  -- Changed from s.season
-                'team', s.team,
-                'games', s.games,
-                'games_started', s.games_started,
-                'minutes_per_game', s.minutes_per_game,
-                'pts_per_game', s.pts_per_game,
-                'ast_per_game', s.ast_per_game,
-                'reb_per_game', s.reb_per_game,
-                'stl_per_game', s.stl_per_game,
-                'blk_per_game', s.blk_per_game,
-                'fg_percent', s.fg_percent,
-                'fg3_percent', s.fg3_percent,
-                'ft_percent', s.ft_percent,
-                'turnover_per_game', s.turnover_per_game
-            )) as seasons_json
-        FROM players p
-        LEFT JOIN seasons s ON p.id = s.player_id
-        GROUP BY p.id
-        ORDER BY RANDOM()
-        LIMIT 10;
-        `;
-
-        db.all(query, [], (err, players) => {
+        db.all(`
+            SELECT p.*, 
+                json_group_array(
+                    json_object(
+                        'season_id', s.season_id,
+                        'season', s.season,
+                        'team', s.team,
+                        'games', COALESCE(s.games, 0),
+                        'minutes_per_game', COALESCE(s.minutes_per_game, 0),
+                        'pts_per_game', COALESCE(s.pts_per_game, 0),
+                        'ast_per_game', COALESCE(s.ast_per_game, 0),
+                        'reb_per_game', COALESCE(s.reb_per_game, 0),
+                        'stl_per_game', COALESCE(s.stl_per_game, 0),
+                        'blk_per_game', COALESCE(s.blk_per_game, 0),
+                        'fg_percent', COALESCE(s.fg_percent, 0),
+                        'fg3_percent', COALESCE(s.fg3_percent, 0),
+                        'ft_percent', COALESCE(s.ft_percent, 0),
+                        'turnover_per_game', COALESCE(s.turnover_per_game, 0)
+                    )
+                ) as seasons_json
+            FROM players p
+            LEFT JOIN seasons s ON p.id = s.player_id
+            GROUP BY p.id
+            ORDER BY RANDOM()
+            LIMIT 10
+        `, [], (err, players) => {
             if (err) {
                 console.error("Database error:", err);
                 res.status(500).json({ error: err.message });
@@ -72,22 +75,27 @@ router.get('/random-players', async (req, res) => {
             }
             
             const formattedPlayers = players.map(player => {
-                const seasons = player.seasons_json ? 
-                    player.seasons_json.split(',').map(s => JSON.parse(s)) : [];
-                
-                const careerAverages = calculateCareerAverages(seasons);
-                
-                return {
-                    id: player.id,
-                    full_name: player.full_name,
-                    team: player.team,
-                    position: player.position,
-                    birth_year: player.birth_year,
-                    stats: JSON.parse(player.stats),
-                    seasons: seasons,
-                    career_averages: careerAverages
-                };
-            });
+                try {
+                    const seasons = JSON.parse(player.seasons_json || '[]')
+                        .map(season => ({
+                            ...season,
+                            ft_percent: season.ft_percent || null,
+                            fg3_percent: season.fg3_percent || null
+                        }));
+
+                    return {
+                        id: player.id,
+                        full_name: player.full_name,
+                        team: player.team,
+                        position: player.position,
+                        stats: JSON.parse(player.stats || '{}'),
+                        seasons: seasons
+                    };
+                } catch (e) {
+                    console.error('Error parsing player data:', e);
+                    return null;
+                }
+            }).filter(Boolean);
             
             res.json(formattedPlayers);
             db.close();
@@ -109,29 +117,32 @@ router.get('/players', async (req, res) => {
             return;
         }
 
+        console.log('Searching for player:', name);
+
         const query = `
-            SELECT 
-                p.*,
-                GROUP_CONCAT(json_object(
-                    'season_id', s.season,
-                    'team', s.team,
-                    'games', s.games,
-                    'games_started', s.games_started,
-                    'minutes_per_game', s.minutes_per_game,
-                    'pts_per_game', s.pts_per_game,
-                    'ast_per_game', s.ast_per_game,
-                    'reb_per_game', s.reb_per_game,
-                    'stl_per_game', s.stl_per_game,
-                    'blk_per_game', s.blk_per_game,
-                    'fg_percent', s.fg_percent,
-                    'fg3_percent', s.fg3_percent,
-                    'ft_percent', s.ft_percent,
-                    'turnover_per_game', s.turnover_per_game
-                )) as seasons_json
+            SELECT p.*, 
+                json_group_array(
+                    json_object(
+                        'season_id', s.season_id,
+                        'season', s.season,
+                        'team', s.team,
+                        'games', COALESCE(s.games, 0),
+                        'minutes_per_game', COALESCE(s.minutes_per_game, 0),
+                        'pts_per_game', COALESCE(s.pts_per_game, 0),
+                        'ast_per_game', COALESCE(s.ast_per_game, 0),
+                        'reb_per_game', COALESCE(s.reb_per_game, 0),
+                        'stl_per_game', COALESCE(s.stl_per_game, 0),
+                        'blk_per_game', COALESCE(s.blk_per_game, 0),
+                        'fg_percent', COALESCE(s.fg_percent, 0),
+                        'fg3_percent', COALESCE(s.fg3_percent, 0),
+                        'ft_percent', COALESCE(s.ft_percent, 0),
+                        'turnover_per_game', COALESCE(s.turnover_per_game, 0)
+                    )
+                ) as seasons_json
             FROM players p
             LEFT JOIN seasons s ON p.id = s.player_id
-            WHERE p.full_name LIKE ?
-            GROUP BY p.id;
+            WHERE LOWER(p.full_name) LIKE LOWER(?)
+            GROUP BY p.id
         `;
 
         db.get(query, [`%${name}%`], (err, player) => {
@@ -142,29 +153,36 @@ router.get('/players', async (req, res) => {
             }
             
             if (!player) {
+                console.log('No player found for search:', name);
                 res.status(404).json({ error: 'Player not found' });
                 return;
             }
 
-            const seasons = player.seasons_json ? 
-                player.seasons_json.split(',').map(s => JSON.parse(s)) : [];
-            
-            const careerAverages = calculateCareerAverages(seasons);
+            console.log('Found player:', player.full_name);
 
-            const formattedPlayer = {
-                player: {
+            try {
+                const seasons = JSON.parse(player.seasons_json || '[]')
+                    .map(season => ({
+                        ...season,
+                        ft_percent: season.ft_percent || null,
+                        fg3_percent: season.fg3_percent || null
+                    }));
+
+                const formattedPlayer = {
                     id: player.id,
                     full_name: player.full_name,
                     team: player.team,
                     position: player.position,
-                    birth_year: player.birth_year,
-                    stats: JSON.parse(player.stats),
-                    seasons: seasons,
-                    career_averages: careerAverages
-                }
-            };
+                    stats: JSON.parse(player.stats || '{}'),
+                    seasons: seasons
+                };
+                
+                res.json({ player: formattedPlayer });
+            } catch (e) {
+                console.error('Error parsing player data:', e);
+                res.status(500).json({ error: 'Error processing player data' });
+            }
             
-            res.json(formattedPlayer);
             db.close();
         });
     } catch (error) {

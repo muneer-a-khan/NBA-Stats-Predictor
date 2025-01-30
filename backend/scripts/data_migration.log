@@ -549,3 +549,2194 @@
 2025-01-28 11:30:28,113 - INFO - Processed 534/535: Cody Zeller
 2025-01-28 11:30:29,916 - INFO - Processed 535/535: Ivica Zubac
 2025-01-28 11:30:29,916 - INFO - Data migration completed successfully
+2025-01-30 14:10:56,886 - ERROR - Migration failed: [Errno 2] No such file or directory: 'C:\\Users\\munee\\OneDrive\\Desktop\\NFL-NBA-Stats-Predictor\\backend\\scripts\\..\\data\\nbastats\\player_per_game.csv'
+2025-01-30 14:10:56,886 - ERROR - Migration failed: cannot access local variable 'conn' where it is not associated with a value
+2025-01-30 14:39:04,383 - ERROR - Migration failed: name 'create_connection' is not defined
+2025-01-30 14:39:04,383 - ERROR - Migration failed: cannot access local variable 'conn' where it is not associated with a value
+2025-01-30 14:39:30,894 - ERROR - Migration failed: name 'create_connection' is not defined
+2025-01-30 14:39:30,895 - ERROR - Migration failed: cannot access local variable 'conn' where it is not associated with a value
+2025-01-30 14:40:49,006 - ERROR - Migration failed: name 'create_connection' is not defined
+2025-01-30 14:40:49,006 - ERROR - Migration failed: cannot access local variable 'conn' where it is not associated with a value
+2025-01-30 14:42:01,728 - INFO - Starting data migration process...
+2025-01-30 14:42:01,728 - INFO - Creating database at: C:\Users\munee\OneDrive\Desktop\NFL-NBA-Stats-Predictor\backend\scripts\..\data\nba_stats.db
+2025-01-30 14:42:01,758 - INFO - Database initialized successfully
+2025-01-30 14:42:01,758 - INFO - Reading CSV files...
+2025-01-30 14:42:01,758 - ERROR - Migration failed: [Errno 2] No such file or directory: 'C:\\Users\\munee\\OneDrive\\Desktop\\NFL-NBA-Stats-Predictor\\backend\\scripts\\..\\data\\Player Per Game.csv'
+2025-01-30 14:42:01,758 - ERROR - Migration failed: [Errno 2] No such file or directory: 'C:\\Users\\munee\\OneDrive\\Desktop\\NFL-NBA-Stats-Predictor\\backend\\scripts\\..\\data\\Player Per Game.csv'
+2025-01-30 14:45:59,696 - INFO - Starting data migration process...
+2025-01-30 14:45:59,697 - INFO - Creating database at: C:\Users\munee\OneDrive\Desktop\NFL-NBA-Stats-Predictor\backend\scripts\..\data\nba_stats.db
+2025-01-30 14:45:59,726 - INFO - Database initialized successfully
+2025-01-30 14:45:59,726 - INFO - Reading CSV files...
+2025-01-30 14:45:59,726 - ERROR - Migration failed: [Errno 2] No such file or directory: 'C:\\Users\\munee\\OneDrive\\Desktop\\NFL-NBA-Stats-Predictor\\backend\\scripts\\..\\data\\Player Per Game.csv'
+2025-01-30 14:45:59,727 - ERROR - Migration failed: [Errno 2] No such file or directory: 'C:\\Users\\munee\\OneDrive\\Desktop\\NFL-NBA-Stats-Predictor\\backend\\scripts\\..\\data\\Player Per Game.csv'
+2025-01-30 14:50:26,951 - INFO - Starting data migration process...
+2025-01-30 14:50:26,951 - INFO - Base directory: C:\Users\munee\OneDrive\Desktop\NFL-NBA-Stats-Predictor\backend
+2025-01-30 14:50:26,951 - INFO - Data directory: C:\Users\munee\OneDrive\Desktop\NFL-NBA-Stats-Predictor\backend\data\nbastats
+2025-01-30 14:50:26,951 - INFO - Database path: C:\Users\munee\OneDrive\Desktop\NFL-NBA-Stats-Predictor\backend\data\nba_stats.db
+2025-01-30 14:50:26,951 - INFO - Files found in data directory: ['Advanced.csv', 'All-Star Selections.csv', 'End of Season Teams (Voting).csv', 'End of Season Teams.csv', 'Opponent Stats Per 100 Poss.csv', 'Opponent Stats Per Game.csv', 'Opponent Totals.csv', 'Per 100 Poss.csv', 'Per 36 Minutes.csv', 'Player Award Shares.csv', 'Player Career Info.csv', 'Player Directory.csv', 'Player Per Game.csv', 'Player Play By Play.csv', 'Player Season Info.csv', 'Player Shooting.csv', 'Player Totals.csv', 'Team Abbrev.csv', 'Team Stats Per 100 Poss.csv', 'Team Stats Per Game.csv', 'Team Summaries.csv', 'Team Totals.csv']
+2025-01-30 14:50:26,951 - INFO - Creating database at: C:\Users\munee\OneDrive\Desktop\NFL-NBA-Stats-Predictor\backend\data\nba_stats.db
+2025-01-30 14:50:26,952 - INFO - Looking for CSV files in: C:\Users\munee\OneDrive\Desktop\NFL-NBA-Stats-Predictor\backend\data\nbastats
+2025-01-30 14:50:26,977 - INFO - Database initialized successfully
+2025-01-30 14:50:26,977 - INFO - Reading CSV files...
+2025-01-30 14:50:27,035 - INFO - Per game stats shape: (32392, 35)
+2025-01-30 14:50:27,035 - INFO - Player directory shape: (5285, 10)
+2025-01-30 14:50:27,035 - INFO - Per game stats columns: ['seas_id', 'season', 'player_id', 'player', 'birth_year', 'pos', 'age', 'experience', 'lg', 'tm', 'g', 'gs', 'mp_per_game', 'fg_per_game', 'fga_per_game', 'fg_percent', 'x3p_per_game', 'x3pa_per_game', 'x3p_percent', 'x2p_per_game', 'x2pa_per_game', 'x2p_percent', 'e_fg_percent', 'ft_per_game', 'fta_per_game', 'ft_percent', 'orb_per_game', 'drb_per_game', 'trb_per_game', 'ast_per_game', 'stl_per_game', 'blk_per_game', 'tov_per_game', 'pf_per_game', 'pts_per_game']
+2025-01-30 14:50:27,035 - INFO - Player directory columns: ['player', 'from', 'to', 'pos', 'ht_in_in', 'wt', 'birth_date', 'colleges', 'hof', 'slug']
+2025-01-30 14:50:27,035 - INFO - Processing players...
+2025-01-30 14:50:27,036 - ERROR - Migration failed: 'Player'
+2025-01-30 14:50:27,036 - ERROR - Migration failed: 'Player'
+2025-01-30 14:52:46,367 - INFO - Starting data migration process...
+2025-01-30 14:52:46,368 - INFO - Base directory: C:\Users\munee\OneDrive\Desktop\NFL-NBA-Stats-Predictor\backend
+2025-01-30 14:52:46,368 - INFO - Data directory: C:\Users\munee\OneDrive\Desktop\NFL-NBA-Stats-Predictor\backend\data\nbastats
+2025-01-30 14:52:46,368 - INFO - Database path: C:\Users\munee\OneDrive\Desktop\NFL-NBA-Stats-Predictor\backend\data\nba_stats.db
+2025-01-30 14:52:46,368 - INFO - Files found in data directory: ['Advanced.csv', 'All-Star Selections.csv', 'End of Season Teams (Voting).csv', 'End of Season Teams.csv', 'Opponent Stats Per 100 Poss.csv', 'Opponent Stats Per Game.csv', 'Opponent Totals.csv', 'Per 100 Poss.csv', 'Per 36 Minutes.csv', 'Player Award Shares.csv', 'Player Career Info.csv', 'Player Directory.csv', 'Player Per Game.csv', 'Player Play By Play.csv', 'Player Season Info.csv', 'Player Shooting.csv', 'Player Totals.csv', 'Team Abbrev.csv', 'Team Stats Per 100 Poss.csv', 'Team Stats Per Game.csv', 'Team Summaries.csv', 'Team Totals.csv']
+2025-01-30 14:52:46,368 - INFO - Creating database at: C:\Users\munee\OneDrive\Desktop\NFL-NBA-Stats-Predictor\backend\data\nba_stats.db
+2025-01-30 14:52:46,368 - INFO - Looking for CSV files in: C:\Users\munee\OneDrive\Desktop\NFL-NBA-Stats-Predictor\backend\data\nbastats
+2025-01-30 14:52:46,384 - INFO - Database initialized successfully
+2025-01-30 14:52:46,384 - INFO - Reading CSV files...
+2025-01-30 14:52:46,441 - INFO - Per game stats shape: (32392, 35)
+2025-01-30 14:52:46,441 - INFO - Player directory shape: (5285, 10)
+2025-01-30 14:52:46,441 - INFO - Per game stats columns: ['seas_id', 'season', 'player_id', 'player', 'birth_year', 'pos', 'age', 'experience', 'lg', 'tm', 'g', 'gs', 'mp_per_game', 'fg_per_game', 'fga_per_game', 'fg_percent', 'x3p_per_game', 'x3pa_per_game', 'x3p_percent', 'x2p_per_game', 'x2pa_per_game', 'x2p_percent', 'e_fg_percent', 'ft_per_game', 'fta_per_game', 'ft_percent', 'orb_per_game', 'drb_per_game', 'trb_per_game', 'ast_per_game', 'stl_per_game', 'blk_per_game', 'tov_per_game', 'pf_per_game', 'pts_per_game']
+2025-01-30 14:52:46,441 - INFO - Player directory columns: ['player', 'from', 'to', 'pos', 'ht_in_in', 'wt', 'birth_date', 'colleges', 'hof', 'slug']
+2025-01-30 14:52:46,441 - INFO - Processing players...
+2025-01-30 14:52:46,548 - ERROR - Error processing player Dan Anderson: UNIQUE constraint failed: players.id
+2025-01-30 14:52:47,008 - ERROR - Error processing player Bill Bradley: UNIQUE constraint failed: players.id
+2025-01-30 14:52:47,100 - ERROR - Error processing player Dee Brown: UNIQUE constraint failed: players.id
+2025-01-30 14:52:47,134 - ERROR - Error processing player Roger Brown: UNIQUE constraint failed: players.id
+2025-01-30 14:52:47,584 - ERROR - Error processing player Jarron Cumberland: UNIQUE constraint failed: players.id
+2025-01-30 14:52:47,676 - ERROR - Error processing player Johnny Davis: UNIQUE constraint failed: players.id
+2025-01-30 14:52:47,680 - ERROR - Error processing player Mark Davis: UNIQUE constraint failed: players.id
+2025-01-30 14:52:47,685 - ERROR - Error processing player Mike Davis: UNIQUE constraint failed: players.id
+2025-01-30 14:52:47,735 - ERROR - Error processing player Malcolm Delaney: UNIQUE constraint failed: players.id
+2025-01-30 14:52:47,754 - ERROR - Error processing player Marcus Derrickson: UNIQUE constraint failed: players.id
+2025-01-30 14:52:47,875 - ERROR - Error processing player Bob Duffy: UNIQUE constraint failed: players.id
+2025-01-30 14:52:47,889 - ERROR - Error processing player Mike Dunleavy: UNIQUE constraint failed: players.id
+2025-01-30 14:52:47,904 - ERROR - Error processing player Trevon Duval: UNIQUE constraint failed: players.id
+2025-01-30 14:52:47,949 - ERROR - Error processing player Vince Edwards: UNIQUE constraint failed: players.id
+2025-01-30 14:52:47,987 - ERROR - Error processing player Joel Embiid: UNIQUE constraint failed: players.id
+2025-01-30 14:52:48,024 - ERROR - Error processing player Jacob Evans: UNIQUE constraint failed: players.id
+2025-01-30 14:52:48,043 - ERROR - Error processing player Patrick Ewing: UNIQUE constraint failed: players.id
+2025-01-30 14:52:48,075 - ERROR - Error processing player Kay Felder: UNIQUE constraint failed: players.id
+2025-01-30 14:52:48,193 - ERROR - Error processing player Melvin Frazier: UNIQUE constraint failed: players.id
+2025-01-30 14:52:48,337 - ERROR - Error processing player Shai Gilgeous-Alexander: UNIQUE constraint failed: players.id
+2025-01-30 14:52:48,405 - ERROR - Error processing player Devonte' Graham: UNIQUE constraint failed: players.id
+2025-01-30 14:52:48,432 - ERROR - Error processing player Donte Grantham: UNIQUE constraint failed: players.id
+2025-01-30 14:52:48,532 - ERROR - Error processing player Matt Guokas: UNIQUE constraint failed: players.id
+2025-01-30 14:52:48,679 - ERROR - Error processing player Isaiah Hartenstein: UNIQUE constraint failed: players.id
+2025-01-30 14:52:48,744 - ERROR - Error processing player Cedric Henderson: UNIQUE constraint failed: players.id
+2025-01-30 14:52:48,748 - ERROR - Error processing player Gerald Henderson: UNIQUE constraint failed: players.id
+2025-01-30 14:52:48,796 - ERROR - Error processing player Buddy Hield: UNIQUE constraint failed: players.id
+2025-01-30 14:52:48,988 - ERROR - Error processing player Brandon Ingram: UNIQUE constraint failed: players.id
+2025-01-30 14:52:49,030 - ERROR - Error processing player Luke Jackson: UNIQUE constraint failed: players.id
+2025-01-30 14:52:49,048 - ERROR - Error processing player Tony Jackson: UNIQUE constraint failed: players.id
+2025-01-30 14:52:49,066 - ERROR - Error processing player LeBron James: UNIQUE constraint failed: players.id
+2025-01-30 14:52:49,069 - ERROR - Error processing player Mike James: UNIQUE constraint failed: players.id
+2025-01-30 14:52:49,133 - ERROR - Error processing player Chris Johnson: UNIQUE constraint failed: players.id
+2025-01-30 14:52:49,147 - ERROR - Error processing player Eddie Johnson: UNIQUE constraint failed: players.id
+2025-01-30 14:52:49,154 - ERROR - Error processing player George Johnson: UNIQUE constraint failed: players.id
+2025-01-30 14:52:49,154 - ERROR - Error processing player George Johnson: UNIQUE constraint failed: players.id
+2025-01-30 14:52:49,169 - ERROR - Error processing player Ken Johnson: UNIQUE constraint failed: players.id
+2025-01-30 14:52:49,175 - ERROR - Error processing player Larry Johnson: UNIQUE constraint failed: players.id
+2025-01-30 14:52:49,216 - ERROR - Error processing player Bobby Jones: UNIQUE constraint failed: players.id
+2025-01-30 14:52:49,221 - ERROR - Error processing player Charles Jones: UNIQUE constraint failed: players.id
+2025-01-30 14:52:49,222 - ERROR - Error processing player Charles Jones: UNIQUE constraint failed: players.id
+2025-01-30 14:52:49,230 - ERROR - Error processing player Derrick Jones Jr.: UNIQUE constraint failed: players.id
+2025-01-30 14:52:49,260 - ERROR - Error processing player Mark Jones: UNIQUE constraint failed: players.id
+2025-01-30 14:52:49,392 - ERROR - Error processing player George King: UNIQUE constraint failed: players.id
+2025-01-30 14:52:49,393 - ERROR - Error processing player George King: UNIQUE constraint failed: players.id
+2025-01-30 14:52:49,636 - ERROR - Error processing player Freddie Lewis: UNIQUE constraint failed: players.id
+2025-01-30 14:52:49,860 - ERROR - Error processing player KJ Martin: UNIQUE constraint failed: players.id
+2025-01-30 14:52:49,938 - ERROR - Error processing player CJ McCollum: UNIQUE constraint failed: players.id
+2025-01-30 14:52:50,011 - ERROR - Error processing player JaQuori McLaughlin: UNIQUE constraint failed: players.id
+2025-01-30 14:52:50,060 - ERROR - Error processing player De'Anthony Melton: UNIQUE constraint failed: players.id
+2025-01-30 14:52:50,075 - ERROR - Error processing player Chimezie Metu: UNIQUE constraint failed: players.id
+2025-01-30 14:52:50,158 - ERROR - Error processing player Tony Mitchell: UNIQUE constraint failed: players.id
+2025-01-30 14:52:50,229 - ERROR - Error processing player Markieff Morris: UNIQUE constraint failed: players.id
+2025-01-30 14:52:50,426 - ERROR - Error processing player Kendrick Nunn: UNIQUE constraint failed: players.id
+2025-01-30 14:52:50,465 - ERROR - Error processing player Daniel Ochefu: UNIQUE constraint failed: players.id
+2025-01-30 14:52:50,477 - ERROR - Error processing player Chuma Okeke: UNIQUE constraint failed: players.id
+2025-01-30 14:52:50,508 - ERROR - Error processing player Chinanu Onuaku: UNIQUE constraint failed: players.id
+2025-01-30 14:52:50,551 - ERROR - Error processing player Jaysean Paige: UNIQUE constraint failed: players.id
+2025-01-30 14:52:50,596 - ERROR - Error processing player Patrick Patterson: UNIQUE constraint failed: players.id
+2025-01-30 14:52:50,611 - ERROR - Error processing player Jim Paxson: UNIQUE constraint failed: players.id
+2025-01-30 14:52:50,719 - ERROR - Error processing player Jakob Poeltl: UNIQUE constraint failed: players.id
+2025-01-30 14:52:50,745 - ERROR - Error processing player Kevin Porter Jr.: UNIQUE constraint failed: players.id
+2025-01-30 14:52:50,928 - ERROR - Error processing player Malachi Richardson: UNIQUE constraint failed: players.id
+2025-01-30 14:52:51,000 - ERROR - Error processing player Jerome Robinson: UNIQUE constraint failed: players.id
+2025-01-30 14:52:51,003 - ERROR - Error processing player Mitchell Robinson: UNIQUE constraint failed: players.id
+2025-01-30 14:52:51,110 - ERROR - Error processing player Walker Russell: UNIQUE constraint failed: players.id
+2025-01-30 14:52:51,113 - ERROR - Error processing player Domantas Sabonis: UNIQUE constraint failed: players.id
+2025-01-30 14:52:51,126 - ERROR - Error processing player Brandon Sampson: UNIQUE constraint failed: players.id
+2025-01-30 14:52:51,172 - ERROR - Error processing player Jordan Schakel: UNIQUE constraint failed: players.id
+2025-01-30 14:52:51,251 - ERROR - Error processing player Collin Sexton: UNIQUE constraint failed: players.id
+2025-01-30 14:52:51,260 - ERROR - Error processing player Landry Shamet: UNIQUE constraint failed: players.id
+2025-01-30 14:52:51,300 - ERROR - Error processing player Jordan Sibert: UNIQUE constraint failed: players.id
+2025-01-30 14:52:51,386 - ERROR - Error processing player Charles Smith: UNIQUE constraint failed: players.id
+2025-01-30 14:52:51,387 - ERROR - Error processing player Charles Smith: UNIQUE constraint failed: players.id
+2025-01-30 14:52:51,389 - ERROR - Error processing player Chris Smith: UNIQUE constraint failed: players.id
+2025-01-30 14:52:51,397 - ERROR - Error processing player Don Smith: UNIQUE constraint failed: players.id
+2025-01-30 14:52:51,406 - ERROR - Error processing player Greg Smith: UNIQUE constraint failed: players.id
+2025-01-30 14:52:51,429 - ERROR - Error processing player Michael Smith: UNIQUE constraint failed: players.id
+2025-01-30 14:52:51,442 - ERROR - Error processing player Sam Smith: UNIQUE constraint failed: players.id
+2025-01-30 14:52:51,559 - ERROR - Error processing player Diamond Stone: UNIQUE constraint failed: players.id
+2025-01-30 14:52:51,587 - ERROR - Error processing player Jalen Suggs: UNIQUE constraint failed: players.id
+2025-01-30 14:52:51,645 - ERROR - Error processing player Jeff Taylor: UNIQUE constraint failed: players.id
+2025-01-30 14:52:51,667 - ERROR - Error processing player Jared Terrell: UNIQUE constraint failed: players.id
+2025-01-30 14:52:51,732 - ERROR - Error processing player Jason Thompson: UNIQUE constraint failed: players.id
+2025-01-30 14:52:51,811 - ERROR - Error processing player Gary Trent Jr.: UNIQUE constraint failed: players.id
+2025-01-30 14:52:51,832 - ERROR - Error processing player Rayjon Tucker: UNIQUE constraint failed: players.id
+2025-01-30 14:52:51,846 - ERROR - Error processing player Jack Turner: UNIQUE constraint failed: players.id
+2025-01-30 14:52:51,873 - ERROR - Error processing player Jarrod Uthoff: UNIQUE constraint failed: players.id
+2025-01-30 14:52:51,892 - ERROR - Error processing player Fred VanVleet: UNIQUE constraint failed: players.id
+2025-01-30 14:52:51,895 - ERROR - Error processing player Jarred Vanderbilt: UNIQUE constraint failed: players.id
+2025-01-30 14:52:51,909 - ERROR - Error processing player David Vaughn: UNIQUE constraint failed: players.id
+2025-01-30 14:52:52,032 - ERROR - Error processing player Julian Washburn: UNIQUE constraint failed: players.id
+2025-01-30 14:52:52,049 - ERROR - Error processing player Yuta Watanabe: UNIQUE constraint failed: players.id
+2025-01-30 14:52:52,142 - ERROR - Error processing player Okaro White: UNIQUE constraint failed: players.id
+2025-01-30 14:52:52,166 - ERROR - Error processing player Joe Wieskamp: UNIQUE constraint failed: players.id
+2025-01-30 14:52:52,206 - ERROR - Error processing player Brandon Williams: UNIQUE constraint failed: players.id
+2025-01-30 14:52:52,258 - ERROR - Error processing player Marcus Williams: UNIQUE constraint failed: players.id
+2025-01-30 14:52:52,275 - ERROR - Error processing player Reggie Williams: UNIQUE constraint failed: players.id
+2025-01-30 14:52:52,278 - ERROR - Error processing player Robert Williams: UNIQUE constraint failed: players.id
+2025-01-30 14:52:52,281 - ERROR - Error processing player Sam Williams: UNIQUE constraint failed: players.id
+2025-01-30 14:52:52,310 - ERROR - Error processing player Bobby Wilson: UNIQUE constraint failed: players.id
+2025-01-30 14:52:52,388 - ERROR - Error processing player Chris Wright: UNIQUE constraint failed: players.id
+2025-01-30 14:52:52,429 - ERROR - Error processing player Trae Young: UNIQUE constraint failed: players.id
+2025-01-30 14:52:52,446 - ERROR - Error processing player Stephen Zimmerman: UNIQUE constraint failed: players.id
+2025-01-30 14:52:52,451 - ERROR - Error processing player Ivica Zubac: UNIQUE constraint failed: players.id
+2025-01-30 14:52:52,464 - INFO - Data migration completed successfully
+2025-01-30 14:54:43,959 - INFO - Starting data migration process...
+2025-01-30 14:54:43,959 - INFO - Base directory: C:\Users\munee\OneDrive\Desktop\NFL-NBA-Stats-Predictor\backend
+2025-01-30 14:54:43,959 - INFO - Data directory: C:\Users\munee\OneDrive\Desktop\NFL-NBA-Stats-Predictor\backend\data\nbastats
+2025-01-30 14:54:43,959 - INFO - Database path: C:\Users\munee\OneDrive\Desktop\NFL-NBA-Stats-Predictor\backend\data\nba_stats.db
+2025-01-30 14:54:43,959 - INFO - Files found in data directory: ['Advanced.csv', 'All-Star Selections.csv', 'End of Season Teams (Voting).csv', 'End of Season Teams.csv', 'Opponent Stats Per 100 Poss.csv', 'Opponent Stats Per Game.csv', 'Opponent Totals.csv', 'Per 100 Poss.csv', 'Per 36 Minutes.csv', 'Player Award Shares.csv', 'Player Career Info.csv', 'Player Directory.csv', 'Player Per Game.csv', 'Player Play By Play.csv', 'Player Season Info.csv', 'Player Shooting.csv', 'Player Totals.csv', 'Team Abbrev.csv', 'Team Stats Per 100 Poss.csv', 'Team Stats Per Game.csv', 'Team Summaries.csv', 'Team Totals.csv']
+2025-01-30 14:54:43,959 - INFO - Creating database at: C:\Users\munee\OneDrive\Desktop\NFL-NBA-Stats-Predictor\backend\data\nba_stats.db
+2025-01-30 14:54:43,959 - INFO - Looking for CSV files in: C:\Users\munee\OneDrive\Desktop\NFL-NBA-Stats-Predictor\backend\data\nbastats
+2025-01-30 14:54:43,975 - INFO - Database initialized successfully
+2025-01-30 14:54:43,975 - INFO - Reading CSV files...
+2025-01-30 14:54:44,032 - INFO - Per game stats shape: (32392, 35)
+2025-01-30 14:54:44,033 - INFO - Player directory shape: (5285, 10)
+2025-01-30 14:54:44,033 - INFO - Processing players...
+2025-01-30 14:54:46,127 - INFO - Data migration completed successfully
+2025-01-30 15:11:34,940 - INFO - Starting data migration process...
+2025-01-30 15:11:34,940 - INFO - Creating database at: C:\Users\munee\OneDrive\Desktop\NFL-NBA-Stats-Predictor\backend\data\nba_stats.db
+2025-01-30 15:11:34,940 - INFO - Looking for CSV files in: C:\Users\munee\OneDrive\Desktop\NFL-NBA-Stats-Predictor\backend\data\nbastats
+2025-01-30 15:11:34,958 - INFO - Database initialized successfully
+2025-01-30 15:11:34,958 - INFO - Reading CSV files...
+2025-01-30 15:11:35,009 - INFO - Processing players...
+2025-01-30 15:11:37,209 - INFO - Data migration completed successfully
+2025-01-30 15:19:58,206 - INFO - Starting data migration process...
+2025-01-30 15:19:58,206 - INFO - Creating database at: C:\Users\munee\OneDrive\Desktop\NFL-NBA-Stats-Predictor\backend\data\nba_stats.db
+2025-01-30 15:19:58,206 - INFO - Looking for CSV files in: C:\Users\munee\OneDrive\Desktop\NFL-NBA-Stats-Predictor\backend\data\nbastats
+2025-01-30 15:19:58,223 - INFO - Database initialized successfully
+2025-01-30 15:19:58,223 - INFO - Reading CSV files...
+2025-01-30 15:19:58,276 - INFO - 
+LeBron James raw data from CSV:
+2025-01-30 15:19:58,276 - INFO - 
+            Season: 2004
+            Team: CLE
+            PlayerID: 3463
+            Games: 79
+            PPG: 20.9
+            APG: 5.9
+            RPG: 5.5
+            
+2025-01-30 15:19:58,276 - INFO - 
+            Season: 2005
+            Team: CLE
+            PlayerID: 3463
+            Games: 80
+            PPG: 27.2
+            APG: 7.2
+            RPG: 7.4
+            
+2025-01-30 15:19:58,276 - INFO - 
+            Season: 2006
+            Team: CLE
+            PlayerID: 3463
+            Games: 79
+            PPG: 31.4
+            APG: 6.6
+            RPG: 7.0
+            
+2025-01-30 15:19:58,276 - INFO - 
+            Season: 2007
+            Team: CLE
+            PlayerID: 3463
+            Games: 78
+            PPG: 27.3
+            APG: 6.0
+            RPG: 6.7
+            
+2025-01-30 15:19:58,277 - INFO - 
+            Season: 2008
+            Team: CLE
+            PlayerID: 3463
+            Games: 75
+            PPG: 30.0
+            APG: 7.2
+            RPG: 7.9
+            
+2025-01-30 15:19:58,277 - INFO - 
+            Season: 2009
+            Team: CLE
+            PlayerID: 3463
+            Games: 81
+            PPG: 28.4
+            APG: 7.2
+            RPG: 7.6
+            
+2025-01-30 15:19:58,277 - INFO - 
+            Season: 2010
+            Team: CLE
+            PlayerID: 3463
+            Games: 76
+            PPG: 29.7
+            APG: 8.6
+            RPG: 7.3
+            
+2025-01-30 15:19:58,277 - INFO - 
+            Season: 2011
+            Team: MIA
+            PlayerID: 3463
+            Games: 79
+            PPG: 26.7
+            APG: 7.0
+            RPG: 7.5
+            
+2025-01-30 15:19:58,277 - INFO - 
+            Season: 2012
+            Team: MIA
+            PlayerID: 3463
+            Games: 62
+            PPG: 27.1
+            APG: 6.2
+            RPG: 7.9
+            
+2025-01-30 15:19:58,277 - INFO - 
+            Season: 2013
+            Team: MIA
+            PlayerID: 3463
+            Games: 76
+            PPG: 26.8
+            APG: 7.3
+            RPG: 8.0
+            
+2025-01-30 15:19:58,277 - INFO - 
+            Season: 2014
+            Team: MIA
+            PlayerID: 3463
+            Games: 77
+            PPG: 27.1
+            APG: 6.3
+            RPG: 6.9
+            
+2025-01-30 15:19:58,277 - INFO - 
+            Season: 2015
+            Team: CLE
+            PlayerID: 3463
+            Games: 69
+            PPG: 25.3
+            APG: 7.4
+            RPG: 6.0
+            
+2025-01-30 15:19:58,277 - INFO - 
+            Season: 2016
+            Team: CLE
+            PlayerID: 3463
+            Games: 76
+            PPG: 25.3
+            APG: 6.8
+            RPG: 7.4
+            
+2025-01-30 15:19:58,277 - INFO - 
+            Season: 2017
+            Team: CLE
+            PlayerID: 3463
+            Games: 74
+            PPG: 26.4
+            APG: 8.7
+            RPG: 8.6
+            
+2025-01-30 15:19:58,277 - INFO - 
+            Season: 2018
+            Team: CLE
+            PlayerID: 3463
+            Games: 82
+            PPG: 27.5
+            APG: 9.1
+            RPG: 8.6
+            
+2025-01-30 15:19:58,277 - INFO - 
+            Season: 2019
+            Team: LAL
+            PlayerID: 3463
+            Games: 55
+            PPG: 27.4
+            APG: 8.3
+            RPG: 8.5
+            
+2025-01-30 15:19:58,277 - INFO - 
+            Season: 2020
+            Team: LAL
+            PlayerID: 3463
+            Games: 67
+            PPG: 25.3
+            APG: 10.2
+            RPG: 7.8
+            
+2025-01-30 15:19:58,277 - INFO - 
+            Season: 2021
+            Team: LAL
+            PlayerID: 3463
+            Games: 45
+            PPG: 25.0
+            APG: 7.8
+            RPG: 7.7
+            
+2025-01-30 15:19:58,277 - INFO - 
+            Season: 2022
+            Team: LAL
+            PlayerID: 3463
+            Games: 56
+            PPG: 30.3
+            APG: 6.2
+            RPG: 8.2
+            
+2025-01-30 15:19:58,277 - INFO - 
+            Season: 2023
+            Team: LAL
+            PlayerID: 3463
+            Games: 55
+            PPG: 28.9
+            APG: 6.8
+            RPG: 8.3
+            
+2025-01-30 15:19:58,277 - INFO - 
+            Season: 2024
+            Team: LAL
+            PlayerID: 3462
+            Games: 71
+            PPG: 25.7
+            APG: 8.3
+            RPG: 7.3
+            
+2025-01-30 15:19:58,277 - INFO - 
+            Season: 2025
+            Team: LAL
+            PlayerID: 3462
+            Games: 29
+            PPG: 23.4
+            APG: 8.9
+            RPG: 7.7
+            
+2025-01-30 15:19:58,277 - INFO - Processing players...
+2025-01-30 15:20:00,465 - INFO - Data migration completed successfully
+2025-01-30 15:22:24,951 - INFO - Starting data migration process...
+2025-01-30 15:22:24,951 - INFO - Creating database at: C:\Users\munee\OneDrive\Desktop\NFL-NBA-Stats-Predictor\backend\data\nba_stats.db
+2025-01-30 15:22:24,951 - INFO - Looking for CSV files in: C:\Users\munee\OneDrive\Desktop\NFL-NBA-Stats-Predictor\backend\data\nbastats
+2025-01-30 15:22:24,969 - INFO - Database initialized successfully
+2025-01-30 15:22:24,969 - INFO - Reading CSV files...
+2025-01-30 15:22:25,023 - INFO - 
+Verifying LeBron's data after ID merge:
+2025-01-30 15:22:25,023 - INFO - 
+            Season: 2004
+            Team: CLE
+            PlayerID: 3462
+            Games: 79
+            PPG: 20.9
+            APG: 5.9
+            RPG: 5.5
+            
+2025-01-30 15:22:25,023 - INFO - 
+            Season: 2005
+            Team: CLE
+            PlayerID: 3462
+            Games: 80
+            PPG: 27.2
+            APG: 7.2
+            RPG: 7.4
+            
+2025-01-30 15:22:25,023 - INFO - 
+            Season: 2006
+            Team: CLE
+            PlayerID: 3462
+            Games: 79
+            PPG: 31.4
+            APG: 6.6
+            RPG: 7.0
+            
+2025-01-30 15:22:25,023 - INFO - 
+            Season: 2007
+            Team: CLE
+            PlayerID: 3462
+            Games: 78
+            PPG: 27.3
+            APG: 6.0
+            RPG: 6.7
+            
+2025-01-30 15:22:25,023 - INFO - 
+            Season: 2008
+            Team: CLE
+            PlayerID: 3462
+            Games: 75
+            PPG: 30.0
+            APG: 7.2
+            RPG: 7.9
+            
+2025-01-30 15:22:25,023 - INFO - 
+            Season: 2009
+            Team: CLE
+            PlayerID: 3462
+            Games: 81
+            PPG: 28.4
+            APG: 7.2
+            RPG: 7.6
+            
+2025-01-30 15:22:25,023 - INFO - 
+            Season: 2010
+            Team: CLE
+            PlayerID: 3462
+            Games: 76
+            PPG: 29.7
+            APG: 8.6
+            RPG: 7.3
+            
+2025-01-30 15:22:25,023 - INFO - 
+            Season: 2011
+            Team: MIA
+            PlayerID: 3462
+            Games: 79
+            PPG: 26.7
+            APG: 7.0
+            RPG: 7.5
+            
+2025-01-30 15:22:25,023 - INFO - 
+            Season: 2012
+            Team: MIA
+            PlayerID: 3462
+            Games: 62
+            PPG: 27.1
+            APG: 6.2
+            RPG: 7.9
+            
+2025-01-30 15:22:25,024 - INFO - 
+            Season: 2013
+            Team: MIA
+            PlayerID: 3462
+            Games: 76
+            PPG: 26.8
+            APG: 7.3
+            RPG: 8.0
+            
+2025-01-30 15:22:25,024 - INFO - 
+            Season: 2014
+            Team: MIA
+            PlayerID: 3462
+            Games: 77
+            PPG: 27.1
+            APG: 6.3
+            RPG: 6.9
+            
+2025-01-30 15:22:25,024 - INFO - 
+            Season: 2015
+            Team: CLE
+            PlayerID: 3462
+            Games: 69
+            PPG: 25.3
+            APG: 7.4
+            RPG: 6.0
+            
+2025-01-30 15:22:25,024 - INFO - 
+            Season: 2016
+            Team: CLE
+            PlayerID: 3462
+            Games: 76
+            PPG: 25.3
+            APG: 6.8
+            RPG: 7.4
+            
+2025-01-30 15:22:25,024 - INFO - 
+            Season: 2017
+            Team: CLE
+            PlayerID: 3462
+            Games: 74
+            PPG: 26.4
+            APG: 8.7
+            RPG: 8.6
+            
+2025-01-30 15:22:25,024 - INFO - 
+            Season: 2018
+            Team: CLE
+            PlayerID: 3462
+            Games: 82
+            PPG: 27.5
+            APG: 9.1
+            RPG: 8.6
+            
+2025-01-30 15:22:25,024 - INFO - 
+            Season: 2019
+            Team: LAL
+            PlayerID: 3462
+            Games: 55
+            PPG: 27.4
+            APG: 8.3
+            RPG: 8.5
+            
+2025-01-30 15:22:25,024 - INFO - 
+            Season: 2020
+            Team: LAL
+            PlayerID: 3462
+            Games: 67
+            PPG: 25.3
+            APG: 10.2
+            RPG: 7.8
+            
+2025-01-30 15:22:25,024 - INFO - 
+            Season: 2021
+            Team: LAL
+            PlayerID: 3462
+            Games: 45
+            PPG: 25.0
+            APG: 7.8
+            RPG: 7.7
+            
+2025-01-30 15:22:25,024 - INFO - 
+            Season: 2022
+            Team: LAL
+            PlayerID: 3462
+            Games: 56
+            PPG: 30.3
+            APG: 6.2
+            RPG: 8.2
+            
+2025-01-30 15:22:25,024 - INFO - 
+            Season: 2023
+            Team: LAL
+            PlayerID: 3462
+            Games: 55
+            PPG: 28.9
+            APG: 6.8
+            RPG: 8.3
+            
+2025-01-30 15:22:25,024 - INFO - 
+            Season: 2024
+            Team: LAL
+            PlayerID: 3462
+            Games: 71
+            PPG: 25.7
+            APG: 8.3
+            RPG: 7.3
+            
+2025-01-30 15:22:25,024 - INFO - 
+            Season: 2025
+            Team: LAL
+            PlayerID: 3462
+            Games: 29
+            PPG: 23.4
+            APG: 8.9
+            RPG: 7.7
+            
+2025-01-30 15:22:25,025 - INFO - Processing players...
+2025-01-30 15:22:27,232 - INFO - Data migration completed successfully
+2025-01-30 15:26:05,985 - INFO - Starting data migration process...
+2025-01-30 15:26:05,985 - INFO - Creating database at: C:\Users\munee\OneDrive\Desktop\NFL-NBA-Stats-Predictor\backend\data\nba_stats.db
+2025-01-30 15:26:05,985 - INFO - Looking for CSV files in: C:\Users\munee\OneDrive\Desktop\NFL-NBA-Stats-Predictor\backend\data\nbastats
+2025-01-30 15:26:06,002 - INFO - Database initialized successfully
+2025-01-30 15:26:06,002 - INFO - Reading CSV files...
+2025-01-30 15:26:06,067 - INFO - 
+LeBron's data after merging and removing duplicates:
+2025-01-30 15:26:06,067 - INFO - 
+        Season: 2004
+        Team: CLE
+        PlayerID: 3462
+        Games: 79
+        PPG: 20.9
+        APG: 5.9
+        RPG: 5.5
+        
+2025-01-30 15:26:06,067 - INFO - 
+        Season: 2005
+        Team: CLE
+        PlayerID: 3462
+        Games: 80
+        PPG: 27.2
+        APG: 7.2
+        RPG: 7.4
+        
+2025-01-30 15:26:06,067 - INFO - 
+        Season: 2006
+        Team: CLE
+        PlayerID: 3462
+        Games: 79
+        PPG: 31.4
+        APG: 6.6
+        RPG: 7.0
+        
+2025-01-30 15:26:06,067 - INFO - 
+        Season: 2007
+        Team: CLE
+        PlayerID: 3462
+        Games: 78
+        PPG: 27.3
+        APG: 6.0
+        RPG: 6.7
+        
+2025-01-30 15:26:06,067 - INFO - 
+        Season: 2008
+        Team: CLE
+        PlayerID: 3462
+        Games: 75
+        PPG: 30.0
+        APG: 7.2
+        RPG: 7.9
+        
+2025-01-30 15:26:06,067 - INFO - 
+        Season: 2009
+        Team: CLE
+        PlayerID: 3462
+        Games: 81
+        PPG: 28.4
+        APG: 7.2
+        RPG: 7.6
+        
+2025-01-30 15:26:06,068 - INFO - 
+        Season: 2010
+        Team: CLE
+        PlayerID: 3462
+        Games: 76
+        PPG: 29.7
+        APG: 8.6
+        RPG: 7.3
+        
+2025-01-30 15:26:06,068 - INFO - 
+        Season: 2011
+        Team: MIA
+        PlayerID: 3462
+        Games: 79
+        PPG: 26.7
+        APG: 7.0
+        RPG: 7.5
+        
+2025-01-30 15:26:06,068 - INFO - 
+        Season: 2012
+        Team: MIA
+        PlayerID: 3462
+        Games: 62
+        PPG: 27.1
+        APG: 6.2
+        RPG: 7.9
+        
+2025-01-30 15:26:06,068 - INFO - 
+        Season: 2013
+        Team: MIA
+        PlayerID: 3462
+        Games: 76
+        PPG: 26.8
+        APG: 7.3
+        RPG: 8.0
+        
+2025-01-30 15:26:06,068 - INFO - 
+        Season: 2014
+        Team: MIA
+        PlayerID: 3462
+        Games: 77
+        PPG: 27.1
+        APG: 6.3
+        RPG: 6.9
+        
+2025-01-30 15:26:06,068 - INFO - 
+        Season: 2015
+        Team: CLE
+        PlayerID: 3462
+        Games: 69
+        PPG: 25.3
+        APG: 7.4
+        RPG: 6.0
+        
+2025-01-30 15:26:06,068 - INFO - 
+        Season: 2016
+        Team: CLE
+        PlayerID: 3462
+        Games: 76
+        PPG: 25.3
+        APG: 6.8
+        RPG: 7.4
+        
+2025-01-30 15:26:06,068 - INFO - 
+        Season: 2017
+        Team: CLE
+        PlayerID: 3462
+        Games: 74
+        PPG: 26.4
+        APG: 8.7
+        RPG: 8.6
+        
+2025-01-30 15:26:06,068 - INFO - 
+        Season: 2018
+        Team: CLE
+        PlayerID: 3462
+        Games: 82
+        PPG: 27.5
+        APG: 9.1
+        RPG: 8.6
+        
+2025-01-30 15:26:06,068 - INFO - 
+        Season: 2024
+        Team: LAL
+        PlayerID: 3462
+        Games: 71
+        PPG: 25.7
+        APG: 8.3
+        RPG: 7.3
+        
+2025-01-30 15:26:06,068 - INFO - 
+        Season: 2025
+        Team: LAL
+        PlayerID: 3462
+        Games: 29
+        PPG: 23.4
+        APG: 8.9
+        RPG: 7.7
+        
+2025-01-30 15:26:06,070 - INFO - 
+Verifying LeBron's data after ID merge:
+2025-01-30 15:26:06,070 - INFO - 
+            Season: 2004
+            Team: CLE
+            PlayerID: 3462
+            Games: 79
+            PPG: 20.9
+            APG: 5.9
+            RPG: 5.5
+            
+2025-01-30 15:26:06,070 - INFO - 
+            Season: 2005
+            Team: CLE
+            PlayerID: 3462
+            Games: 80
+            PPG: 27.2
+            APG: 7.2
+            RPG: 7.4
+            
+2025-01-30 15:26:06,070 - INFO - 
+            Season: 2006
+            Team: CLE
+            PlayerID: 3462
+            Games: 79
+            PPG: 31.4
+            APG: 6.6
+            RPG: 7.0
+            
+2025-01-30 15:26:06,070 - INFO - 
+            Season: 2007
+            Team: CLE
+            PlayerID: 3462
+            Games: 78
+            PPG: 27.3
+            APG: 6.0
+            RPG: 6.7
+            
+2025-01-30 15:26:06,070 - INFO - 
+            Season: 2008
+            Team: CLE
+            PlayerID: 3462
+            Games: 75
+            PPG: 30.0
+            APG: 7.2
+            RPG: 7.9
+            
+2025-01-30 15:26:06,070 - INFO - 
+            Season: 2009
+            Team: CLE
+            PlayerID: 3462
+            Games: 81
+            PPG: 28.4
+            APG: 7.2
+            RPG: 7.6
+            
+2025-01-30 15:26:06,070 - INFO - 
+            Season: 2010
+            Team: CLE
+            PlayerID: 3462
+            Games: 76
+            PPG: 29.7
+            APG: 8.6
+            RPG: 7.3
+            
+2025-01-30 15:26:06,070 - INFO - 
+            Season: 2011
+            Team: MIA
+            PlayerID: 3462
+            Games: 79
+            PPG: 26.7
+            APG: 7.0
+            RPG: 7.5
+            
+2025-01-30 15:26:06,070 - INFO - 
+            Season: 2012
+            Team: MIA
+            PlayerID: 3462
+            Games: 62
+            PPG: 27.1
+            APG: 6.2
+            RPG: 7.9
+            
+2025-01-30 15:26:06,070 - INFO - 
+            Season: 2013
+            Team: MIA
+            PlayerID: 3462
+            Games: 76
+            PPG: 26.8
+            APG: 7.3
+            RPG: 8.0
+            
+2025-01-30 15:26:06,070 - INFO - 
+            Season: 2014
+            Team: MIA
+            PlayerID: 3462
+            Games: 77
+            PPG: 27.1
+            APG: 6.3
+            RPG: 6.9
+            
+2025-01-30 15:26:06,070 - INFO - 
+            Season: 2015
+            Team: CLE
+            PlayerID: 3462
+            Games: 69
+            PPG: 25.3
+            APG: 7.4
+            RPG: 6.0
+            
+2025-01-30 15:26:06,070 - INFO - 
+            Season: 2016
+            Team: CLE
+            PlayerID: 3462
+            Games: 76
+            PPG: 25.3
+            APG: 6.8
+            RPG: 7.4
+            
+2025-01-30 15:26:06,070 - INFO - 
+            Season: 2017
+            Team: CLE
+            PlayerID: 3462
+            Games: 74
+            PPG: 26.4
+            APG: 8.7
+            RPG: 8.6
+            
+2025-01-30 15:26:06,070 - INFO - 
+            Season: 2018
+            Team: CLE
+            PlayerID: 3462
+            Games: 82
+            PPG: 27.5
+            APG: 9.1
+            RPG: 8.6
+            
+2025-01-30 15:26:06,070 - INFO - 
+            Season: 2024
+            Team: LAL
+            PlayerID: 3462
+            Games: 71
+            PPG: 25.7
+            APG: 8.3
+            RPG: 7.3
+            
+2025-01-30 15:26:06,070 - INFO - 
+            Season: 2025
+            Team: LAL
+            PlayerID: 3462
+            Games: 29
+            PPG: 23.4
+            APG: 8.9
+            RPG: 7.7
+            
+2025-01-30 15:26:06,071 - INFO - Processing players...
+2025-01-30 15:26:08,695 - INFO - Data migration completed successfully
+2025-01-30 15:27:52,235 - INFO - Starting data migration process...
+2025-01-30 15:27:52,235 - INFO - Creating database at: C:\Users\munee\OneDrive\Desktop\NFL-NBA-Stats-Predictor\backend\data\nba_stats.db
+2025-01-30 15:27:52,235 - INFO - Looking for CSV files in: C:\Users\munee\OneDrive\Desktop\NFL-NBA-Stats-Predictor\backend\data\nbastats
+2025-01-30 15:27:52,253 - INFO - Database initialized successfully
+2025-01-30 15:27:52,253 - INFO - Reading CSV files...
+2025-01-30 15:27:52,315 - INFO - 
+LeBron's data after merging:
+2025-01-30 15:27:52,315 - INFO - 
+        Season: 2004
+        Team: CLE
+        PlayerID: 3462
+        Games: 79
+        PPG: 20.9
+        APG: 5.9
+        RPG: 5.5
+        
+2025-01-30 15:27:52,316 - INFO - 
+        Season: 2005
+        Team: CLE
+        PlayerID: 3462
+        Games: 80
+        PPG: 27.2
+        APG: 7.2
+        RPG: 7.4
+        
+2025-01-30 15:27:52,316 - INFO - 
+        Season: 2006
+        Team: CLE
+        PlayerID: 3462
+        Games: 79
+        PPG: 31.4
+        APG: 6.6
+        RPG: 7.0
+        
+2025-01-30 15:27:52,316 - INFO - 
+        Season: 2007
+        Team: CLE
+        PlayerID: 3462
+        Games: 78
+        PPG: 27.3
+        APG: 6.0
+        RPG: 6.7
+        
+2025-01-30 15:27:52,316 - INFO - 
+        Season: 2008
+        Team: CLE
+        PlayerID: 3462
+        Games: 75
+        PPG: 30.0
+        APG: 7.2
+        RPG: 7.9
+        
+2025-01-30 15:27:52,316 - INFO - 
+        Season: 2009
+        Team: CLE
+        PlayerID: 3462
+        Games: 81
+        PPG: 28.4
+        APG: 7.2
+        RPG: 7.6
+        
+2025-01-30 15:27:52,316 - INFO - 
+        Season: 2010
+        Team: CLE
+        PlayerID: 3462
+        Games: 76
+        PPG: 29.7
+        APG: 8.6
+        RPG: 7.3
+        
+2025-01-30 15:27:52,316 - INFO - 
+        Season: 2011
+        Team: MIA
+        PlayerID: 3462
+        Games: 79
+        PPG: 26.7
+        APG: 7.0
+        RPG: 7.5
+        
+2025-01-30 15:27:52,316 - INFO - 
+        Season: 2012
+        Team: MIA
+        PlayerID: 3462
+        Games: 62
+        PPG: 27.1
+        APG: 6.2
+        RPG: 7.9
+        
+2025-01-30 15:27:52,316 - INFO - 
+        Season: 2013
+        Team: MIA
+        PlayerID: 3462
+        Games: 76
+        PPG: 26.8
+        APG: 7.3
+        RPG: 8.0
+        
+2025-01-30 15:27:52,316 - INFO - 
+        Season: 2014
+        Team: MIA
+        PlayerID: 3462
+        Games: 77
+        PPG: 27.1
+        APG: 6.3
+        RPG: 6.9
+        
+2025-01-30 15:27:52,316 - INFO - 
+        Season: 2015
+        Team: CLE
+        PlayerID: 3462
+        Games: 69
+        PPG: 25.3
+        APG: 7.4
+        RPG: 6.0
+        
+2025-01-30 15:27:52,316 - INFO - 
+        Season: 2016
+        Team: CLE
+        PlayerID: 3462
+        Games: 76
+        PPG: 25.3
+        APG: 6.8
+        RPG: 7.4
+        
+2025-01-30 15:27:52,316 - INFO - 
+        Season: 2017
+        Team: CLE
+        PlayerID: 3462
+        Games: 74
+        PPG: 26.4
+        APG: 8.7
+        RPG: 8.6
+        
+2025-01-30 15:27:52,316 - INFO - 
+        Season: 2018
+        Team: CLE
+        PlayerID: 3462
+        Games: 82
+        PPG: 27.5
+        APG: 9.1
+        RPG: 8.6
+        
+2025-01-30 15:27:52,316 - INFO - 
+        Season: 2019
+        Team: LAL
+        PlayerID: 3462
+        Games: 55
+        PPG: 27.4
+        APG: 8.3
+        RPG: 8.5
+        
+2025-01-30 15:27:52,316 - INFO - 
+        Season: 2020
+        Team: LAL
+        PlayerID: 3462
+        Games: 67
+        PPG: 25.3
+        APG: 10.2
+        RPG: 7.8
+        
+2025-01-30 15:27:52,316 - INFO - 
+        Season: 2021
+        Team: LAL
+        PlayerID: 3462
+        Games: 45
+        PPG: 25.0
+        APG: 7.8
+        RPG: 7.7
+        
+2025-01-30 15:27:52,316 - INFO - 
+        Season: 2022
+        Team: LAL
+        PlayerID: 3462
+        Games: 56
+        PPG: 30.3
+        APG: 6.2
+        RPG: 8.2
+        
+2025-01-30 15:27:52,316 - INFO - 
+        Season: 2023
+        Team: LAL
+        PlayerID: 3462
+        Games: 55
+        PPG: 28.9
+        APG: 6.8
+        RPG: 8.3
+        
+2025-01-30 15:27:52,316 - INFO - 
+        Season: 2024
+        Team: LAL
+        PlayerID: 3462
+        Games: 71
+        PPG: 25.7
+        APG: 8.3
+        RPG: 7.3
+        
+2025-01-30 15:27:52,316 - INFO - 
+        Season: 2025
+        Team: LAL
+        PlayerID: 3462
+        Games: 29
+        PPG: 23.4
+        APG: 8.9
+        RPG: 7.7
+        
+2025-01-30 15:27:52,318 - INFO - 
+Verifying LeBron's data after ID merge:
+2025-01-30 15:27:52,318 - INFO - 
+            Season: 2004
+            Team: CLE
+            PlayerID: 3462
+            Games: 79
+            PPG: 20.9
+            APG: 5.9
+            RPG: 5.5
+            
+2025-01-30 15:27:52,318 - INFO - 
+            Season: 2005
+            Team: CLE
+            PlayerID: 3462
+            Games: 80
+            PPG: 27.2
+            APG: 7.2
+            RPG: 7.4
+            
+2025-01-30 15:27:52,318 - INFO - 
+            Season: 2006
+            Team: CLE
+            PlayerID: 3462
+            Games: 79
+            PPG: 31.4
+            APG: 6.6
+            RPG: 7.0
+            
+2025-01-30 15:27:52,318 - INFO - 
+            Season: 2007
+            Team: CLE
+            PlayerID: 3462
+            Games: 78
+            PPG: 27.3
+            APG: 6.0
+            RPG: 6.7
+            
+2025-01-30 15:27:52,318 - INFO - 
+            Season: 2008
+            Team: CLE
+            PlayerID: 3462
+            Games: 75
+            PPG: 30.0
+            APG: 7.2
+            RPG: 7.9
+            
+2025-01-30 15:27:52,318 - INFO - 
+            Season: 2009
+            Team: CLE
+            PlayerID: 3462
+            Games: 81
+            PPG: 28.4
+            APG: 7.2
+            RPG: 7.6
+            
+2025-01-30 15:27:52,318 - INFO - 
+            Season: 2010
+            Team: CLE
+            PlayerID: 3462
+            Games: 76
+            PPG: 29.7
+            APG: 8.6
+            RPG: 7.3
+            
+2025-01-30 15:27:52,319 - INFO - 
+            Season: 2011
+            Team: MIA
+            PlayerID: 3462
+            Games: 79
+            PPG: 26.7
+            APG: 7.0
+            RPG: 7.5
+            
+2025-01-30 15:27:52,319 - INFO - 
+            Season: 2012
+            Team: MIA
+            PlayerID: 3462
+            Games: 62
+            PPG: 27.1
+            APG: 6.2
+            RPG: 7.9
+            
+2025-01-30 15:27:52,319 - INFO - 
+            Season: 2013
+            Team: MIA
+            PlayerID: 3462
+            Games: 76
+            PPG: 26.8
+            APG: 7.3
+            RPG: 8.0
+            
+2025-01-30 15:27:52,319 - INFO - 
+            Season: 2014
+            Team: MIA
+            PlayerID: 3462
+            Games: 77
+            PPG: 27.1
+            APG: 6.3
+            RPG: 6.9
+            
+2025-01-30 15:27:52,319 - INFO - 
+            Season: 2015
+            Team: CLE
+            PlayerID: 3462
+            Games: 69
+            PPG: 25.3
+            APG: 7.4
+            RPG: 6.0
+            
+2025-01-30 15:27:52,319 - INFO - 
+            Season: 2016
+            Team: CLE
+            PlayerID: 3462
+            Games: 76
+            PPG: 25.3
+            APG: 6.8
+            RPG: 7.4
+            
+2025-01-30 15:27:52,319 - INFO - 
+            Season: 2017
+            Team: CLE
+            PlayerID: 3462
+            Games: 74
+            PPG: 26.4
+            APG: 8.7
+            RPG: 8.6
+            
+2025-01-30 15:27:52,319 - INFO - 
+            Season: 2018
+            Team: CLE
+            PlayerID: 3462
+            Games: 82
+            PPG: 27.5
+            APG: 9.1
+            RPG: 8.6
+            
+2025-01-30 15:27:52,319 - INFO - 
+            Season: 2019
+            Team: LAL
+            PlayerID: 3462
+            Games: 55
+            PPG: 27.4
+            APG: 8.3
+            RPG: 8.5
+            
+2025-01-30 15:27:52,319 - INFO - 
+            Season: 2020
+            Team: LAL
+            PlayerID: 3462
+            Games: 67
+            PPG: 25.3
+            APG: 10.2
+            RPG: 7.8
+            
+2025-01-30 15:27:52,319 - INFO - 
+            Season: 2021
+            Team: LAL
+            PlayerID: 3462
+            Games: 45
+            PPG: 25.0
+            APG: 7.8
+            RPG: 7.7
+            
+2025-01-30 15:27:52,319 - INFO - 
+            Season: 2022
+            Team: LAL
+            PlayerID: 3462
+            Games: 56
+            PPG: 30.3
+            APG: 6.2
+            RPG: 8.2
+            
+2025-01-30 15:27:52,319 - INFO - 
+            Season: 2023
+            Team: LAL
+            PlayerID: 3462
+            Games: 55
+            PPG: 28.9
+            APG: 6.8
+            RPG: 8.3
+            
+2025-01-30 15:27:52,319 - INFO - 
+            Season: 2024
+            Team: LAL
+            PlayerID: 3462
+            Games: 71
+            PPG: 25.7
+            APG: 8.3
+            RPG: 7.3
+            
+2025-01-30 15:27:52,319 - INFO - 
+            Season: 2025
+            Team: LAL
+            PlayerID: 3462
+            Games: 29
+            PPG: 23.4
+            APG: 8.9
+            RPG: 7.7
+            
+2025-01-30 15:27:52,319 - INFO - Processing players...
+2025-01-30 15:27:54,760 - INFO - Data migration completed successfully
+2025-01-30 15:32:56,371 - INFO - Starting data migration process...
+2025-01-30 15:32:56,371 - INFO - Creating database at: C:\Users\munee\OneDrive\Desktop\NFL-NBA-Stats-Predictor\backend\data\nba_stats.db
+2025-01-30 15:32:56,371 - INFO - Looking for CSV files in: C:\Users\munee\OneDrive\Desktop\NFL-NBA-Stats-Predictor\backend\data\nbastats
+2025-01-30 15:32:56,389 - INFO - Database initialized successfully
+2025-01-30 15:32:56,389 - INFO - Reading CSV files...
+2025-01-30 15:32:57,052 - INFO - 
+Players with duplicate IDs:
+2025-01-30 15:32:57,053 - INFO - 
+Player: Brandon Ingram
+2025-01-30 15:32:57,053 - INFO - ID 4378: Seasons 2024-2025
+2025-01-30 15:32:57,053 - INFO - ID 4379: Seasons 2017-2023
+2025-01-30 15:32:57,053 - INFO - 
+Player: Brandon Williams
+2025-01-30 15:32:57,053 - INFO - ID 4910: Seasons 2022-2025
+2025-01-30 15:32:57,053 - INFO - ID 3042: Seasons 1998-2003
+2025-01-30 15:32:57,053 - INFO - 
+Player: Bruce Brown
+2025-01-30 15:32:57,053 - INFO - ID 4593: Seasons 2024-2025
+2025-01-30 15:32:57,053 - INFO - ID 4594: Seasons 2019-2023
+2025-01-30 15:32:57,053 - INFO - 
+Player: Buddy Hield
+2025-01-30 15:32:57,053 - INFO - ID 4381: Seasons 2024-2025
+2025-01-30 15:32:57,053 - INFO - ID 4382: Seasons 2017-2023
+2025-01-30 15:32:57,053 - INFO - 
+Player: CJ McCollum
+2025-01-30 15:32:57,053 - INFO - ID 4150: Seasons 2024-2025
+2025-01-30 15:32:57,053 - INFO - ID 4154: Seasons 2014-2023
+2025-01-30 15:32:57,053 - INFO - 
+Player: Caris LeVert
+2025-01-30 15:32:57,053 - INFO - ID 4382: Seasons 2024-2025
+2025-01-30 15:32:57,053 - INFO - ID 4383: Seasons 2017-2023
+2025-01-30 15:32:57,053 - INFO - 
+Player: Collin Sexton
+2025-01-30 15:32:57,053 - INFO - ID 4598: Seasons 2024-2025
+2025-01-30 15:32:57,053 - INFO - ID 4599: Seasons 2019-2023
+2025-01-30 15:32:57,053 - INFO - 
+Player: DaQuan Jeffries
+2025-01-30 15:32:57,053 - INFO - ID 4705: Seasons 2024-2025
+2025-01-30 15:32:57,053 - INFO - ID 4706: Seasons 2020-2022
+2025-01-30 15:32:57,053 - INFO - 
+Player: Daniel Gafford
+2025-01-30 15:32:57,053 - INFO - ID 4706: Seasons 2024-2025
+2025-01-30 15:32:57,053 - INFO - ID 4705: Seasons 2020-2023
+2025-01-30 15:32:57,053 - INFO - 
+Player: Dario Šari\u0107
+2025-01-30 15:32:57,053 - INFO - ID 4389: Seasons 2024-2025
+2025-01-30 15:32:57,053 - INFO - ID 4390: Seasons 2017-2023
+2025-01-30 15:32:57,053 - INFO - 
+Player: De'Anthony Melton
+2025-01-30 15:32:57,053 - INFO - ID 4601: Seasons 2024-2025
+2025-01-30 15:32:57,053 - INFO - ID 4602: Seasons 2019-2023
+2025-01-30 15:32:57,053 - INFO - 
+Player: Dejounte Murray
+2025-01-30 15:32:57,053 - INFO - ID 4392: Seasons 2024-2025
+2025-01-30 15:32:57,053 - INFO - ID 4394: Seasons 2017-2023
+2025-01-30 15:32:57,053 - INFO - 
+Player: Derrick Jones Jr.
+2025-01-30 15:32:57,053 - INFO - ID 4395: Seasons 2024-2025
+2025-01-30 15:32:57,053 - INFO - ID 4397: Seasons 2017-2023
+2025-01-30 15:32:57,053 - INFO - 
+Player: Domantas Sabonis
+2025-01-30 15:32:57,053 - INFO - ID 4398: Seasons 2024-2025
+2025-01-30 15:32:57,053 - INFO - ID 4400: Seasons 2017-2023
+2025-01-30 15:32:57,053 - INFO - 
+Player: Donte DiVincenzo
+2025-01-30 15:32:57,053 - INFO - ID 4607: Seasons 2024-2025
+2025-01-30 15:32:57,053 - INFO - ID 4608: Seasons 2019-2023
+2025-01-30 15:32:57,053 - INFO - 
+Player: Dorian Finney-Smith
+2025-01-30 15:32:57,053 - INFO - ID 4399: Seasons 2024-2025
+2025-01-30 15:32:57,053 - INFO - ID 4401: Seasons 2017-2023
+2025-01-30 15:32:57,053 - INFO - 
+Player: Drew Eubanks
+2025-01-30 15:32:57,053 - INFO - ID 4609: Seasons 2024-2025
+2025-01-30 15:32:57,053 - INFO - ID 4610: Seasons 2019-2023
+2025-01-30 15:32:57,053 - INFO - 
+Player: Duncan Robinson
+2025-01-30 15:32:57,053 - INFO - ID 4610: Seasons 2024-2025
+2025-01-30 15:32:57,053 - INFO - ID 4611: Seasons 2019-2023
+2025-01-30 15:32:57,053 - INFO - 
+Player: Fred VanVleet
+2025-01-30 15:32:57,053 - INFO - ID 4402: Seasons 2024-2025
+2025-01-30 15:32:57,053 - INFO - ID 4403: Seasons 2017-2023
+2025-01-30 15:32:57,053 - INFO - 
+Player: Gary Payton II
+2025-01-30 15:32:57,053 - INFO - ID 4403: Seasons 2024-2025
+2025-01-30 15:32:57,053 - INFO - ID 4404: Seasons 2017-2023
+2025-01-30 15:32:57,053 - INFO - 
+Player: Gary Trent Jr.
+2025-01-30 15:32:57,053 - INFO - ID 4617: Seasons 2024-2025
+2025-01-30 15:32:57,053 - INFO - ID 4618: Seasons 2019-2023
+2025-01-30 15:32:57,053 - INFO - 
+Player: Georges Niang
+2025-01-30 15:32:57,053 - INFO - ID 4404: Seasons 2024-2025
+2025-01-30 15:32:57,054 - INFO - ID 4405: Seasons 2017-2023
+2025-01-30 15:32:57,054 - INFO - 
+Player: Grayson Allen
+2025-01-30 15:32:57,054 - INFO - ID 4619: Seasons 2024-2025
+2025-01-30 15:32:57,054 - INFO - ID 4620: Seasons 2019-2023
+2025-01-30 15:32:57,054 - INFO - 
+Player: Haywood Highsmith
+2025-01-30 15:32:57,054 - INFO - ID 4622: Seasons 2024-2025
+2025-01-30 15:32:57,054 - INFO - ID 4623: Seasons 2019-2023
+2025-01-30 15:32:57,054 - INFO - 
+Player: Isaiah Hartenstein
+2025-01-30 15:32:57,054 - INFO - ID 4626: Seasons 2024-2025
+2025-01-30 15:32:57,054 - INFO - ID 4627: Seasons 2019-2023
+2025-01-30 15:32:57,054 - INFO - 
+Player: Ivica Zubac
+2025-01-30 15:32:57,054 - INFO - ID 4409: Seasons 2024-2025
+2025-01-30 15:32:57,054 - INFO - ID 4410: Seasons 2017-2023
+2025-01-30 15:32:57,054 - INFO - 
+Player: JD Davison
+2025-01-30 15:32:57,054 - INFO - ID 5048: Seasons 2024-2025
+2025-01-30 15:32:57,054 - INFO - ID 5062: Seasons 2023-2023
+2025-01-30 15:32:57,054 - INFO - 
+Player: JT Thor
+2025-01-30 15:32:57,054 - INFO - ID 4944: Seasons 2024-2025
+2025-01-30 15:32:57,054 - INFO - ID 4972: Seasons 2022-2023
+2025-01-30 15:32:57,054 - INFO - 
+Player: Jabari Smith Jr.
+2025-01-30 15:32:57,054 - INFO - ID 5049: Seasons 2024-2025
+2025-01-30 15:32:57,054 - INFO - ID 5048: Seasons 2023-2023
+2025-01-30 15:32:57,054 - INFO - 
+Player: Jabari Walker
+2025-01-30 15:32:57,054 - INFO - ID 5050: Seasons 2024-2025
+2025-01-30 15:32:57,054 - INFO - ID 5049: Seasons 2023-2023
+2025-01-30 15:32:57,054 - INFO - 
+Player: Jaden Hardy
+2025-01-30 15:32:57,054 - INFO - ID 5053: Seasons 2024-2025
+2025-01-30 15:32:57,054 - INFO - ID 5052: Seasons 2023-2023
+2025-01-30 15:32:57,054 - INFO - 
+Player: Jaden Ivey
+2025-01-30 15:32:57,054 - INFO - ID 5054: Seasons 2024-2025
+2025-01-30 15:32:57,054 - INFO - ID 5053: Seasons 2023-2023
+2025-01-30 15:32:57,054 - INFO - 
+Player: Jaden Springer
+2025-01-30 15:32:57,054 - INFO - ID 4946: Seasons 2024-2025
+2025-01-30 15:32:57,054 - INFO - ID 4944: Seasons 2022-2023
+2025-01-30 15:32:57,054 - INFO - 
+Player: Jake LaRavia
+2025-01-30 15:32:57,054 - INFO - ID 5055: Seasons 2024-2025
+2025-01-30 15:32:57,054 - INFO - ID 5054: Seasons 2023-2023
+2025-01-30 15:32:57,054 - INFO - 
+Player: Jakob Poeltl
+2025-01-30 15:32:57,054 - INFO - ID 4411: Seasons 2024-2025
+2025-01-30 15:32:57,054 - INFO - ID 4412: Seasons 2017-2023
+2025-01-30 15:32:57,054 - INFO - 
+Player: Jalen Brunson
+2025-01-30 15:32:57,054 - INFO - ID 4629: Seasons 2024-2025
+2025-01-30 15:32:57,054 - INFO - ID 4630: Seasons 2019-2023
+2025-01-30 15:32:57,054 - INFO - 
+Player: Jalen Duren
+2025-01-30 15:32:57,054 - INFO - ID 5056: Seasons 2024-2025
+2025-01-30 15:32:57,054 - INFO - ID 5055: Seasons 2023-2023
+2025-01-30 15:32:57,054 - INFO - 
+Player: Jalen Green
+2025-01-30 15:32:57,054 - INFO - ID 4948: Seasons 2024-2025
+2025-01-30 15:32:57,054 - INFO - ID 4946: Seasons 2022-2023
+2025-01-30 15:32:57,054 - INFO - 
+Player: Jalen Johnson
+2025-01-30 15:32:57,054 - INFO - ID 4949: Seasons 2024-2025
+2025-01-30 15:32:57,054 - INFO - ID 4947: Seasons 2022-2023
+2025-01-30 15:32:57,054 - INFO - 
+Player: Jalen Suggs
+2025-01-30 15:32:57,054 - INFO - ID 4950: Seasons 2024-2025
+2025-01-30 15:32:57,054 - INFO - ID 4948: Seasons 2022-2023
+2025-01-30 15:32:57,054 - INFO - 
+Player: Jalen Williams
+2025-01-30 15:32:57,054 - INFO - ID 5057: Seasons 2024-2025
+2025-01-30 15:32:57,054 - INFO - ID 5056: Seasons 2023-2023
+2025-01-30 15:32:57,054 - INFO - 
+Player: Jamal Cain
+2025-01-30 15:32:57,054 - INFO - ID 5058: Seasons 2024-2025
+2025-01-30 15:32:57,054 - INFO - ID 5057: Seasons 2023-2023
+2025-01-30 15:32:57,054 - INFO - 
+Player: Jamal Murray
+2025-01-30 15:32:57,054 - INFO - ID 4412: Seasons 2024-2025
+2025-01-30 15:32:57,054 - INFO - ID 4413: Seasons 2017-2023
+2025-01-30 15:32:57,054 - INFO - 
+Player: Jared Butler
+2025-01-30 15:32:57,054 - INFO - ID 4953: Seasons 2024-2025
+2025-01-30 15:32:57,054 - INFO - ID 4952: Seasons 2022-2023
+2025-01-30 15:32:57,054 - INFO - 
+Player: Jared Rhoden
+2025-01-30 15:32:57,054 - INFO - ID 5060: Seasons 2024-2025
+2025-01-30 15:32:57,054 - INFO - ID 5059: Seasons 2023-2023
+2025-01-30 15:32:57,054 - INFO - 
+Player: Jaren Jackson Jr.
+2025-01-30 15:32:57,054 - INFO - ID 4631: Seasons 2024-2025
+2025-01-30 15:32:57,054 - INFO - ID 4632: Seasons 2019-2023
+2025-01-30 15:32:57,054 - INFO - 
+Player: Jay Huff
+2025-01-30 15:32:57,054 - INFO - ID 4957: Seasons 2024-2025
+2025-01-30 15:32:57,054 - INFO - ID 4956: Seasons 2022-2023
+2025-01-30 15:32:57,055 - INFO - 
+Player: Jaylen Brown
+2025-01-30 15:32:57,055 - INFO - ID 4414: Seasons 2024-2025
+2025-01-30 15:32:57,055 - INFO - ID 4415: Seasons 2017-2023
+2025-01-30 15:32:57,055 - INFO - 
+Player: Jaylin Williams
+2025-01-30 15:32:57,055 - INFO - ID 5062: Seasons 2024-2025
+2025-01-30 15:32:57,055 - INFO - ID 5061: Seasons 2023-2023
+2025-01-30 15:32:57,055 - INFO - 
+Player: Jeff Dowtin
+2025-01-30 15:32:57,055 - INFO - ID 4959: Seasons 2024-2025
+2025-01-30 15:32:57,055 - INFO - ID 4958: Seasons 2022-2023
+2025-01-30 15:32:57,055 - INFO - 
+Player: Jeremiah Robinson-Earl
+2025-01-30 15:32:57,055 - INFO - ID 4960: Seasons 2024-2025
+2025-01-30 15:32:57,055 - INFO - ID 4959: Seasons 2022-2023
+2025-01-30 15:32:57,055 - INFO - 
+Player: Jericho Sims
+2025-01-30 15:32:57,055 - INFO - ID 4961: Seasons 2024-2025
+2025-01-30 15:32:57,055 - INFO - ID 4960: Seasons 2022-2023
+2025-01-30 15:32:57,055 - INFO - 
+Player: Jevon Carter
+2025-01-30 15:32:57,055 - INFO - ID 4637: Seasons 2024-2025
+2025-01-30 15:32:57,055 - INFO - ID 4638: Seasons 2019-2023
+2025-01-30 15:32:57,055 - INFO - 
+Player: Jock Landale
+2025-01-30 15:32:57,055 - INFO - ID 4962: Seasons 2024-2025
+2025-01-30 15:32:57,055 - INFO - ID 4961: Seasons 2022-2023
+2025-01-30 15:32:57,055 - INFO - 
+Player: Joel Embiid
+2025-01-30 15:32:57,055 - INFO - ID 4416: Seasons 2024-2025
+2025-01-30 15:32:57,055 - INFO - ID 4417: Seasons 2017-2023
+2025-01-30 15:32:57,055 - INFO - 
+Player: Johnny Davis
+2025-01-30 15:32:57,055 - INFO - ID 5066: Seasons 2023-2025
+2025-01-30 15:32:57,055 - INFO - ID 1706: Seasons 1977-1986
+2025-01-30 15:32:57,055 - INFO - 
+Player: Jonathan Kuminga
+2025-01-30 15:32:57,055 - INFO - ID 4966: Seasons 2024-2025
+2025-01-30 15:32:57,055 - INFO - ID 4965: Seasons 2022-2023
+2025-01-30 15:32:57,055 - INFO - 
+Player: Jose Alvarado
+2025-01-30 15:32:57,055 - INFO - ID 4969: Seasons 2024-2025
+2025-01-30 15:32:57,055 - INFO - ID 4968: Seasons 2022-2023
+2025-01-30 15:32:57,055 - INFO - 
+Player: Josh Christopher
+2025-01-30 15:32:57,055 - INFO - ID 4970: Seasons 2025-2025
+2025-01-30 15:32:57,055 - INFO - ID 4969: Seasons 2022-2023
+2025-01-30 15:32:57,055 - INFO - 
+Player: Josh Giddey
+2025-01-30 15:32:57,055 - INFO - ID 4971: Seasons 2024-2025
+2025-01-30 15:32:57,055 - INFO - ID 4970: Seasons 2022-2023
+2025-01-30 15:32:57,055 - INFO - 
+Player: Josh Okogie
+2025-01-30 15:32:57,055 - INFO - ID 4643: Seasons 2024-2025
+2025-01-30 15:32:57,055 - INFO - ID 4644: Seasons 2019-2023
+2025-01-30 15:32:57,055 - INFO - 
+Player: Keldon Johnson
+2025-01-30 15:32:57,055 - INFO - ID 4746: Seasons 2024-2025
+2025-01-30 15:32:57,055 - INFO - ID 4745: Seasons 2020-2023
+2025-01-30 15:32:57,055 - INFO - 
+Player: Kenrich Williams
+2025-01-30 15:32:57,055 - INFO - ID 4646: Seasons 2024-2025
+2025-01-30 15:32:57,055 - INFO - ID 4647: Seasons 2019-2023
+2025-01-30 15:32:57,055 - INFO - 
+Player: Kevin Huerter
+2025-01-30 15:32:57,055 - INFO - ID 4647: Seasons 2024-2025
+2025-01-30 15:32:57,055 - INFO - ID 4648: Seasons 2019-2023
+2025-01-30 15:32:57,055 - INFO - 
+Player: Kevin Porter Jr.
+2025-01-30 15:32:57,055 - INFO - ID 4749: Seasons 2025-2025
+2025-01-30 15:32:57,055 - INFO - ID 4748: Seasons 2020-2023
+2025-01-30 15:32:57,055 - INFO - 
+Player: Kris Dunn
+2025-01-30 15:32:57,055 - INFO - ID 4420: Seasons 2024-2025
+2025-01-30 15:32:57,055 - INFO - ID 4421: Seasons 2017-2023
+2025-01-30 15:32:57,055 - INFO - 
+Player: LaMelo Ball
+2025-01-30 15:32:57,055 - INFO - ID 4858: Seasons 2024-2025
+2025-01-30 15:32:57,055 - INFO - ID 4859: Seasons 2021-2023
+2025-01-30 15:32:57,055 - INFO - 
+Player: Landry Shamet
+2025-01-30 15:32:57,055 - INFO - ID 4651: Seasons 2024-2025
+2025-01-30 15:32:57,055 - INFO - ID 4652: Seasons 2019-2023
+2025-01-30 15:32:57,055 - INFO - 
+Player: LeBron James
+2025-01-30 15:32:57,055 - INFO - ID 3462: Seasons 2024-2025
+2025-01-30 15:32:57,055 - INFO - ID 3463: Seasons 2004-2023
+2025-01-30 15:32:57,055 - INFO - 
+Player: Luka Don\u010di\u0107
+2025-01-30 15:32:57,055 - INFO - ID 4653: Seasons 2024-2025
+2025-01-30 15:32:57,055 - INFO - ID 4654: Seasons 2019-2023
+2025-01-30 15:32:57,055 - INFO - 
+Player: Malcolm Brogdon
+2025-01-30 15:32:57,055 - INFO - ID 4423: Seasons 2024-2025
+2025-01-30 15:32:57,055 - INFO - ID 4424: Seasons 2017-2023
+2025-01-30 15:32:57,055 - INFO - 
+Player: Malik Beasley
+2025-01-30 15:32:57,055 - INFO - ID 4425: Seasons 2024-2025
+2025-01-30 15:32:57,055 - INFO - ID 4426: Seasons 2017-2023
+2025-01-30 15:32:57,055 - INFO - 
+Player: Markieff Morris
+2025-01-30 15:32:57,055 - INFO - ID 4044: Seasons 2024-2025
+2025-01-30 15:32:57,056 - INFO - ID 4043: Seasons 2012-2023
+2025-01-30 15:32:57,056 - INFO - 
+Player: Marvin Bagley III
+2025-01-30 15:32:57,056 - INFO - ID 4655: Seasons 2024-2025
+2025-01-30 15:32:57,056 - INFO - ID 4656: Seasons 2019-2023
+2025-01-30 15:32:57,056 - INFO - 
+Player: Mikal Bridges
+2025-01-30 15:32:57,056 - INFO - ID 4657: Seasons 2024-2025
+2025-01-30 15:32:57,056 - INFO - ID 4658: Seasons 2019-2023
+2025-01-30 15:32:57,056 - INFO - 
+Player: Miles Bridges
+2025-01-30 15:32:57,056 - INFO - ID 4658: Seasons 2024-2025
+2025-01-30 15:32:57,056 - INFO - ID 4659: Seasons 2019-2022
+2025-01-30 15:32:57,056 - INFO - 
+Player: Mo Bamba
+2025-01-30 15:32:57,056 - INFO - ID 4661: Seasons 2024-2025
+2025-01-30 15:32:57,056 - INFO - ID 4662: Seasons 2019-2023
+2025-01-30 15:32:57,056 - INFO - 
+Player: Moritz Wagner
+2025-01-30 15:32:57,056 - INFO - ID 4662: Seasons 2024-2025
+2025-01-30 15:32:57,056 - INFO - ID 4663: Seasons 2019-2023
+2025-01-30 15:32:57,056 - INFO - 
+Player: Pascal Siakam
+2025-01-30 15:32:57,056 - INFO - ID 4436: Seasons 2024-2025
+2025-01-30 15:32:57,056 - INFO - ID 4437: Seasons 2017-2023
+2025-01-30 15:32:57,056 - INFO - 
+Player: Paul George
+2025-01-30 15:32:57,056 - INFO - ID 3968: Seasons 2024-2025
+2025-01-30 15:32:57,056 - INFO - ID 3969: Seasons 2011-2023
+2025-01-30 15:32:57,056 - INFO - 
+Player: RJ Barrett
+2025-01-30 15:32:57,056 - INFO - ID 4781: Seasons 2024-2025
+2025-01-30 15:32:57,056 - INFO - ID 4782: Seasons 2020-2023
+2025-01-30 15:32:57,056 - INFO - 
+Player: Robert Williams
+2025-01-30 15:32:57,056 - INFO - ID 4666: Seasons 2024-2025
+2025-01-30 15:32:57,056 - INFO - ID 4667: Seasons 2019-2023
+2025-01-30 15:32:57,056 - INFO - 
+Player: Shai Gilgeous-Alexander
+2025-01-30 15:32:57,056 - INFO - ID 4669: Seasons 2024-2025
+2025-01-30 15:32:57,056 - INFO - ID 4670: Seasons 2019-2023
+2025-01-30 15:32:57,056 - INFO - 
+Player: Shake Milton
+2025-01-30 15:32:57,056 - INFO - ID 4670: Seasons 2024-2025
+2025-01-30 15:32:57,056 - INFO - ID 4671: Seasons 2019-2023
+2025-01-30 15:32:57,056 - INFO - 
+Player: Svi Mykhailiuk
+2025-01-30 15:32:57,056 - INFO - ID 4671: Seasons 2024-2025
+2025-01-30 15:32:57,056 - INFO - ID 4672: Seasons 2019-2023
+2025-01-30 15:32:57,056 - INFO - 
+Player: Taurean Prince
+2025-01-30 15:32:57,056 - INFO - ID 4449: Seasons 2024-2025
+2025-01-30 15:32:57,056 - INFO - ID 4450: Seasons 2017-2023
+2025-01-30 15:32:57,056 - INFO - 
+Player: Trae Young
+2025-01-30 15:32:57,056 - INFO - ID 4675: Seasons 2024-2025
+2025-01-30 15:32:57,056 - INFO - ID 4676: Seasons 2019-2023
+2025-01-30 15:32:57,056 - INFO - 
+Player: TyTy Washington Jr.
+2025-01-30 15:32:57,056 - INFO - ID 5103: Seasons 2024-2025
+2025-01-30 15:32:57,056 - INFO - ID 5104: Seasons 2023-2023
+2025-01-30 15:32:57,056 - INFO - 
+Player: Tyrese Martin
+2025-01-30 15:32:57,056 - INFO - ID 5104: Seasons 2025-2025
+2025-01-30 15:32:57,056 - INFO - ID 5103: Seasons 2023-2023
+2025-01-30 15:32:57,056 - INFO - 
+Player: Wendell Carter Jr.
+2025-01-30 15:32:57,056 - INFO - ID 4681: Seasons 2024-2025
+2025-01-30 15:32:57,056 - INFO - ID 4682: Seasons 2019-2023
+2025-01-30 15:32:57,056 - INFO - 
+Player: Chimezie Metu
+2025-01-30 15:32:57,056 - INFO - ID 4596: Seasons 2024-2024
+2025-01-30 15:32:57,056 - INFO - ID 4597: Seasons 2019-2023
+2025-01-30 15:32:57,056 - INFO - 
+Player: Chuma Okeke
+2025-01-30 15:32:57,056 - INFO - ID 4818: Seasons 2024-2024
+2025-01-30 15:32:57,056 - INFO - ID 4817: Seasons 2021-2023
+2025-01-30 15:32:57,056 - INFO - 
+Player: Damian Jones
+2025-01-30 15:32:57,056 - INFO - ID 4386: Seasons 2024-2024
+2025-01-30 15:32:57,056 - INFO - ID 4387: Seasons 2017-2023
+2025-01-30 15:32:57,056 - INFO - 
+Player: Danuel House Jr.
+2025-01-30 15:32:57,056 - INFO - ID 4388: Seasons 2024-2024
+2025-01-30 15:32:57,056 - INFO - ID 4389: Seasons 2017-2023
+2025-01-30 15:32:57,056 - INFO - 
+Player: Devonte' Graham
+2025-01-30 15:32:57,056 - INFO - ID 4606: Seasons 2024-2024
+2025-01-30 15:32:57,056 - INFO - ID 4607: Seasons 2019-2023
+2025-01-30 15:32:57,056 - INFO - 
+Player: D\u0101vis Bert\u0101ns
+2025-01-30 15:32:57,056 - INFO - ID 4401: Seasons 2024-2024
+2025-01-30 15:32:57,056 - INFO - ID 4392: Seasons 2017-2023
+2025-01-30 15:32:57,056 - INFO - 
+Player: Hamidou Diallo
+2025-01-30 15:32:57,056 - INFO - ID 4620: Seasons 2024-2024
+2025-01-30 15:32:57,056 - INFO - ID 4621: Seasons 2019-2023
+2025-01-30 15:32:57,056 - INFO - 
+Player: Harry Giles
+2025-01-30 15:32:57,056 - INFO - ID 4621: Seasons 2024-2024
+2025-01-30 15:32:57,056 - INFO - ID 4622: Seasons 2019-2021
+2025-01-30 15:32:57,056 - INFO - 
+Player: JaVale McGee
+2025-01-30 15:32:57,057 - INFO - ID 3823: Seasons 2024-2024
+2025-01-30 15:32:57,057 - INFO - ID 3824: Seasons 2009-2023
+2025-01-30 15:32:57,057 - INFO - 
+Player: Jack White
+2025-01-30 15:32:57,057 - INFO - ID 5051: Seasons 2024-2024
+2025-01-30 15:32:57,057 - INFO - ID 5050: Seasons 2023-2023
+2025-01-30 15:32:57,057 - INFO - 
+Player: Jacob Gilyard
+2025-01-30 15:32:57,057 - INFO - ID 5052: Seasons 2024-2024
+2025-01-30 15:32:57,057 - INFO - ID 5051: Seasons 2023-2023
+2025-01-30 15:32:57,057 - INFO - 
+Player: Jamaree Bouyea
+2025-01-30 15:32:57,057 - INFO - ID 5059: Seasons 2024-2024
+2025-01-30 15:32:57,057 - INFO - ID 5058: Seasons 2023-2023
+2025-01-30 15:32:57,057 - INFO - 
+Player: James Bouknight
+2025-01-30 15:32:57,057 - INFO - ID 4951: Seasons 2024-2024
+2025-01-30 15:32:57,057 - INFO - ID 4949: Seasons 2022-2023
+2025-01-30 15:32:57,057 - INFO - 
+Player: Jarred Vanderbilt
+2025-01-30 15:32:57,057 - INFO - ID 4633: Seasons 2024-2024
+2025-01-30 15:32:57,057 - INFO - ID 4634: Seasons 2019-2023
+2025-01-30 15:32:57,057 - INFO - 
+Player: Jason Preston
+2025-01-30 15:32:57,057 - INFO - ID 5061: Seasons 2024-2024
+2025-01-30 15:32:57,057 - INFO - ID 5060: Seasons 2023-2023
+2025-01-30 15:32:57,057 - INFO - 
+Player: Javonte Smart
+2025-01-30 15:32:57,057 - INFO - ID 4956: Seasons 2024-2024
+2025-01-30 15:32:57,057 - INFO - ID 4955: Seasons 2022-2022
+2025-01-30 15:32:57,057 - INFO - 
+Player: Jerome Robinson
+2025-01-30 15:32:57,057 - INFO - ID 4636: Seasons 2024-2024
+2025-01-30 15:32:57,057 - INFO - ID 4637: Seasons 2019-2021
+2025-01-30 15:32:57,057 - INFO - 
+Player: Jordan Goodwin
+2025-01-30 15:32:57,057 - INFO - ID 4967: Seasons 2024-2024
+2025-01-30 15:32:57,057 - INFO - ID 4966: Seasons 2022-2023
+2025-01-30 15:32:57,057 - INFO - 
+Player: Joshua Primo
+2025-01-30 15:32:57,057 - INFO - ID 4972: Seasons 2024-2024
+2025-01-30 15:32:57,057 - INFO - ID 4971: Seasons 2022-2023
+2025-01-30 15:32:57,057 - INFO - 
+Player: Keita Bates-Diop
+2025-01-30 15:32:57,057 - INFO - ID 4645: Seasons 2024-2024
+2025-01-30 15:32:57,057 - INFO - ID 4646: Seasons 2019-2023
+2025-01-30 15:32:57,057 - INFO - 
+Player: Kevin Knox
+2025-01-30 15:32:57,057 - INFO - ID 4648: Seasons 2024-2024
+2025-01-30 15:32:57,057 - INFO - ID 4649: Seasons 2019-2023
+2025-01-30 15:32:57,057 - INFO - 
+Player: Lamar Stevens
+2025-01-30 15:32:57,057 - INFO - ID 4859: Seasons 2024-2024
+2025-01-30 15:32:57,057 - INFO - ID 4858: Seasons 2021-2023
+2025-01-30 15:32:57,057 - INFO - 
+Player: Lonnie Walker IV
+2025-01-30 15:32:57,057 - INFO - ID 4652: Seasons 2024-2024
+2025-01-30 15:32:57,057 - INFO - ID 4653: Seasons 2019-2023
+2025-01-30 15:32:57,057 - INFO - 
+Player: Marcus Morris
+2025-01-30 15:32:57,057 - INFO - ID 4043: Seasons 2024-2024
+2025-01-30 15:32:57,057 - INFO - ID 4042: Seasons 2012-2023
+2025-01-30 15:32:57,057 - INFO - 
+Player: Mitchell Robinson
+2025-01-30 15:32:57,057 - INFO - ID 4660: Seasons 2024-2024
+2025-01-30 15:32:57,057 - INFO - ID 4661: Seasons 2019-2023
+2025-01-30 15:32:57,057 - INFO - 
+Player: Troy Brown Jr.
+2025-01-30 15:32:57,057 - INFO - ID 4677: Seasons 2024-2024
+2025-01-30 15:32:57,057 - INFO - ID 4678: Seasons 2019-2023
+2025-01-30 15:32:57,057 - INFO - 
+Player: Yuta Watanabe
+2025-01-30 15:32:57,057 - INFO - ID 4683: Seasons 2024-2024
+2025-01-30 15:32:57,057 - INFO - ID 4684: Seasons 2019-2023
+2025-01-30 15:32:57,798 - INFO - 
+LeBron's data after merging:
+2025-01-30 15:32:57,799 - INFO - 
+        Season: 2004
+        Team: CLE
+        PlayerID: 3462
+        Games: 79
+        PPG: 20.9
+        APG: 5.9
+        RPG: 5.5
+        
+2025-01-30 15:32:57,799 - INFO - 
+        Season: 2005
+        Team: CLE
+        PlayerID: 3462
+        Games: 80
+        PPG: 27.2
+        APG: 7.2
+        RPG: 7.4
+        
+2025-01-30 15:32:57,799 - INFO - 
+        Season: 2006
+        Team: CLE
+        PlayerID: 3462
+        Games: 79
+        PPG: 31.4
+        APG: 6.6
+        RPG: 7.0
+        
+2025-01-30 15:32:57,799 - INFO - 
+        Season: 2007
+        Team: CLE
+        PlayerID: 3462
+        Games: 78
+        PPG: 27.3
+        APG: 6.0
+        RPG: 6.7
+        
+2025-01-30 15:32:57,799 - INFO - 
+        Season: 2008
+        Team: CLE
+        PlayerID: 3462
+        Games: 75
+        PPG: 30.0
+        APG: 7.2
+        RPG: 7.9
+        
+2025-01-30 15:32:57,799 - INFO - 
+        Season: 2009
+        Team: CLE
+        PlayerID: 3462
+        Games: 81
+        PPG: 28.4
+        APG: 7.2
+        RPG: 7.6
+        
+2025-01-30 15:32:57,799 - INFO - 
+        Season: 2010
+        Team: CLE
+        PlayerID: 3462
+        Games: 76
+        PPG: 29.7
+        APG: 8.6
+        RPG: 7.3
+        
+2025-01-30 15:32:57,799 - INFO - 
+        Season: 2011
+        Team: MIA
+        PlayerID: 3462
+        Games: 79
+        PPG: 26.7
+        APG: 7.0
+        RPG: 7.5
+        
+2025-01-30 15:32:57,799 - INFO - 
+        Season: 2012
+        Team: MIA
+        PlayerID: 3462
+        Games: 62
+        PPG: 27.1
+        APG: 6.2
+        RPG: 7.9
+        
+2025-01-30 15:32:57,799 - INFO - 
+        Season: 2013
+        Team: MIA
+        PlayerID: 3462
+        Games: 76
+        PPG: 26.8
+        APG: 7.3
+        RPG: 8.0
+        
+2025-01-30 15:32:57,799 - INFO - 
+        Season: 2014
+        Team: MIA
+        PlayerID: 3462
+        Games: 77
+        PPG: 27.1
+        APG: 6.3
+        RPG: 6.9
+        
+2025-01-30 15:32:57,799 - INFO - 
+        Season: 2015
+        Team: CLE
+        PlayerID: 3462
+        Games: 69
+        PPG: 25.3
+        APG: 7.4
+        RPG: 6.0
+        
+2025-01-30 15:32:57,799 - INFO - 
+        Season: 2016
+        Team: CLE
+        PlayerID: 3462
+        Games: 76
+        PPG: 25.3
+        APG: 6.8
+        RPG: 7.4
+        
+2025-01-30 15:32:57,799 - INFO - 
+        Season: 2017
+        Team: CLE
+        PlayerID: 3462
+        Games: 74
+        PPG: 26.4
+        APG: 8.7
+        RPG: 8.6
+        
+2025-01-30 15:32:57,799 - INFO - 
+        Season: 2018
+        Team: CLE
+        PlayerID: 3462
+        Games: 82
+        PPG: 27.5
+        APG: 9.1
+        RPG: 8.6
+        
+2025-01-30 15:32:57,799 - INFO - 
+        Season: 2019
+        Team: LAL
+        PlayerID: 3462
+        Games: 55
+        PPG: 27.4
+        APG: 8.3
+        RPG: 8.5
+        
+2025-01-30 15:32:57,799 - INFO - 
+        Season: 2020
+        Team: LAL
+        PlayerID: 3462
+        Games: 67
+        PPG: 25.3
+        APG: 10.2
+        RPG: 7.8
+        
+2025-01-30 15:32:57,799 - INFO - 
+        Season: 2021
+        Team: LAL
+        PlayerID: 3462
+        Games: 45
+        PPG: 25.0
+        APG: 7.8
+        RPG: 7.7
+        
+2025-01-30 15:32:57,800 - INFO - 
+        Season: 2022
+        Team: LAL
+        PlayerID: 3462
+        Games: 56
+        PPG: 30.3
+        APG: 6.2
+        RPG: 8.2
+        
+2025-01-30 15:32:57,800 - INFO - 
+        Season: 2023
+        Team: LAL
+        PlayerID: 3462
+        Games: 55
+        PPG: 28.9
+        APG: 6.8
+        RPG: 8.3
+        
+2025-01-30 15:32:57,800 - INFO - 
+        Season: 2024
+        Team: LAL
+        PlayerID: 3462
+        Games: 71
+        PPG: 25.7
+        APG: 8.3
+        RPG: 7.3
+        
+2025-01-30 15:32:57,800 - INFO - 
+        Season: 2025
+        Team: LAL
+        PlayerID: 3462
+        Games: 29
+        PPG: 23.4
+        APG: 8.9
+        RPG: 7.7
+        
+2025-01-30 15:32:57,801 - INFO - 
+Verifying LeBron's data after ID merge:
+2025-01-30 15:32:57,801 - INFO - 
+            Season: 2004
+            Team: CLE
+            PlayerID: 3462
+            Games: 79
+            PPG: 20.9
+            APG: 5.9
+            RPG: 5.5
+            
+2025-01-30 15:32:57,802 - INFO - 
+            Season: 2005
+            Team: CLE
+            PlayerID: 3462
+            Games: 80
+            PPG: 27.2
+            APG: 7.2
+            RPG: 7.4
+            
+2025-01-30 15:32:57,802 - INFO - 
+            Season: 2006
+            Team: CLE
+            PlayerID: 3462
+            Games: 79
+            PPG: 31.4
+            APG: 6.6
+            RPG: 7.0
+            
+2025-01-30 15:32:57,802 - INFO - 
+            Season: 2007
+            Team: CLE
+            PlayerID: 3462
+            Games: 78
+            PPG: 27.3
+            APG: 6.0
+            RPG: 6.7
+            
+2025-01-30 15:32:57,802 - INFO - 
+            Season: 2008
+            Team: CLE
+            PlayerID: 3462
+            Games: 75
+            PPG: 30.0
+            APG: 7.2
+            RPG: 7.9
+            
+2025-01-30 15:32:57,802 - INFO - 
+            Season: 2009
+            Team: CLE
+            PlayerID: 3462
+            Games: 81
+            PPG: 28.4
+            APG: 7.2
+            RPG: 7.6
+            
+2025-01-30 15:32:57,802 - INFO - 
+            Season: 2010
+            Team: CLE
+            PlayerID: 3462
+            Games: 76
+            PPG: 29.7
+            APG: 8.6
+            RPG: 7.3
+            
+2025-01-30 15:32:57,802 - INFO - 
+            Season: 2011
+            Team: MIA
+            PlayerID: 3462
+            Games: 79
+            PPG: 26.7
+            APG: 7.0
+            RPG: 7.5
+            
+2025-01-30 15:32:57,802 - INFO - 
+            Season: 2012
+            Team: MIA
+            PlayerID: 3462
+            Games: 62
+            PPG: 27.1
+            APG: 6.2
+            RPG: 7.9
+            
+2025-01-30 15:32:57,802 - INFO - 
+            Season: 2013
+            Team: MIA
+            PlayerID: 3462
+            Games: 76
+            PPG: 26.8
+            APG: 7.3
+            RPG: 8.0
+            
+2025-01-30 15:32:57,802 - INFO - 
+            Season: 2014
+            Team: MIA
+            PlayerID: 3462
+            Games: 77
+            PPG: 27.1
+            APG: 6.3
+            RPG: 6.9
+            
+2025-01-30 15:32:57,802 - INFO - 
+            Season: 2015
+            Team: CLE
+            PlayerID: 3462
+            Games: 69
+            PPG: 25.3
+            APG: 7.4
+            RPG: 6.0
+            
+2025-01-30 15:32:57,802 - INFO - 
+            Season: 2016
+            Team: CLE
+            PlayerID: 3462
+            Games: 76
+            PPG: 25.3
+            APG: 6.8
+            RPG: 7.4
+            
+2025-01-30 15:32:57,802 - INFO - 
+            Season: 2017
+            Team: CLE
+            PlayerID: 3462
+            Games: 74
+            PPG: 26.4
+            APG: 8.7
+            RPG: 8.6
+            
+2025-01-30 15:32:57,802 - INFO - 
+            Season: 2018
+            Team: CLE
+            PlayerID: 3462
+            Games: 82
+            PPG: 27.5
+            APG: 9.1
+            RPG: 8.6
+            
+2025-01-30 15:32:57,802 - INFO - 
+            Season: 2019
+            Team: LAL
+            PlayerID: 3462
+            Games: 55
+            PPG: 27.4
+            APG: 8.3
+            RPG: 8.5
+            
+2025-01-30 15:32:57,802 - INFO - 
+            Season: 2020
+            Team: LAL
+            PlayerID: 3462
+            Games: 67
+            PPG: 25.3
+            APG: 10.2
+            RPG: 7.8
+            
+2025-01-30 15:32:57,802 - INFO - 
+            Season: 2021
+            Team: LAL
+            PlayerID: 3462
+            Games: 45
+            PPG: 25.0
+            APG: 7.8
+            RPG: 7.7
+            
+2025-01-30 15:32:57,802 - INFO - 
+            Season: 2022
+            Team: LAL
+            PlayerID: 3462
+            Games: 56
+            PPG: 30.3
+            APG: 6.2
+            RPG: 8.2
+            
+2025-01-30 15:32:57,802 - INFO - 
+            Season: 2023
+            Team: LAL
+            PlayerID: 3462
+            Games: 55
+            PPG: 28.9
+            APG: 6.8
+            RPG: 8.3
+            
+2025-01-30 15:32:57,802 - INFO - 
+            Season: 2024
+            Team: LAL
+            PlayerID: 3462
+            Games: 71
+            PPG: 25.7
+            APG: 8.3
+            RPG: 7.3
+            
+2025-01-30 15:32:57,802 - INFO - 
+            Season: 2025
+            Team: LAL
+            PlayerID: 3462
+            Games: 29
+            PPG: 23.4
+            APG: 8.9
+            RPG: 7.7
+            
+2025-01-30 15:32:57,802 - INFO - Processing players...
+2025-01-30 15:33:00,249 - INFO - Data migration completed successfully
