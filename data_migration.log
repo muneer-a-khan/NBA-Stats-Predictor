@@ -1,0 +1,877 @@
+2025-02-03 14:46:06,558 - INFO - Starting data migration process...
+2025-02-03 14:46:06,558 - INFO - Creating database at: C:\Users\munee\OneDrive\Desktop\NFL-NBA-Stats-Predictor\backend\data\nba_stats.db
+2025-02-03 14:46:06,558 - INFO - Looking for CSV files in: C:\Users\munee\OneDrive\Desktop\NFL-NBA-Stats-Predictor\backend\data\nbastats
+2025-02-03 14:46:06,593 - INFO - Database initialized successfully
+2025-02-03 14:46:06,594 - INFO - Reading CSV files...
+2025-02-03 14:46:07,319 - INFO - 
+Players with duplicate IDs:
+2025-02-03 14:46:07,319 - INFO - 
+Player: Brandon Ingram
+2025-02-03 14:46:07,319 - INFO - ID 4378: Seasons 2024-2025
+2025-02-03 14:46:07,319 - INFO - ID 4379: Seasons 2017-2023
+2025-02-03 14:46:07,319 - INFO - 
+Player: Brandon Williams
+2025-02-03 14:46:07,320 - INFO - ID 4910: Seasons 2022-2025
+2025-02-03 14:46:07,320 - INFO - ID 3042: Seasons 1998-2003
+2025-02-03 14:46:07,320 - INFO - 
+Player: Bruce Brown
+2025-02-03 14:46:07,320 - INFO - ID 4593: Seasons 2024-2025
+2025-02-03 14:46:07,320 - INFO - ID 4594: Seasons 2019-2023
+2025-02-03 14:46:07,320 - INFO - 
+Player: Buddy Hield
+2025-02-03 14:46:07,320 - INFO - ID 4381: Seasons 2024-2025
+2025-02-03 14:46:07,320 - INFO - ID 4382: Seasons 2017-2023
+2025-02-03 14:46:07,320 - INFO - 
+Player: CJ McCollum
+2025-02-03 14:46:07,320 - INFO - ID 4150: Seasons 2024-2025
+2025-02-03 14:46:07,320 - INFO - ID 4154: Seasons 2014-2023
+2025-02-03 14:46:07,320 - INFO - 
+Player: Caris LeVert
+2025-02-03 14:46:07,320 - INFO - ID 4382: Seasons 2024-2025
+2025-02-03 14:46:07,320 - INFO - ID 4383: Seasons 2017-2023
+2025-02-03 14:46:07,321 - INFO - 
+Player: Collin Sexton
+2025-02-03 14:46:07,321 - INFO - ID 4598: Seasons 2024-2025
+2025-02-03 14:46:07,321 - INFO - ID 4599: Seasons 2019-2023
+2025-02-03 14:46:07,321 - INFO - 
+Player: DaQuan Jeffries
+2025-02-03 14:46:07,321 - INFO - ID 4705: Seasons 2024-2025
+2025-02-03 14:46:07,321 - INFO - ID 4706: Seasons 2020-2022
+2025-02-03 14:46:07,322 - INFO - 
+Player: Daniel Gafford
+2025-02-03 14:46:07,322 - INFO - ID 4706: Seasons 2024-2025
+2025-02-03 14:46:07,322 - INFO - ID 4705: Seasons 2020-2023
+2025-02-03 14:46:07,322 - INFO - 
+Player: Dario Šari\u0107
+2025-02-03 14:46:07,322 - INFO - ID 4389: Seasons 2024-2025
+2025-02-03 14:46:07,322 - INFO - ID 4390: Seasons 2017-2023
+2025-02-03 14:46:07,322 - INFO - 
+Player: De'Anthony Melton
+2025-02-03 14:46:07,322 - INFO - ID 4601: Seasons 2024-2025
+2025-02-03 14:46:07,322 - INFO - ID 4602: Seasons 2019-2023
+2025-02-03 14:46:07,322 - INFO - 
+Player: Dejounte Murray
+2025-02-03 14:46:07,322 - INFO - ID 4392: Seasons 2024-2025
+2025-02-03 14:46:07,322 - INFO - ID 4394: Seasons 2017-2023
+2025-02-03 14:46:07,322 - INFO - 
+Player: Derrick Jones Jr.
+2025-02-03 14:46:07,322 - INFO - ID 4395: Seasons 2024-2025
+2025-02-03 14:46:07,322 - INFO - ID 4397: Seasons 2017-2023
+2025-02-03 14:46:07,322 - INFO - 
+Player: Domantas Sabonis
+2025-02-03 14:46:07,323 - INFO - ID 4398: Seasons 2024-2025
+2025-02-03 14:46:07,323 - INFO - ID 4400: Seasons 2017-2023
+2025-02-03 14:46:07,323 - INFO - 
+Player: Donte DiVincenzo
+2025-02-03 14:46:07,323 - INFO - ID 4607: Seasons 2024-2025
+2025-02-03 14:46:07,323 - INFO - ID 4608: Seasons 2019-2023
+2025-02-03 14:46:07,323 - INFO - 
+Player: Dorian Finney-Smith
+2025-02-03 14:46:07,323 - INFO - ID 4399: Seasons 2024-2025
+2025-02-03 14:46:07,323 - INFO - ID 4401: Seasons 2017-2023
+2025-02-03 14:46:07,323 - INFO - 
+Player: Drew Eubanks
+2025-02-03 14:46:07,323 - INFO - ID 4609: Seasons 2024-2025
+2025-02-03 14:46:07,323 - INFO - ID 4610: Seasons 2019-2023
+2025-02-03 14:46:07,323 - INFO - 
+Player: Duncan Robinson
+2025-02-03 14:46:07,323 - INFO - ID 4610: Seasons 2024-2025
+2025-02-03 14:46:07,323 - INFO - ID 4611: Seasons 2019-2023
+2025-02-03 14:46:07,323 - INFO - 
+Player: Fred VanVleet
+2025-02-03 14:46:07,323 - INFO - ID 4402: Seasons 2024-2025
+2025-02-03 14:46:07,323 - INFO - ID 4403: Seasons 2017-2023
+2025-02-03 14:46:07,323 - INFO - 
+Player: Gary Payton II
+2025-02-03 14:46:07,323 - INFO - ID 4403: Seasons 2024-2025
+2025-02-03 14:46:07,324 - INFO - ID 4404: Seasons 2017-2023
+2025-02-03 14:46:07,324 - INFO - 
+Player: Gary Trent Jr.
+2025-02-03 14:46:07,324 - INFO - ID 4617: Seasons 2024-2025
+2025-02-03 14:46:07,324 - INFO - ID 4618: Seasons 2019-2023
+2025-02-03 14:46:07,324 - INFO - 
+Player: Georges Niang
+2025-02-03 14:46:07,324 - INFO - ID 4404: Seasons 2024-2025
+2025-02-03 14:46:07,324 - INFO - ID 4405: Seasons 2017-2023
+2025-02-03 14:46:07,324 - INFO - 
+Player: Grayson Allen
+2025-02-03 14:46:07,324 - INFO - ID 4619: Seasons 2024-2025
+2025-02-03 14:46:07,324 - INFO - ID 4620: Seasons 2019-2023
+2025-02-03 14:46:07,324 - INFO - 
+Player: Haywood Highsmith
+2025-02-03 14:46:07,324 - INFO - ID 4622: Seasons 2024-2025
+2025-02-03 14:46:07,324 - INFO - ID 4623: Seasons 2019-2023
+2025-02-03 14:46:07,324 - INFO - 
+Player: Isaiah Hartenstein
+2025-02-03 14:46:07,324 - INFO - ID 4626: Seasons 2024-2025
+2025-02-03 14:46:07,324 - INFO - ID 4627: Seasons 2019-2023
+2025-02-03 14:46:07,325 - INFO - 
+Player: Ivica Zubac
+2025-02-03 14:46:07,325 - INFO - ID 4409: Seasons 2024-2025
+2025-02-03 14:46:07,325 - INFO - ID 4410: Seasons 2017-2023
+2025-02-03 14:46:07,325 - INFO - 
+Player: JD Davison
+2025-02-03 14:46:07,325 - INFO - ID 5048: Seasons 2024-2025
+2025-02-03 14:46:07,325 - INFO - ID 5062: Seasons 2023-2023
+2025-02-03 14:46:07,325 - INFO - 
+Player: JT Thor
+2025-02-03 14:46:07,325 - INFO - ID 4944: Seasons 2024-2025
+2025-02-03 14:46:07,325 - INFO - ID 4972: Seasons 2022-2023
+2025-02-03 14:46:07,325 - INFO - 
+Player: Jabari Smith Jr.
+2025-02-03 14:46:07,325 - INFO - ID 5049: Seasons 2024-2025
+2025-02-03 14:46:07,325 - INFO - ID 5048: Seasons 2023-2023
+2025-02-03 14:46:07,325 - INFO - 
+Player: Jabari Walker
+2025-02-03 14:46:07,326 - INFO - ID 5050: Seasons 2024-2025
+2025-02-03 14:46:07,326 - INFO - ID 5049: Seasons 2023-2023
+2025-02-03 14:46:07,326 - INFO - 
+Player: Jaden Hardy
+2025-02-03 14:46:07,326 - INFO - ID 5053: Seasons 2024-2025
+2025-02-03 14:46:07,326 - INFO - ID 5052: Seasons 2023-2023
+2025-02-03 14:46:07,326 - INFO - 
+Player: Jaden Ivey
+2025-02-03 14:46:07,326 - INFO - ID 5054: Seasons 2024-2025
+2025-02-03 14:46:07,326 - INFO - ID 5053: Seasons 2023-2023
+2025-02-03 14:46:07,326 - INFO - 
+Player: Jaden Springer
+2025-02-03 14:46:07,326 - INFO - ID 4946: Seasons 2024-2025
+2025-02-03 14:46:07,326 - INFO - ID 4944: Seasons 2022-2023
+2025-02-03 14:46:07,326 - INFO - 
+Player: Jake LaRavia
+2025-02-03 14:46:07,326 - INFO - ID 5055: Seasons 2024-2025
+2025-02-03 14:46:07,326 - INFO - ID 5054: Seasons 2023-2023
+2025-02-03 14:46:07,326 - INFO - 
+Player: Jakob Poeltl
+2025-02-03 14:46:07,326 - INFO - ID 4411: Seasons 2024-2025
+2025-02-03 14:46:07,326 - INFO - ID 4412: Seasons 2017-2023
+2025-02-03 14:46:07,326 - INFO - 
+Player: Jalen Brunson
+2025-02-03 14:46:07,326 - INFO - ID 4629: Seasons 2024-2025
+2025-02-03 14:46:07,326 - INFO - ID 4630: Seasons 2019-2023
+2025-02-03 14:46:07,326 - INFO - 
+Player: Jalen Duren
+2025-02-03 14:46:07,326 - INFO - ID 5056: Seasons 2024-2025
+2025-02-03 14:46:07,327 - INFO - ID 5055: Seasons 2023-2023
+2025-02-03 14:46:07,327 - INFO - 
+Player: Jalen Green
+2025-02-03 14:46:07,327 - INFO - ID 4948: Seasons 2024-2025
+2025-02-03 14:46:07,327 - INFO - ID 4946: Seasons 2022-2023
+2025-02-03 14:46:07,327 - INFO - 
+Player: Jalen Johnson
+2025-02-03 14:46:07,327 - INFO - ID 4949: Seasons 2024-2025
+2025-02-03 14:46:07,327 - INFO - ID 4947: Seasons 2022-2023
+2025-02-03 14:46:07,327 - INFO - 
+Player: Jalen Suggs
+2025-02-03 14:46:07,327 - INFO - ID 4950: Seasons 2024-2025
+2025-02-03 14:46:07,327 - INFO - ID 4948: Seasons 2022-2023
+2025-02-03 14:46:07,327 - INFO - 
+Player: Jalen Williams
+2025-02-03 14:46:07,327 - INFO - ID 5057: Seasons 2024-2025
+2025-02-03 14:46:07,327 - INFO - ID 5056: Seasons 2023-2023
+2025-02-03 14:46:07,327 - INFO - 
+Player: Jamal Cain
+2025-02-03 14:46:07,327 - INFO - ID 5058: Seasons 2024-2025
+2025-02-03 14:46:07,327 - INFO - ID 5057: Seasons 2023-2023
+2025-02-03 14:46:07,327 - INFO - 
+Player: Jamal Murray
+2025-02-03 14:46:07,327 - INFO - ID 4412: Seasons 2024-2025
+2025-02-03 14:46:07,327 - INFO - ID 4413: Seasons 2017-2023
+2025-02-03 14:46:07,328 - INFO - 
+Player: Jared Butler
+2025-02-03 14:46:07,328 - INFO - ID 4953: Seasons 2024-2025
+2025-02-03 14:46:07,328 - INFO - ID 4952: Seasons 2022-2023
+2025-02-03 14:46:07,328 - INFO - 
+Player: Jared Rhoden
+2025-02-03 14:46:07,328 - INFO - ID 5060: Seasons 2024-2025
+2025-02-03 14:46:07,328 - INFO - ID 5059: Seasons 2023-2023
+2025-02-03 14:46:07,328 - INFO - 
+Player: Jaren Jackson Jr.
+2025-02-03 14:46:07,328 - INFO - ID 4631: Seasons 2024-2025
+2025-02-03 14:46:07,328 - INFO - ID 4632: Seasons 2019-2023
+2025-02-03 14:46:07,328 - INFO - 
+Player: Jay Huff
+2025-02-03 14:46:07,328 - INFO - ID 4957: Seasons 2024-2025
+2025-02-03 14:46:07,328 - INFO - ID 4956: Seasons 2022-2023
+2025-02-03 14:46:07,328 - INFO - 
+Player: Jaylen Brown
+2025-02-03 14:46:07,328 - INFO - ID 4414: Seasons 2024-2025
+2025-02-03 14:46:07,328 - INFO - ID 4415: Seasons 2017-2023
+2025-02-03 14:46:07,328 - INFO - 
+Player: Jaylin Williams
+2025-02-03 14:46:07,329 - INFO - ID 5062: Seasons 2024-2025
+2025-02-03 14:46:07,329 - INFO - ID 5061: Seasons 2023-2023
+2025-02-03 14:46:07,329 - INFO - 
+Player: Jeff Dowtin
+2025-02-03 14:46:07,329 - INFO - ID 4959: Seasons 2024-2025
+2025-02-03 14:46:07,329 - INFO - ID 4958: Seasons 2022-2023
+2025-02-03 14:46:07,329 - INFO - 
+Player: Jeremiah Robinson-Earl
+2025-02-03 14:46:07,329 - INFO - ID 4960: Seasons 2024-2025
+2025-02-03 14:46:07,329 - INFO - ID 4959: Seasons 2022-2023
+2025-02-03 14:46:07,329 - INFO - 
+Player: Jericho Sims
+2025-02-03 14:46:07,329 - INFO - ID 4961: Seasons 2024-2025
+2025-02-03 14:46:07,329 - INFO - ID 4960: Seasons 2022-2023
+2025-02-03 14:46:07,329 - INFO - 
+Player: Jevon Carter
+2025-02-03 14:46:07,329 - INFO - ID 4637: Seasons 2024-2025
+2025-02-03 14:46:07,329 - INFO - ID 4638: Seasons 2019-2023
+2025-02-03 14:46:07,329 - INFO - 
+Player: Jock Landale
+2025-02-03 14:46:07,329 - INFO - ID 4962: Seasons 2024-2025
+2025-02-03 14:46:07,329 - INFO - ID 4961: Seasons 2022-2023
+2025-02-03 14:46:07,329 - INFO - 
+Player: Joel Embiid
+2025-02-03 14:46:07,329 - INFO - ID 4416: Seasons 2024-2025
+2025-02-03 14:46:07,330 - INFO - ID 4417: Seasons 2017-2023
+2025-02-03 14:46:07,330 - INFO - 
+Player: Johnny Davis
+2025-02-03 14:46:07,330 - INFO - ID 5066: Seasons 2023-2025
+2025-02-03 14:46:07,330 - INFO - ID 1706: Seasons 1977-1986
+2025-02-03 14:46:07,330 - INFO - 
+Player: Jonathan Kuminga
+2025-02-03 14:46:07,330 - INFO - ID 4966: Seasons 2024-2025
+2025-02-03 14:46:07,330 - INFO - ID 4965: Seasons 2022-2023
+2025-02-03 14:46:07,330 - INFO - 
+Player: Jose Alvarado
+2025-02-03 14:46:07,330 - INFO - ID 4969: Seasons 2024-2025
+2025-02-03 14:46:07,330 - INFO - ID 4968: Seasons 2022-2023
+2025-02-03 14:46:07,330 - INFO - 
+Player: Josh Christopher
+2025-02-03 14:46:07,330 - INFO - ID 4970: Seasons 2025-2025
+2025-02-03 14:46:07,330 - INFO - ID 4969: Seasons 2022-2023
+2025-02-03 14:46:07,330 - INFO - 
+Player: Josh Giddey
+2025-02-03 14:46:07,331 - INFO - ID 4971: Seasons 2024-2025
+2025-02-03 14:46:07,331 - INFO - ID 4970: Seasons 2022-2023
+2025-02-03 14:46:07,331 - INFO - 
+Player: Josh Okogie
+2025-02-03 14:46:07,331 - INFO - ID 4643: Seasons 2024-2025
+2025-02-03 14:46:07,331 - INFO - ID 4644: Seasons 2019-2023
+2025-02-03 14:46:07,331 - INFO - 
+Player: Keldon Johnson
+2025-02-03 14:46:07,331 - INFO - ID 4746: Seasons 2024-2025
+2025-02-03 14:46:07,331 - INFO - ID 4745: Seasons 2020-2023
+2025-02-03 14:46:07,331 - INFO - 
+Player: Kenrich Williams
+2025-02-03 14:46:07,331 - INFO - ID 4646: Seasons 2024-2025
+2025-02-03 14:46:07,331 - INFO - ID 4647: Seasons 2019-2023
+2025-02-03 14:46:07,331 - INFO - 
+Player: Kevin Huerter
+2025-02-03 14:46:07,331 - INFO - ID 4647: Seasons 2024-2025
+2025-02-03 14:46:07,331 - INFO - ID 4648: Seasons 2019-2023
+2025-02-03 14:46:07,331 - INFO - 
+Player: Kevin Porter Jr.
+2025-02-03 14:46:07,331 - INFO - ID 4749: Seasons 2025-2025
+2025-02-03 14:46:07,331 - INFO - ID 4748: Seasons 2020-2023
+2025-02-03 14:46:07,331 - INFO - 
+Player: Kris Dunn
+2025-02-03 14:46:07,331 - INFO - ID 4420: Seasons 2024-2025
+2025-02-03 14:46:07,331 - INFO - ID 4421: Seasons 2017-2023
+2025-02-03 14:46:07,332 - INFO - 
+Player: LaMelo Ball
+2025-02-03 14:46:07,332 - INFO - ID 4858: Seasons 2024-2025
+2025-02-03 14:46:07,332 - INFO - ID 4859: Seasons 2021-2023
+2025-02-03 14:46:07,332 - INFO - 
+Player: Landry Shamet
+2025-02-03 14:46:07,332 - INFO - ID 4651: Seasons 2024-2025
+2025-02-03 14:46:07,332 - INFO - ID 4652: Seasons 2019-2023
+2025-02-03 14:46:07,332 - INFO - 
+Player: LeBron James
+2025-02-03 14:46:07,332 - INFO - ID 3462: Seasons 2024-2025
+2025-02-03 14:46:07,332 - INFO - ID 3463: Seasons 2004-2023
+2025-02-03 14:46:07,332 - INFO - 
+Player: Luka Don\u010di\u0107
+2025-02-03 14:46:07,332 - INFO - ID 4653: Seasons 2024-2025
+2025-02-03 14:46:07,332 - INFO - ID 4654: Seasons 2019-2023
+2025-02-03 14:46:07,332 - INFO - 
+Player: Malcolm Brogdon
+2025-02-03 14:46:07,332 - INFO - ID 4423: Seasons 2024-2025
+2025-02-03 14:46:07,332 - INFO - ID 4424: Seasons 2017-2023
+2025-02-03 14:46:07,332 - INFO - 
+Player: Malik Beasley
+2025-02-03 14:46:07,332 - INFO - ID 4425: Seasons 2024-2025
+2025-02-03 14:46:07,332 - INFO - ID 4426: Seasons 2017-2023
+2025-02-03 14:46:07,333 - INFO - 
+Player: Markieff Morris
+2025-02-03 14:46:07,333 - INFO - ID 4044: Seasons 2024-2025
+2025-02-03 14:46:07,333 - INFO - ID 4043: Seasons 2012-2023
+2025-02-03 14:46:07,333 - INFO - 
+Player: Marvin Bagley III
+2025-02-03 14:46:07,333 - INFO - ID 4655: Seasons 2024-2025
+2025-02-03 14:46:07,333 - INFO - ID 4656: Seasons 2019-2023
+2025-02-03 14:46:07,333 - INFO - 
+Player: Mikal Bridges
+2025-02-03 14:46:07,333 - INFO - ID 4657: Seasons 2024-2025
+2025-02-03 14:46:07,333 - INFO - ID 4658: Seasons 2019-2023
+2025-02-03 14:46:07,333 - INFO - 
+Player: Miles Bridges
+2025-02-03 14:46:07,333 - INFO - ID 4658: Seasons 2024-2025
+2025-02-03 14:46:07,333 - INFO - ID 4659: Seasons 2019-2022
+2025-02-03 14:46:07,333 - INFO - 
+Player: Mo Bamba
+2025-02-03 14:46:07,333 - INFO - ID 4661: Seasons 2024-2025
+2025-02-03 14:46:07,333 - INFO - ID 4662: Seasons 2019-2023
+2025-02-03 14:46:07,333 - INFO - 
+Player: Moritz Wagner
+2025-02-03 14:46:07,333 - INFO - ID 4662: Seasons 2024-2025
+2025-02-03 14:46:07,333 - INFO - ID 4663: Seasons 2019-2023
+2025-02-03 14:46:07,333 - INFO - 
+Player: Pascal Siakam
+2025-02-03 14:46:07,333 - INFO - ID 4436: Seasons 2024-2025
+2025-02-03 14:46:07,334 - INFO - ID 4437: Seasons 2017-2023
+2025-02-03 14:46:07,334 - INFO - 
+Player: Paul George
+2025-02-03 14:46:07,334 - INFO - ID 3968: Seasons 2024-2025
+2025-02-03 14:46:07,334 - INFO - ID 3969: Seasons 2011-2023
+2025-02-03 14:46:07,334 - INFO - 
+Player: RJ Barrett
+2025-02-03 14:46:07,334 - INFO - ID 4781: Seasons 2024-2025
+2025-02-03 14:46:07,334 - INFO - ID 4782: Seasons 2020-2023
+2025-02-03 14:46:07,334 - INFO - 
+Player: Robert Williams
+2025-02-03 14:46:07,334 - INFO - ID 4666: Seasons 2024-2025
+2025-02-03 14:46:07,334 - INFO - ID 4667: Seasons 2019-2023
+2025-02-03 14:46:07,334 - INFO - 
+Player: Shai Gilgeous-Alexander
+2025-02-03 14:46:07,334 - INFO - ID 4669: Seasons 2024-2025
+2025-02-03 14:46:07,334 - INFO - ID 4670: Seasons 2019-2023
+2025-02-03 14:46:07,334 - INFO - 
+Player: Shake Milton
+2025-02-03 14:46:07,334 - INFO - ID 4670: Seasons 2024-2025
+2025-02-03 14:46:07,335 - INFO - ID 4671: Seasons 2019-2023
+2025-02-03 14:46:07,335 - INFO - 
+Player: Svi Mykhailiuk
+2025-02-03 14:46:07,335 - INFO - ID 4671: Seasons 2024-2025
+2025-02-03 14:46:07,335 - INFO - ID 4672: Seasons 2019-2023
+2025-02-03 14:46:07,335 - INFO - 
+Player: Taurean Prince
+2025-02-03 14:46:07,335 - INFO - ID 4449: Seasons 2024-2025
+2025-02-03 14:46:07,335 - INFO - ID 4450: Seasons 2017-2023
+2025-02-03 14:46:07,335 - INFO - 
+Player: Trae Young
+2025-02-03 14:46:07,335 - INFO - ID 4675: Seasons 2024-2025
+2025-02-03 14:46:07,335 - INFO - ID 4676: Seasons 2019-2023
+2025-02-03 14:46:07,335 - INFO - 
+Player: TyTy Washington Jr.
+2025-02-03 14:46:07,335 - INFO - ID 5103: Seasons 2024-2025
+2025-02-03 14:46:07,335 - INFO - ID 5104: Seasons 2023-2023
+2025-02-03 14:46:07,335 - INFO - 
+Player: Tyrese Martin
+2025-02-03 14:46:07,335 - INFO - ID 5104: Seasons 2025-2025
+2025-02-03 14:46:07,335 - INFO - ID 5103: Seasons 2023-2023
+2025-02-03 14:46:07,335 - INFO - 
+Player: Wendell Carter Jr.
+2025-02-03 14:46:07,335 - INFO - ID 4681: Seasons 2024-2025
+2025-02-03 14:46:07,336 - INFO - ID 4682: Seasons 2019-2023
+2025-02-03 14:46:07,336 - INFO - 
+Player: Chimezie Metu
+2025-02-03 14:46:07,336 - INFO - ID 4596: Seasons 2024-2024
+2025-02-03 14:46:07,336 - INFO - ID 4597: Seasons 2019-2023
+2025-02-03 14:46:07,336 - INFO - 
+Player: Chuma Okeke
+2025-02-03 14:46:07,336 - INFO - ID 4818: Seasons 2024-2024
+2025-02-03 14:46:07,336 - INFO - ID 4817: Seasons 2021-2023
+2025-02-03 14:46:07,336 - INFO - 
+Player: Damian Jones
+2025-02-03 14:46:07,336 - INFO - ID 4386: Seasons 2024-2024
+2025-02-03 14:46:07,336 - INFO - ID 4387: Seasons 2017-2023
+2025-02-03 14:46:07,336 - INFO - 
+Player: Danuel House Jr.
+2025-02-03 14:46:07,336 - INFO - ID 4388: Seasons 2024-2024
+2025-02-03 14:46:07,336 - INFO - ID 4389: Seasons 2017-2023
+2025-02-03 14:46:07,336 - INFO - 
+Player: Devonte' Graham
+2025-02-03 14:46:07,336 - INFO - ID 4606: Seasons 2024-2024
+2025-02-03 14:46:07,336 - INFO - ID 4607: Seasons 2019-2023
+2025-02-03 14:46:07,336 - INFO - 
+Player: D\u0101vis Bert\u0101ns
+2025-02-03 14:46:07,336 - INFO - ID 4401: Seasons 2024-2024
+2025-02-03 14:46:07,336 - INFO - ID 4392: Seasons 2017-2023
+2025-02-03 14:46:07,337 - INFO - 
+Player: Hamidou Diallo
+2025-02-03 14:46:07,337 - INFO - ID 4620: Seasons 2024-2024
+2025-02-03 14:46:07,337 - INFO - ID 4621: Seasons 2019-2023
+2025-02-03 14:46:07,337 - INFO - 
+Player: Harry Giles
+2025-02-03 14:46:07,337 - INFO - ID 4621: Seasons 2024-2024
+2025-02-03 14:46:07,337 - INFO - ID 4622: Seasons 2019-2021
+2025-02-03 14:46:07,337 - INFO - 
+Player: JaVale McGee
+2025-02-03 14:46:07,337 - INFO - ID 3823: Seasons 2024-2024
+2025-02-03 14:46:07,337 - INFO - ID 3824: Seasons 2009-2023
+2025-02-03 14:46:07,337 - INFO - 
+Player: Jack White
+2025-02-03 14:46:07,337 - INFO - ID 5051: Seasons 2024-2024
+2025-02-03 14:46:07,337 - INFO - ID 5050: Seasons 2023-2023
+2025-02-03 14:46:07,337 - INFO - 
+Player: Jacob Gilyard
+2025-02-03 14:46:07,337 - INFO - ID 5052: Seasons 2024-2024
+2025-02-03 14:46:07,337 - INFO - ID 5051: Seasons 2023-2023
+2025-02-03 14:46:07,337 - INFO - 
+Player: Jamaree Bouyea
+2025-02-03 14:46:07,337 - INFO - ID 5059: Seasons 2024-2024
+2025-02-03 14:46:07,337 - INFO - ID 5058: Seasons 2023-2023
+2025-02-03 14:46:07,337 - INFO - 
+Player: James Bouknight
+2025-02-03 14:46:07,337 - INFO - ID 4951: Seasons 2024-2024
+2025-02-03 14:46:07,337 - INFO - ID 4949: Seasons 2022-2023
+2025-02-03 14:46:07,337 - INFO - 
+Player: Jarred Vanderbilt
+2025-02-03 14:46:07,337 - INFO - ID 4633: Seasons 2024-2024
+2025-02-03 14:46:07,338 - INFO - ID 4634: Seasons 2019-2023
+2025-02-03 14:46:07,338 - INFO - 
+Player: Jason Preston
+2025-02-03 14:46:07,338 - INFO - ID 5061: Seasons 2024-2024
+2025-02-03 14:46:07,338 - INFO - ID 5060: Seasons 2023-2023
+2025-02-03 14:46:07,338 - INFO - 
+Player: Javonte Smart
+2025-02-03 14:46:07,338 - INFO - ID 4956: Seasons 2024-2024
+2025-02-03 14:46:07,338 - INFO - ID 4955: Seasons 2022-2022
+2025-02-03 14:46:07,338 - INFO - 
+Player: Jerome Robinson
+2025-02-03 14:46:07,338 - INFO - ID 4636: Seasons 2024-2024
+2025-02-03 14:46:07,338 - INFO - ID 4637: Seasons 2019-2021
+2025-02-03 14:46:07,338 - INFO - 
+Player: Jordan Goodwin
+2025-02-03 14:46:07,338 - INFO - ID 4967: Seasons 2024-2024
+2025-02-03 14:46:07,338 - INFO - ID 4966: Seasons 2022-2023
+2025-02-03 14:46:07,338 - INFO - 
+Player: Joshua Primo
+2025-02-03 14:46:07,338 - INFO - ID 4972: Seasons 2024-2024
+2025-02-03 14:46:07,338 - INFO - ID 4971: Seasons 2022-2023
+2025-02-03 14:46:07,338 - INFO - 
+Player: Keita Bates-Diop
+2025-02-03 14:46:07,338 - INFO - ID 4645: Seasons 2024-2024
+2025-02-03 14:46:07,338 - INFO - ID 4646: Seasons 2019-2023
+2025-02-03 14:46:07,338 - INFO - 
+Player: Kevin Knox
+2025-02-03 14:46:07,339 - INFO - ID 4648: Seasons 2024-2024
+2025-02-03 14:46:07,339 - INFO - ID 4649: Seasons 2019-2023
+2025-02-03 14:46:07,339 - INFO - 
+Player: Lamar Stevens
+2025-02-03 14:46:07,339 - INFO - ID 4859: Seasons 2024-2024
+2025-02-03 14:46:07,339 - INFO - ID 4858: Seasons 2021-2023
+2025-02-03 14:46:07,339 - INFO - 
+Player: Lonnie Walker IV
+2025-02-03 14:46:07,339 - INFO - ID 4652: Seasons 2024-2024
+2025-02-03 14:46:07,339 - INFO - ID 4653: Seasons 2019-2023
+2025-02-03 14:46:07,339 - INFO - 
+Player: Marcus Morris
+2025-02-03 14:46:07,339 - INFO - ID 4043: Seasons 2024-2024
+2025-02-03 14:46:07,339 - INFO - ID 4042: Seasons 2012-2023
+2025-02-03 14:46:07,339 - INFO - 
+Player: Mitchell Robinson
+2025-02-03 14:46:07,339 - INFO - ID 4660: Seasons 2024-2024
+2025-02-03 14:46:07,339 - INFO - ID 4661: Seasons 2019-2023
+2025-02-03 14:46:07,339 - INFO - 
+Player: Troy Brown Jr.
+2025-02-03 14:46:07,339 - INFO - ID 4677: Seasons 2024-2024
+2025-02-03 14:46:07,339 - INFO - ID 4678: Seasons 2019-2023
+2025-02-03 14:46:07,339 - INFO - 
+Player: Yuta Watanabe
+2025-02-03 14:46:07,339 - INFO - ID 4683: Seasons 2024-2024
+2025-02-03 14:46:07,339 - INFO - ID 4684: Seasons 2019-2023
+2025-02-03 14:46:08,261 - INFO - 
+LeBron's data after merging:
+2025-02-03 14:46:08,261 - INFO - 
+        Season: 2004
+        Team: CLE
+        PlayerID: 3462
+        Games: 79
+        PPG: 20.9
+        APG: 5.9
+        RPG: 5.5
+        
+2025-02-03 14:46:08,261 - INFO - 
+        Season: 2005
+        Team: CLE
+        PlayerID: 3462
+        Games: 80
+        PPG: 27.2
+        APG: 7.2
+        RPG: 7.4
+        
+2025-02-03 14:46:08,261 - INFO - 
+        Season: 2006
+        Team: CLE
+        PlayerID: 3462
+        Games: 79
+        PPG: 31.4
+        APG: 6.6
+        RPG: 7.0
+        
+2025-02-03 14:46:08,261 - INFO - 
+        Season: 2007
+        Team: CLE
+        PlayerID: 3462
+        Games: 78
+        PPG: 27.3
+        APG: 6.0
+        RPG: 6.7
+        
+2025-02-03 14:46:08,261 - INFO - 
+        Season: 2008
+        Team: CLE
+        PlayerID: 3462
+        Games: 75
+        PPG: 30.0
+        APG: 7.2
+        RPG: 7.9
+        
+2025-02-03 14:46:08,261 - INFO - 
+        Season: 2009
+        Team: CLE
+        PlayerID: 3462
+        Games: 81
+        PPG: 28.4
+        APG: 7.2
+        RPG: 7.6
+        
+2025-02-03 14:46:08,261 - INFO - 
+        Season: 2010
+        Team: CLE
+        PlayerID: 3462
+        Games: 76
+        PPG: 29.7
+        APG: 8.6
+        RPG: 7.3
+        
+2025-02-03 14:46:08,261 - INFO - 
+        Season: 2011
+        Team: MIA
+        PlayerID: 3462
+        Games: 79
+        PPG: 26.7
+        APG: 7.0
+        RPG: 7.5
+        
+2025-02-03 14:46:08,261 - INFO - 
+        Season: 2012
+        Team: MIA
+        PlayerID: 3462
+        Games: 62
+        PPG: 27.1
+        APG: 6.2
+        RPG: 7.9
+        
+2025-02-03 14:46:08,261 - INFO - 
+        Season: 2013
+        Team: MIA
+        PlayerID: 3462
+        Games: 76
+        PPG: 26.8
+        APG: 7.3
+        RPG: 8.0
+        
+2025-02-03 14:46:08,262 - INFO - 
+        Season: 2014
+        Team: MIA
+        PlayerID: 3462
+        Games: 77
+        PPG: 27.1
+        APG: 6.3
+        RPG: 6.9
+        
+2025-02-03 14:46:08,262 - INFO - 
+        Season: 2015
+        Team: CLE
+        PlayerID: 3462
+        Games: 69
+        PPG: 25.3
+        APG: 7.4
+        RPG: 6.0
+        
+2025-02-03 14:46:08,262 - INFO - 
+        Season: 2016
+        Team: CLE
+        PlayerID: 3462
+        Games: 76
+        PPG: 25.3
+        APG: 6.8
+        RPG: 7.4
+        
+2025-02-03 14:46:08,262 - INFO - 
+        Season: 2017
+        Team: CLE
+        PlayerID: 3462
+        Games: 74
+        PPG: 26.4
+        APG: 8.7
+        RPG: 8.6
+        
+2025-02-03 14:46:08,262 - INFO - 
+        Season: 2018
+        Team: CLE
+        PlayerID: 3462
+        Games: 82
+        PPG: 27.5
+        APG: 9.1
+        RPG: 8.6
+        
+2025-02-03 14:46:08,262 - INFO - 
+        Season: 2019
+        Team: LAL
+        PlayerID: 3462
+        Games: 55
+        PPG: 27.4
+        APG: 8.3
+        RPG: 8.5
+        
+2025-02-03 14:46:08,262 - INFO - 
+        Season: 2020
+        Team: LAL
+        PlayerID: 3462
+        Games: 67
+        PPG: 25.3
+        APG: 10.2
+        RPG: 7.8
+        
+2025-02-03 14:46:08,262 - INFO - 
+        Season: 2021
+        Team: LAL
+        PlayerID: 3462
+        Games: 45
+        PPG: 25.0
+        APG: 7.8
+        RPG: 7.7
+        
+2025-02-03 14:46:08,262 - INFO - 
+        Season: 2022
+        Team: LAL
+        PlayerID: 3462
+        Games: 56
+        PPG: 30.3
+        APG: 6.2
+        RPG: 8.2
+        
+2025-02-03 14:46:08,262 - INFO - 
+        Season: 2023
+        Team: LAL
+        PlayerID: 3462
+        Games: 55
+        PPG: 28.9
+        APG: 6.8
+        RPG: 8.3
+        
+2025-02-03 14:46:08,262 - INFO - 
+        Season: 2024
+        Team: LAL
+        PlayerID: 3462
+        Games: 71
+        PPG: 25.7
+        APG: 8.3
+        RPG: 7.3
+        
+2025-02-03 14:46:08,262 - INFO - 
+        Season: 2025
+        Team: LAL
+        PlayerID: 3462
+        Games: 29
+        PPG: 23.4
+        APG: 8.9
+        RPG: 7.7
+        
+2025-02-03 14:46:08,264 - INFO - 
+Verifying LeBron's data after ID merge:
+2025-02-03 14:46:08,264 - INFO - 
+            Season: 2004
+            Team: CLE
+            PlayerID: 3462
+            Games: 79
+            PPG: 20.9
+            APG: 5.9
+            RPG: 5.5
+            
+2025-02-03 14:46:08,264 - INFO - 
+            Season: 2005
+            Team: CLE
+            PlayerID: 3462
+            Games: 80
+            PPG: 27.2
+            APG: 7.2
+            RPG: 7.4
+            
+2025-02-03 14:46:08,264 - INFO - 
+            Season: 2006
+            Team: CLE
+            PlayerID: 3462
+            Games: 79
+            PPG: 31.4
+            APG: 6.6
+            RPG: 7.0
+            
+2025-02-03 14:46:08,264 - INFO - 
+            Season: 2007
+            Team: CLE
+            PlayerID: 3462
+            Games: 78
+            PPG: 27.3
+            APG: 6.0
+            RPG: 6.7
+            
+2025-02-03 14:46:08,264 - INFO - 
+            Season: 2008
+            Team: CLE
+            PlayerID: 3462
+            Games: 75
+            PPG: 30.0
+            APG: 7.2
+            RPG: 7.9
+            
+2025-02-03 14:46:08,264 - INFO - 
+            Season: 2009
+            Team: CLE
+            PlayerID: 3462
+            Games: 81
+            PPG: 28.4
+            APG: 7.2
+            RPG: 7.6
+            
+2025-02-03 14:46:08,264 - INFO - 
+            Season: 2010
+            Team: CLE
+            PlayerID: 3462
+            Games: 76
+            PPG: 29.7
+            APG: 8.6
+            RPG: 7.3
+            
+2025-02-03 14:46:08,264 - INFO - 
+            Season: 2011
+            Team: MIA
+            PlayerID: 3462
+            Games: 79
+            PPG: 26.7
+            APG: 7.0
+            RPG: 7.5
+            
+2025-02-03 14:46:08,264 - INFO - 
+            Season: 2012
+            Team: MIA
+            PlayerID: 3462
+            Games: 62
+            PPG: 27.1
+            APG: 6.2
+            RPG: 7.9
+            
+2025-02-03 14:46:08,264 - INFO - 
+            Season: 2013
+            Team: MIA
+            PlayerID: 3462
+            Games: 76
+            PPG: 26.8
+            APG: 7.3
+            RPG: 8.0
+            
+2025-02-03 14:46:08,264 - INFO - 
+            Season: 2014
+            Team: MIA
+            PlayerID: 3462
+            Games: 77
+            PPG: 27.1
+            APG: 6.3
+            RPG: 6.9
+            
+2025-02-03 14:46:08,264 - INFO - 
+            Season: 2015
+            Team: CLE
+            PlayerID: 3462
+            Games: 69
+            PPG: 25.3
+            APG: 7.4
+            RPG: 6.0
+            
+2025-02-03 14:46:08,264 - INFO - 
+            Season: 2016
+            Team: CLE
+            PlayerID: 3462
+            Games: 76
+            PPG: 25.3
+            APG: 6.8
+            RPG: 7.4
+            
+2025-02-03 14:46:08,264 - INFO - 
+            Season: 2017
+            Team: CLE
+            PlayerID: 3462
+            Games: 74
+            PPG: 26.4
+            APG: 8.7
+            RPG: 8.6
+            
+2025-02-03 14:46:08,264 - INFO - 
+            Season: 2018
+            Team: CLE
+            PlayerID: 3462
+            Games: 82
+            PPG: 27.5
+            APG: 9.1
+            RPG: 8.6
+            
+2025-02-03 14:46:08,265 - INFO - 
+            Season: 2019
+            Team: LAL
+            PlayerID: 3462
+            Games: 55
+            PPG: 27.4
+            APG: 8.3
+            RPG: 8.5
+            
+2025-02-03 14:46:08,265 - INFO - 
+            Season: 2020
+            Team: LAL
+            PlayerID: 3462
+            Games: 67
+            PPG: 25.3
+            APG: 10.2
+            RPG: 7.8
+            
+2025-02-03 14:46:08,265 - INFO - 
+            Season: 2021
+            Team: LAL
+            PlayerID: 3462
+            Games: 45
+            PPG: 25.0
+            APG: 7.8
+            RPG: 7.7
+            
+2025-02-03 14:46:08,265 - INFO - 
+            Season: 2022
+            Team: LAL
+            PlayerID: 3462
+            Games: 56
+            PPG: 30.3
+            APG: 6.2
+            RPG: 8.2
+            
+2025-02-03 14:46:08,265 - INFO - 
+            Season: 2023
+            Team: LAL
+            PlayerID: 3462
+            Games: 55
+            PPG: 28.9
+            APG: 6.8
+            RPG: 8.3
+            
+2025-02-03 14:46:08,265 - INFO - 
+            Season: 2024
+            Team: LAL
+            PlayerID: 3462
+            Games: 71
+            PPG: 25.7
+            APG: 8.3
+            RPG: 7.3
+            
+2025-02-03 14:46:08,265 - INFO - 
+            Season: 2025
+            Team: LAL
+            PlayerID: 3462
+            Games: 29
+            PPG: 23.4
+            APG: 8.9
+            RPG: 7.7
+            
+2025-02-03 14:46:08,265 - INFO - Processing players...
+2025-02-03 14:46:10,861 - INFO - Data migration completed successfully

@@ -1,3 +1,12 @@
+// Helper function to normalize text (remove accents and convert to lowercase)
+function normalizeText(text) {
+    if (!text) return '';
+    return text.normalize('NFKD')
+               .replace(/[\u0300-\u036f]/g, '')  // Remove diacritics
+               .toLowerCase()
+               .trim();
+}
+
 class Player {
     constructor(db) {
         this.db = db;
@@ -16,17 +25,112 @@ class Player {
         });
     }
 
-    async findByName(name) {
+    findByName(name) {
         return new Promise((resolve, reject) => {
-            this.db.get(
-                'SELECT * FROM players WHERE full_name LIKE ?',
-                [`%${name}%`],
-                (err, row) => {
-                    if (err) reject(err);
-                    else resolve(row ? this.formatPlayer(row) : null);
+            const normalizedName = normalizeText(name);
+            
+            const query = `
+                SELECT p.*, s.*
+                FROM players p
+                LEFT JOIN seasons s ON p.id = s.player_id
+                WHERE lower(p.full_name) LIKE ?
+                ORDER BY s.season DESC`;
+            
+            this.db.all(query, [`%${normalizedName}%`], (err, rows) => {
+                if (err) {
+                    reject(err);
+                    return;
                 }
-            );
+
+                // Filter players by normalized name in JavaScript for accurate matching
+                const filteredRows = rows.filter(row => {
+                    const normalizedFullName = normalizeText(row.full_name);
+                    return normalizedFullName.includes(normalizedName);
+                });
+
+                // Group the results by player
+                const players = new Map();
+                filteredRows.forEach(row => {
+                    if (!players.has(row.id)) {
+                        players.set(row.id, {
+                            id: row.id,
+                            full_name: row.full_name,
+                            birth_year: row.birth_year,
+                            position: row.position,
+                            seasons: []
+                        });
+                    }
+                    
+                    if (row.season) {  // Only add season if it exists
+                        players.get(row.id).seasons.push({
+                            season: row.season,
+                            team: row.team,
+                            games: row.games,
+                            games_started: row.games_started,
+                            minutes_per_game: row.minutes_per_game,
+                            pts_per_game: row.pts_per_game,
+                            ast_per_game: row.ast_per_game,
+                            reb_per_game: row.reb_per_game,
+                            stl_per_game: row.stl_per_game,
+                            blk_per_game: row.blk_per_game,
+                            fg_percent: row.fg_percent,
+                            fg3_percent: row.fg3_percent,
+                            ft_percent: row.ft_percent,
+                            turnover_per_game: row.turnover_per_game
+                        });
+                    }
+                });
+
+                // Sort seasons for each player in descending order
+                for (let player of players.values()) {
+                    player.seasons.sort((a, b) => parseInt(b.season) - parseInt(a.season));
+                }
+
+                resolve(Array.from(players.values()));
+            });
         });
+    }
+
+    groupPlayerSeasons(rows) {
+        const players = new Map();
+        
+        rows.forEach(row => {
+            if (!players.has(row.id)) {
+                players.set(row.id, {
+                    id: row.id,
+                    full_name: row.full_name,
+                    birth_year: row.birth_year,
+                    position: row.position,
+                    seasons: []
+                });
+            }
+
+            if (row.season) {
+                players.get(row.id).seasons.push({
+                    season: row.season,
+                    team: row.team,
+                    games: row.games,
+                    games_started: row.games_started,
+                    minutes_per_game: row.minutes_per_game,
+                    pts_per_game: row.pts_per_game,
+                    ast_per_game: row.ast_per_game,
+                    reb_per_game: row.reb_per_game,
+                    stl_per_game: row.stl_per_game,
+                    blk_per_game: row.blk_per_game,
+                    fg_percent: row.fg_percent,
+                    fg3_percent: row.fg3_percent,
+                    ft_percent: row.ft_percent,
+                    turnover_per_game: row.turnover_per_game
+                });
+            }
+        });
+
+        // Sort seasons for each player
+        for (let player of players.values()) {
+            player.seasons.sort((a, b) => parseInt(b.season) - parseInt(a.season));
+        }
+
+        return players;
     }
 
     async getRandomPlayers(limit = 10) {
@@ -117,11 +221,8 @@ class Player {
         return {
             id: row.id,
             full_name: row.full_name,
-            team: row.team,
-            position: row.position,
-            jersey_number: row.jersey_number,
-            stats: JSON.parse(row.stats),
-            last_updated: row.last_updated
+            birth_year: row.birth_year,
+            position: row.position
         };
     }
 }
