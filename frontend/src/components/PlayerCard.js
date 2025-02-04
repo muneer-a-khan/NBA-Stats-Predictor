@@ -1,94 +1,137 @@
 import React, { useState } from 'react';
 import './PlayerCard.css';
 
-const PlayerCard = ({ player }) => {
-    const [selectedSeason, setSelectedSeason] = useState(null);
-    const [showCareerStats, setShowCareerStats] = useState(true);
+const PlayerCard = ({ player, showSeasonsByDefault = false }) => {
+    const [showCareer, setShowCareer] = useState(true);
+    const [showSeasons, setShowSeasons] = useState(showSeasonsByDefault);
 
-    const seasons = player.seasons || [];
-    const careerAverages = player.career_averages || {};
-    
-    const formatStat = (value) => {
-        if (value === null || value === undefined) return 'N/A';
-        return typeof value === 'number' ? value.toFixed(1) : value;
+    const formatStat = (value, isPercentage = false) => {
+        if (value === null || value === undefined || isNaN(value)) return 'N/A';
+        const formattedValue = parseFloat(value).toFixed(1);
+        return isPercentage ? `${formattedValue}%` : formattedValue;
     };
 
-    const StatRow = ({ label, value, isPercentage = false }) => (
-        <div className="stat-row">
-            <span className="stat-label">{label}</span>
-            <span className="stat-value">
-                {isPercentage ? `${formatStat(value * 100)}%` : formatStat(value)}
-            </span>
-        </div>
-    );
-
-    const handleSeasonChange = (e) => {
-        const value = e.target.value;
-        setSelectedSeason(value === 'career' ? null : value);
-        setShowCareerStats(value === 'career');
+    const renderCareerStats = () => {
+        if (!player?.career_averages) return null;
+        
+        const ca = player.career_averages;
+        return (
+            <div className="stats-section">
+                <h4>Career Averages</h4>
+                <div className="stats-grid">
+                    <div className="stat-group">
+                        <h5>Scoring</h5>
+                        <div className="stat-row">
+                            <span className="stat-label">PPG</span>
+                            <span className="stat-value">{formatStat(ca.career_ppg)}</span>
+                        </div>
+                        <div className="stat-row">
+                            <span className="stat-label">FG%</span>
+                            <span className="stat-value">{formatStat(ca.career_fg_pct * 100, true)}</span>
+                        </div>
+                        <div className="stat-row">
+                            <span className="stat-label">3P%</span>
+                            <span className="stat-value">{formatStat(ca.career_fg3_pct * 100, true)}</span>
+                        </div>
+                        <div className="stat-row">
+                            <span className="stat-label">FT%</span>
+                            <span className="stat-value">{formatStat(ca.career_ft_pct * 100, true)}</span>
+                        </div>
+                    </div>
+                    <div className="stat-group">
+                        <h5>Other Stats</h5>
+                        <div className="stat-row">
+                            <span className="stat-label">APG</span>
+                            <span className="stat-value">{formatStat(ca.career_apg)}</span>
+                        </div>
+                        <div className="stat-row">
+                            <span className="stat-label">RPG</span>
+                            <span className="stat-value">{formatStat(ca.career_rpg)}</span>
+                        </div>
+                        <div className="stat-row">
+                            <span className="stat-label">SPG</span>
+                            <span className="stat-value">{formatStat(ca.career_spg)}</span>
+                        </div>
+                        <div className="stat-row">
+                            <span className="stat-label">BPG</span>
+                            <span className="stat-value">{formatStat(ca.career_bpg)}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        );
     };
 
-    const currentStats = showCareerStats ? 
-        careerAverages : 
-        seasons.find(s => s.season_id === selectedSeason);
+    const renderSeasonStats = () => {
+        if (!player?.seasons || player.seasons.length === 0) return null;
+
+        return (
+            <div className="stats-section">
+                <h4>Season Stats</h4>
+                <div className="seasons-table-container">
+                    <table className="seasons-table">
+                        <thead>
+                            <tr>
+                                <th>Season</th>
+                                <th>Team</th>
+                                <th>Games</th>
+                                <th>PPG</th>
+                                <th>APG</th>
+                                <th>RPG</th>
+                                <th>SPG</th>
+                                <th>BPG</th>
+                                <th>FG%</th>
+                                <th>3P%</th>
+                                <th>FT%</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {player.seasons.map((season, index) => (
+                                <tr key={index}>
+                                    <td>{season.season}</td>
+                                    <td>{season.team}</td>
+                                    <td>{season.games}</td>
+                                    <td>{formatStat(season.pts_per_game)}</td>
+                                    <td>{formatStat(season.ast_per_game)}</td>
+                                    <td>{formatStat(season.reb_per_game)}</td>
+                                    <td>{formatStat(season.stl_per_game)}</td>
+                                    <td>{formatStat(season.blk_per_game)}</td>
+                                    <td>{formatStat(season.fg_percent * 100, true)}</td>
+                                    <td>{formatStat(season.fg3_percent * 100, true)}</td>
+                                    <td>{formatStat(season.ft_percent * 100, true)}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        );
+    };
 
     return (
         <div className="player-card">
             <div className="player-header">
-                <h3 className="player-name">{player.full_name}</h3>
-                <div className="player-info">
-                    <span className="info-item">
-                        <span className="info-label">Team:</span> {player.team || 'N/A'}
-                    </span>
-                    <span className="info-item">
-                        <span className="info-label">Position:</span> {player.position || 'N/A'}
-                    </span>
-                </div>
+                <h3>{player.full_name}</h3>
+                <p>Team: {player.team || 'N/A'} Position: {player.position}</p>
+            </div>
+            
+            <div className="view-selector">
+                <button 
+                    className={`toggle-button ${showCareer ? 'active' : ''}`}
+                    onClick={() => setShowCareer(!showCareer)}
+                >
+                    Career Averages
+                </button>
+                <button 
+                    className={`toggle-button ${showSeasons ? 'active' : ''}`}
+                    onClick={() => setShowSeasons(!showSeasons)}
+                >
+                    Season Stats
+                </button>
             </div>
 
-            <div className="stats-container">
-                <div className="season-selector">
-                    <select 
-                        value={showCareerStats ? 'career' : selectedSeason || ''}
-                        onChange={handleSeasonChange}
-                        className="season-select"
-                    >
-                        <option value="career">Career Averages</option>
-                        {seasons.map((season) => (
-                            <option key={season.season_id} value={season.season_id}>
-                                {season.season_id} - {season.team}
-                            </option>
-                        ))}
-                    </select>
-                </div>
-
-                <div className="stats-grid">
-                    <div className="stats-section">
-                        <h5>Scoring</h5>
-                        <StatRow label="PPG" value={showCareerStats ? careerAverages.ppg : currentStats?.pts_per_game} />
-                        <StatRow label="FG%" value={showCareerStats ? careerAverages.fgPercent : currentStats?.fg_percent} isPercentage />
-                        <StatRow label="3P%" value={showCareerStats ? careerAverages.fg3Percent : currentStats?.fg3_percent} isPercentage />
-                        <StatRow label="FT%" value={showCareerStats ? careerAverages.ftPercent : currentStats?.ft_percent} isPercentage />
-                    </div>
-
-                    <div className="stats-section">
-                        <h5>Other Stats</h5>
-                        <StatRow label="APG" value={showCareerStats ? careerAverages.apg : currentStats?.ast_per_game} />
-                        <StatRow label="RPG" value={showCareerStats ? careerAverages.rpg : currentStats?.reb_per_game} />
-                        <StatRow label="SPG" value={showCareerStats ? careerAverages.spg : currentStats?.stl_per_game} />
-                        <StatRow label="BPG" value={showCareerStats ? careerAverages.bpg : currentStats?.blk_per_game} />
-                    </div>
-
-                    {!showCareerStats && currentStats && (
-                        <div className="stats-section">
-                            <h5>Season Details</h5>
-                            <StatRow label="Games" value={currentStats.games} />
-                            <StatRow label="Started" value={currentStats.games_started} />
-                            <StatRow label="MPG" value={currentStats.minutes_per_game} />
-                        </div>
-                    )}
-                </div>
-            </div>
+            {showCareer && renderCareerStats()}
+            {showSeasons && renderSeasonStats()}
         </div>
     );
 };

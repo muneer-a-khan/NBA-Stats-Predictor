@@ -1,104 +1,81 @@
 .player-card {
     background: white;
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    transition: transform 0.2s, box-shadow 0.2s;
-    width: 300px;
     margin: 10px;
-}
-
-.player-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    cursor: pointer;
-}
-
-.player-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
-    padding: 20px;
+    max-width: 800px;
+    width: 100%;
 }
 
 .player-header {
-    border-bottom: 1px solid #eee;
-    margin-bottom: 16px;
-    padding-bottom: 16px;
+    margin-bottom: 20px;
 }
 
-.player-name {
-    color: #1a73e8;
-    font-size: 1.5rem;
-    margin: 0 0 8px 0;
+.player-header h3 {
+    margin: 0;
+    color: #333;
 }
 
-.player-info {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
-}
-
-.info-item {
+.player-header p {
+    margin: 5px 0;
     color: #666;
-    font-size: 0.9rem;
 }
 
-.info-label {
-    color: #444;
-    font-weight: 500;
+.view-selector {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
 }
 
-.stats-container {
-    padding: 8px 0;
-}
-
-.season-selector {
-    margin-bottom: 16px;
-}
-
-.season-select {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    font-size: 0.9rem;
-    color: #444;
-    background-color: white;
+.view-selector button {
+    padding: 8px 16px;
+    border: 1px solid #007bff;
+    background: white;
+    border-radius: 4px;
     cursor: pointer;
+    transition: all 0.3s ease;
+    color: #007bff;
+    margin-right: 10px;
 }
 
-.season-select:focus {
-    outline: none;
-    border-color: #1a73e8;
+.view-selector button.active {
+    background: #007bff;
+    color: white;
+}
+
+.view-selector button:hover {
+    background: #0056b3;
+    color: white;
+    border-color: #0056b3;
+}
+
+.stats-section {
+    margin-top: 20px;
 }
 
 .stats-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    gap: 16px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
 }
 
-.stats-section {
-    background-color: #f8f9fa;
-    border-radius: 8px;
-    padding: 12px;
+.stat-group {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 6px;
 }
 
-.stats-section h5 {
-    color: #666;
-    margin: 0 0 8px 0;
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+.stat-group h5 {
+    margin: 0 0 10px 0;
+    color: #495057;
 }
 
 .stat-row {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    padding: 4px 0;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    padding: 5px 0;
+    border-bottom: 1px solid #dee2e6;
 }
 
 .stat-row:last-child {
@@ -106,47 +83,36 @@
 }
 
 .stat-label {
-    color: #666;
-    font-size: 0.9rem;
+    color: #6c757d;
 }
 
 .stat-value {
-    color: #1a73e8;
     font-weight: 500;
-    font-size: 0.9rem;
+    color: #212529;
 }
 
-/* Adjustments for random players grid */
-.random-players {
-    padding: 20px;
+.seasons-table-container {
+    overflow-x: auto;
 }
 
-.random-players .player-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
-    justify-content: center;
+.seasons-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
 }
 
-@media (min-width: 1200px) {
-    .random-players .player-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
+.seasons-table th,
+.seasons-table td {
+    padding: 8px;
+    text-align: center;
+    border-bottom: 1px solid #dee2e6;
 }
 
-@media (max-width: 1199px) and (min-width: 768px) {
-    .random-players .player-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
+.seasons-table th {
+    background: #f8f9fa;
+    font-weight: 500;
 }
 
-@media (max-width: 767px) {
-    .random-players .player-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-.player-card-container {
-    display: flex;
-    justify-content: center;
+.seasons-table tr:hover {
+    background: #f8f9fa;
 }
