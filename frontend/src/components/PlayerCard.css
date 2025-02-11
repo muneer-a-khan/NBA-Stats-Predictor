@@ -116,3 +116,16 @@
 .seasons-table tr:hover {
     background: #f8f9fa;
 }
+
+.player-info {
+    display: flex;
+    gap: 1.5rem;
+    margin: 0.5rem 0;
+    color: #666;
+    font-size: 0.95rem;
+}
+
+.player-info p {
+    margin: 0;
+    padding: 0;
+}

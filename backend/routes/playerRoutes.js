@@ -240,4 +240,43 @@ router.get('/players', async (req, res) => {
     }
 });
 
+// Get player name suggestions for autocomplete
+router.get('/search-suggestions', async (req, res) => {
+    try {
+        const db = await getDb();
+        const searchTerm = req.query.term?.trim();
+
+        if (!searchTerm) {
+            res.json([]);
+            return;
+        }
+
+        const query = `
+            SELECT DISTINCT full_name, id
+            FROM players 
+            WHERE full_name LIKE ? || '%' OR full_name LIKE '% ' || ? || '%'
+            ORDER BY full_name
+            LIMIT 10
+        `;
+
+        db.all(query, [searchTerm, searchTerm], (err, players) => {
+            if (err) {
+                console.error("Database error:", err);
+                res.status(500).json({ error: err.message });
+                return;
+            }
+            
+            res.json(players.map(player => ({
+                id: player.id,
+                name: player.full_name
+            })));
+            
+            db.close();
+        });
+    } catch (error) {
+        console.error("Route error:", error);
+        res.status(500).json({ error: error.message });
+    }
+});
+
 module.exports = router;

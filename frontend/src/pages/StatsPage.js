@@ -3,13 +3,12 @@ import { useLocation } from 'react-router-dom';
 import api from '../services/api';
 import PlayerCard from '../components/PlayerCard';
 import LoadingSpinner from '../components/LoadingSpinner';
-import './StatsPage.css';
+import NBAStats from '../components/NBAStats';
 
 const StatsPage = () => {
     const [players, setPlayers] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    const [searchQuery, setSearchQuery] = useState('');
     const [searchResults, setSearchResults] = useState(null);
     const location = useLocation();
 
@@ -17,8 +16,7 @@ const StatsPage = () => {
         const params = new URLSearchParams(location.search);
         const playerName = params.get('player');
         if (playerName) {
-            setSearchQuery(playerName);
-            handleSearch(playerName);
+            handlePlayerSearch({ full_name: playerName });
         } else {
             fetchRandomPlayers();
         }
@@ -31,6 +29,7 @@ const StatsPage = () => {
             const response = await api.get('/random-players');
             if (response.data) {
                 setPlayers(response.data);
+                setSearchResults(null);
             } else {
                 setError('No players found');
             }
@@ -42,13 +41,11 @@ const StatsPage = () => {
         }
     };
 
-    const handleSearch = async (query = searchQuery) => {
-        if (!query.trim()) return;
-
+    const handlePlayerSearch = async (player) => {
         setLoading(true);
         setError(null);
         try {
-            const response = await api.get('/players', { params: { name: query } });
+            const response = await api.get(`/players?name=${encodeURIComponent(player.full_name)}`);
             if (response.data && response.data.player) {
                 setSearchResults(response.data.player);
             } else {
@@ -64,75 +61,65 @@ const StatsPage = () => {
     };
 
     return (
-        <div className="stats-page">
-            <div className="header">
-                <h1>NBA Player Stats</h1>
-                <button 
-                    onClick={fetchRandomPlayers} 
-                    className="refresh-button"
-                    disabled={loading}
-                >
-                    {loading ? 'Loading...' : 'Refresh Players'}
-                </button>
-            </div>
+        <div className="relative flex size-full min-h-screen flex-col bg-[#101923] overflow-x-hidden" style={{ fontFamily: '"Space Grotesk", "Noto Sans", sans-serif' }}>
+            <div className="flex h-full grow flex-col">
+                <div className="px-40 flex flex-1 justify-center py-5">
+                    <div className="flex flex-col max-w-[960px] flex-1">
+                        <div className="flex flex-wrap justify-between gap-3 p-4">
+                            <p className="text-white text-4xl font-black leading-tight tracking-[-0.033em] min-w-72">
+                                Explore NBA player stats
+                            </p>
+                        </div>
 
-            <div className="search-section">
-                <input
-                    type="text"
-                    placeholder="Search players..."
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    onKeyPress={(e) => e.key === 'Enter' && handleSearch()}
-                    className="search-input"
-                    disabled={loading}
-                />
-                <button 
-                    onClick={() => handleSearch()} 
-                    className="search-button"
-                    disabled={loading}
-                >
-                    {loading ? 'Searching...' : 'Search'}
-                </button>
-            </div>
+                        <div className="px-4 py-3">
+                            <NBAStats onPlayerSearch={handlePlayerSearch} />
+                        </div>
 
-            {error && (
-                <div className="error-message">
-                    {error}
-                </div>
-            )}
-
-            {loading && (
-                <div className="loading-container">
-                    <LoadingSpinner />
-                </div>
-            )}
-
-            {searchResults && !loading && (
-                <div className="search-results">
-                    <h2>Player Details</h2>
-                    <PlayerCard player={searchResults} isSearched />
-                </div>
-            )}
-
-            {!searchResults && !loading && (
-                <div className="random-players">
-                    <h2>Featured Players</h2>
-                    <div className="player-grid">
-                        {players.map((player) => (
-                            <div 
-                                key={player.id} 
-                                className="player-card-container"
-                                onClick={() => {
-                                    setSearchQuery(player.full_name);
-                                    handleSearch(player.full_name);
-                                }}
-                            >
-                                <PlayerCard player={player} />
+                        {error && (
+                            <div className="text-[#e53e3e] text-center p-4">
+                                {error}
                             </div>
-                        ))}
+                        )}
+
+                        {loading ? (
+                            <div className="flex justify-center p-8">
+                                <LoadingSpinner />
+                            </div>
+                        ) : (
+                            <>
+                                {searchResults ? (
+                                    <div className="p-4">
+                                        <h3 className="text-white text-lg font-bold leading-tight tracking-[-0.015em] pb-4">
+                                            Player Details
+                                        </h3>
+                                        <PlayerCard player={searchResults} isSearched />
+                                    </div>
+                                ) : (
+                                    <>
+                                        <h3 className="text-white text-lg font-bold leading-tight tracking-[-0.015em] px-4 pb-2 pt-4">
+                                            Featured players
+                                        </h3>
+                                        <div className="grid grid-cols-[repeat(auto-fit,minmax(158px,1fr))] gap-3 p-4">
+                                            {players.map((player) => (
+                                                <div
+                                                    key={player.id}
+                                                    className="flex flex-1 gap-3 rounded-lg border border-[#314b68] bg-[#182534] p-4 items-center cursor-pointer hover:bg-[#223449] transition-colors"
+                                                    onClick={() => handlePlayerSearch(player)}
+                                                >
+                                                    <div className="bg-center bg-no-repeat aspect-square bg-cover rounded-full w-10 shrink-0 bg-[#223449]" />
+                                                    <h2 className="text-white text-base font-bold leading-tight">
+                                                        {player.full_name}
+                                                    </h2>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </>
+                                )}
+                            </>
+                        )}
                     </div>
                 </div>
-            )}
+            </div>
         </div>
     );
 };

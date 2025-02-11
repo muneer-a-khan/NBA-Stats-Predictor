@@ -1,73 +1,63 @@
 .nba-stats {
-    padding: 20px;
-    max-width: 1200px;
+    width: 100%;
+    max-width: 800px;
     margin: 0 auto;
+    padding: 1rem;
 }
 
 .search-container {
     position: relative;
     width: 100%;
     max-width: 600px;
-    margin: 0 auto;
-    z-index: 1000;
+    margin: 0 auto 2rem;
     display: flex;
+    align-items: flex-start;
     gap: 10px;
 }
 
-.search-input-wrapper {
+.search-input-container {
     position: relative;
-    width: 100%;
+    flex-grow: 1;
+    z-index: 1000;
 }
 
 .search-input {
     width: 100%;
-    padding: 8px 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    padding: 12px 16px;
     font-size: 16px;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    outline: none;
+    transition: border-color 0.2s;
+    margin: 0;
 }
 
-.search-button {
-    padding: 12px 24px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.2s;
+.search-input:focus {
+    border-color: #007bff;
 }
 
-.search-button:hover {
-    background-color: #0056b3;
-}
-
-.search-button:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-}
-
-.suggestions-dropdown {
+.suggestions-list {
     position: absolute;
-    top: 100%;
+    top: calc(100% + 5px);
     left: 0;
     right: 0;
     background: white;
     border: 1px solid #ddd;
-    border-radius: 4px;
-    margin-top: 4px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border-radius: 6px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     max-height: 300px;
     overflow-y: auto;
-    z-index: 1001;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    z-index: 1000;
 }
 
 .suggestion-item {
-    padding: 8px 12px;
+    padding: 12px 16px;
+    cursor: pointer;
+    transition: background-color 0.2s;
     border-bottom: 1px solid #eee;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
 }
 
 .suggestion-item:last-child {
@@ -75,57 +65,97 @@
 }
 
 .suggestion-item:hover {
-    background-color: #f5f5f5;
+    background-color: #f8f9fa;
 }
 
-.player-info {
-    color: #666;
-    font-size: 0.9em;
-    margin-left: 8px;
+.search-button {
+    padding: 12px 24px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.2s;
+    white-space: nowrap;
 }
 
-.stats-container {
-    margin-top: 20px;
+.search-button:hover {
+    background-color: #0056b3;
 }
 
-.seasons-table {
+.error-message {
+    color: #dc3545;
+    margin: 1rem 0;
+    text-align: center;
+    font-size: 14px;
+}
+
+/* Career Stats Table Styles */
+.career-stats {
+    margin: 2rem 0;
     overflow-x: auto;
-    margin-top: 20px;
 }
 
-.seasons-table table {
+.career-stats table {
     width: 100%;
     border-collapse: collapse;
-    min-width: 1000px;
+    background: white;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-.seasons-table th,
-.seasons-table td {
+.career-stats th,
+.career-stats td {
     padding: 12px;
     text-align: center;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #eee;
 }
 
-.seasons-table th {
+.career-stats th {
     background-color: #f8f9fa;
     font-weight: 600;
+    color: #444;
 }
 
-.seasons-table tr:hover {
-    background-color: #f5f5f5;
+/* Season Stats Table Styles */
+.season-stats {
+    margin: 2rem 0;
+    overflow-x: auto;
 }
 
-.error {
-    color: #dc3545;
+.season-stats table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.season-stats th,
+.season-stats td {
+    padding: 12px;
     text-align: center;
-    margin: 20px 0;
-    padding: 10px;
-    background-color: #f8d7da;
-    border-radius: 4px;
+    border-bottom: 1px solid #eee;
 }
 
-.loading {
-    text-align: center;
-    margin: 20px 0;
-    color: #666;
-} 
+.season-stats th {
+    background-color: #f8f9fa;
+    font-weight: 600;
+    color: #444;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .search-container {
+        flex-direction: column;
+    }
+    
+    .search-button {
+        margin-top: 10px;
+        width: 100%;
+    }
+
+    .career-stats,
+    .season-stats {
+        margin: 1rem -1rem;
+    }
+}

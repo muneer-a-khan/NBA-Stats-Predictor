@@ -4,17 +4,34 @@
     padding: 20px;
 }
 
+.stats-page h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #333;
+}
+
+.stats-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 24px;
+    margin-bottom: 2rem;
+}
+
+.header h1 {
+    margin: 0;
+    color: #333;
 }
 
 .search-section {
     display: flex;
     gap: 10px;
-    margin-bottom: 30px;
+    margin-bottom: 2rem;
     justify-content: center;
 }
 
@@ -33,22 +50,39 @@
 }
 
 .search-button, .refresh-button {
-    padding: 8px 16px;
+    padding: 10px 20px;
     background-color: #4299e1;
     color: white;
     border: none;
-    border-radius: 6px;
+    border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.2s;
 }
 
 .search-button:hover, .refresh-button:hover {
-    background-color: #3182ce;
+    background-color: #218838;
 }
 
 .search-button:disabled, .refresh-button:disabled {
-    background-color: #a0aec0;
+    background-color: #6c757d;
     cursor: not-allowed;
+}
+
+.random-players {
+    margin-top: 30px;
+}
+
+.random-players h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #2d3748;
+}
+
+.players-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    justify-content: center;
 }
 
 .error-message {
@@ -66,45 +100,37 @@
     padding: 40px;
 }
 
-.random-players {
-    margin-top: 30px;
+.player-card-container {
+    cursor: pointer;
+    transition: transform 0.2s;
 }
 
-.random-players h2 {
+.player-card-container:hover {
+    transform: translateY(-5px);
+}
+
+.search-results {
+    margin-top: 2rem;
+}
+
+.search-results h2 {
     text-align: center;
-    margin-bottom: 20px;
     color: #2d3748;
+    margin-bottom: 1rem;
 }
 
-.player-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-    justify-content: center;
-}
-
-@media (min-width: 1200px) {
-    .player-grid {
-        grid-template-columns: repeat(3, 1fr);
+@media (max-width: 768px) {
+    .stats-page {
+        padding: 15px;
     }
-}
 
-@media (max-width: 1199px) and (min-width: 768px) {
-    .player-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 767px) {
-    .player-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .search-section {
+    .header {
         flex-direction: column;
+        text-align: center;
+        gap: 1rem;
     }
-    
-    .search-input {
-        width: 100%;
+
+    .players-grid {
+        grid-template-columns: 1fr;
     }
 }

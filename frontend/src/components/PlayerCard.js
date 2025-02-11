@@ -1,15 +1,10 @@
 import React, { useState } from 'react';
+import { formatSeason, formatStat, getCurrentTeam } from '../utils/formatHelpers';
 import './PlayerCard.css';
 
 const PlayerCard = ({ player, showSeasonsByDefault = false }) => {
     const [showCareer, setShowCareer] = useState(true);
     const [showSeasons, setShowSeasons] = useState(showSeasonsByDefault);
-
-    const formatStat = (value, isPercentage = false) => {
-        if (value === null || value === undefined || isNaN(value)) return 'N/A';
-        const formattedValue = parseFloat(value).toFixed(1);
-        return isPercentage ? `${formattedValue}%` : formattedValue;
-    };
 
     const renderCareerStats = () => {
         if (!player?.career_averages) return null;
@@ -88,7 +83,7 @@ const PlayerCard = ({ player, showSeasonsByDefault = false }) => {
                         <tbody>
                             {player.seasons.map((season, index) => (
                                 <tr key={index}>
-                                    <td>{season.season}</td>
+                                    <td>{formatSeason(season.season)}</td>
                                     <td>{season.team}</td>
                                     <td>{season.games}</td>
                                     <td>{formatStat(season.pts_per_game)}</td>
@@ -108,11 +103,16 @@ const PlayerCard = ({ player, showSeasonsByDefault = false }) => {
         );
     };
 
+    const currentTeam = getCurrentTeam(player?.seasons);
+
     return (
         <div className="player-card">
             <div className="player-header">
                 <h3>{player.full_name}</h3>
-                <p>Team: {player.team || 'N/A'} Position: {player.position}</p>
+                <div className="player-info">
+                    <p>Position: {player.position || 'N/A'}</p>
+                    <p>Current Team: {currentTeam}</p>
+                </div>
             </div>
             
             <div className="view-selector">
